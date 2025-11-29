@@ -16,7 +16,7 @@ const Hero = () => {
                 <p className="mb-3 text-sm font-normal leading-relaxed text-black sm:text-base md:text-base lg:text-sm xl:text-base">
                   Transform Your Online Presence with Expert Digital Marketing Services
                 </p>
-                <h1 className="mb-5 text-[2rem] font-bold leading-tight text-black sm:text-[2.5rem] md:text-[3rem] lg:text-[2.75rem] xl:text-[3.5rem] 2xl:text-6xl">
+                <h1 className="mb-5 text-[2rem] font-extrabold leading-tight text-black sm:text-[2.5rem] md:text-[3rem] lg:text-[2.75rem] xl:text-[3.5rem] 2xl:text-6xl" style={{ fontFamily: 'Poppins, sans-serif' }}>
                   <span className="text-[#FF7A00]">Driving Results</span>
                   <br />
                   <span className="text-[#FF7A00]">with </span>
