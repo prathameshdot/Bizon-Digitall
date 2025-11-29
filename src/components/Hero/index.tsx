@@ -1,283 +1,138 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const Hero = () => {
   return (
     <>
       <section
         id="home"
-        className="relative z-10 overflow-hidden bg-white pb-16 pt-[120px] dark:bg-gray-dark md:pb-[120px] md:pt-[150px] xl:pb-[160px] xl:pt-[180px] 2xl:pb-[200px] 2xl:pt-[210px]"
+        className="relative z-10 overflow-hidden bg-white pb-8 pt-24 sm:pb-10 sm:pt-28 md:pb-12 md:pt-32 lg:pb-16 lg:pt-36 xl:pb-20 xl:pt-40"
       >
         <div className="container">
-          <div className="-mx-4 flex flex-wrap">
-            <div className="w-full px-4">
-              <div className="mx-auto max-w-[800px] text-center">
-                <h1 className="mb-5 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
-                  Free and Open-Source Next.js Template for Startup & SaaS
-                </h1>
-                <p className="mb-12 text-base leading-relaxed! text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">
-                  Startup is free Next.js template for startups and SaaS
-                  business websites comes with all the essential pages,
-                  components, and sections you need to launch a complete
-                  business website, built-with Next 13.x and Tailwind CSS.
+          <div className="-mx-4 flex flex-wrap items-center">
+            {/* Left Content */}
+            <div className="w-full px-4 lg:w-1/2">
+              <div className="mb-12 max-w-[600px] text-center lg:mb-0 lg:text-left">
+                <p className="mb-3 text-sm font-normal leading-relaxed text-black sm:text-base md:text-base lg:text-sm xl:text-base">
+                  Transform Your Online Presence with Expert Digital Marketing Services
                 </p>
-                <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+                <h1 className="mb-5 text-[2rem] font-bold leading-tight text-black sm:text-[2.5rem] md:text-[3rem] lg:text-[2.75rem] xl:text-[3.5rem] 2xl:text-6xl">
+                  <span className="text-[#FF7A00]">Driving Results</span>
+                  <br />
+                  <span className="text-[#FF7A00]">with </span>
+                  <span className="text-black">Innovation</span>
+                  <br />
+                  <span className="text-black">and Strategy</span>
+                </h1>
+                <p className="mb-2 text-base font-semibold text-black sm:text-lg md:text-lg lg:text-base xl:text-lg">
+                  Take your business to next level
+                </p>
+                <p className="mb-8 text-sm font-normal text-black sm:text-base md:text-base lg:text-sm xl:text-base">
+                  with the Proven Digital Solutions
+                </p>
+                <div className="flex flex-col items-center space-y-4 lg:items-start">
                   <Link
-                    href="https://nextjstemplates.com/templates/saas-starter-startup"
-                    className="rounded-xs bg-primary px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
+                    href="/contact"
+                    className="inline-flex items-center rounded-full bg-[#FF7A00] px-6 py-3 text-sm font-semibold text-white transition duration-300 ease-in-out hover:bg-[#FF7A00]/90 sm:px-8 sm:py-3.5 sm:text-base"
                   >
-                    🔥 Get Pro
+                    Get Started
+                    <svg
+                      className="ml-2 h-4 w-4 sm:h-5 sm:w-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
                   </Link>
-                  <Link
-                    href="https://github.com/NextJSTemplates/startup-nextjs"
-                    className="inline-block rounded-xs bg-black px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-black/90 dark:bg-white/10 dark:text-white dark:hover:bg-white/5"
-                  >
-                    Star on GitHub
-                  </Link>
+                  <div className="flex items-center space-x-2 sm:space-x-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-black sm:h-12 sm:w-12">
+                      <svg
+                        className="h-4 w-4 text-black sm:h-5 sm:w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
+                    <div className="flex flex-col leading-tight">
+                      <span className="text-[10px] font-semibold tracking-wide text-black sm:text-[11px]">
+                        WATCH HOW CAN WE HELP
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Content - Image with Decorations */}
+            <div className="w-full px-4 lg:w-1/2">
+              <div className="relative mx-auto max-w-[600px] lg:mr-0">
+                <div className="relative flex items-center justify-center py-4 sm:py-6 md:py-8">
+                  {/* Complete hero image with all decorations */}
+                  <div className="relative z-10 h-[300px] w-full max-w-[350px] sm:h-[380px] sm:max-w-[450px] md:h-[480px] md:max-w-[550px] lg:h-[580px] lg:max-w-[650px]">
+                    <Image
+                      src="/images/hero/Group%209213.png"
+                      alt="Digital Marketing Expert"
+                      fill
+                      className="object-contain"
+                      priority
+                    />
+                    
+                    {/* Rotating orbit container - circles move in circular path */}
+                    <div className="absolute left-[15%] top-[18%] h-[140px] w-[140px] animate-orbit sm:left-[17%] sm:top-[20%] sm:h-[170px] sm:w-[170px] md:left-[19%] md:top-[22%] md:h-[200px] md:w-[200px] lg:left-[20%] lg:top-[24%] lg:h-[230px] lg:w-[230px]">
+                      {/* Circle 1 - Instagram */}
+                      <div className="absolute left-1/2 top-0 h-[55px] w-[55px] -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-dashed border-black/40 sm:h-[65px] sm:w-[65px] md:h-[75px] md:w-[75px] lg:h-[85px] lg:w-[85px] flex items-center justify-center">
+                        <div className="relative h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 animate-counter-rotate">
+                          <Image
+                            src="/images/hero/Instagram.png"
+                            alt="Instagram"
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Second orbit container - LinkedIn */}
+                    <div className="absolute left-[15%] top-[18%] h-[140px] w-[140px] animate-orbit sm:left-[17%] sm:top-[20%] sm:h-[170px] sm:w-[170px] md:left-[19%] md:top-[22%] md:h-[200px] md:w-[200px] lg:left-[20%] lg:top-[24%] lg:h-[230px] lg:w-[230px]" style={{ animationDelay: '-3.33s' }}>
+                      {/* Circle 2 - LinkedIn */}
+                      <div className="absolute left-1/2 top-0 h-[55px] w-[55px] -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-dashed border-black/40 sm:h-[65px] sm:w-[65px] md:h-[75px] md:w-[75px] lg:h-[85px] lg:w-[85px] flex items-center justify-center">
+                        <div className="relative h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 animate-counter-rotate">
+                          <Image
+                            src="/images/hero/LinkedIn.png"
+                            alt="LinkedIn"
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Third orbit container - Facebook */}
+                    <div className="absolute left-[15%] top-[18%] h-[140px] w-[140px] animate-orbit sm:left-[17%] sm:top-[20%] sm:h-[170px] sm:w-[170px] md:left-[19%] md:top-[22%] md:h-[200px] md:w-[200px] lg:left-[20%] lg:top-[24%] lg:h-[230px] lg:w-[230px]" style={{ animationDelay: '-6.66s' }}>
+                      {/* Circle 3 - Facebook */}
+                      <div className="absolute left-1/2 top-0 h-[55px] w-[55px] -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-dashed border-black/40 sm:h-[65px] sm:w-[65px] md:h-[75px] md:w-[75px] lg:h-[85px] lg:w-[85px] flex items-center justify-center">
+                        <div className="relative h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 animate-counter-rotate">
+                          <Image
+                            src="/images/hero/Facebook.png"
+                            alt="Facebook"
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="absolute right-0 top-0 z-[-1] opacity-30 lg:opacity-100">
-          <svg
-            width="450"
-            height="556"
-            viewBox="0 0 450 556"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle
-              cx="277"
-              cy="63"
-              r="225"
-              fill="url(#paint0_linear_25:217)"
-            />
-            <circle
-              cx="17.9997"
-              cy="182"
-              r="18"
-              fill="url(#paint1_radial_25:217)"
-            />
-            <circle
-              cx="76.9997"
-              cy="288"
-              r="34"
-              fill="url(#paint2_radial_25:217)"
-            />
-            <circle
-              cx="325.486"
-              cy="302.87"
-              r="180"
-              transform="rotate(-37.6852 325.486 302.87)"
-              fill="url(#paint3_linear_25:217)"
-            />
-            <circle
-              opacity="0.8"
-              cx="184.521"
-              cy="315.521"
-              r="132.862"
-              transform="rotate(114.874 184.521 315.521)"
-              stroke="url(#paint4_linear_25:217)"
-            />
-            <circle
-              opacity="0.8"
-              cx="356"
-              cy="290"
-              r="179.5"
-              transform="rotate(-30 356 290)"
-              stroke="url(#paint5_linear_25:217)"
-            />
-            <circle
-              opacity="0.8"
-              cx="191.659"
-              cy="302.659"
-              r="133.362"
-              transform="rotate(133.319 191.659 302.659)"
-              fill="url(#paint6_linear_25:217)"
-            />
-            <defs>
-              <linearGradient
-                id="paint0_linear_25:217"
-                x1="-54.5003"
-                y1="-178"
-                x2="222"
-                y2="288"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stopColor="#4A6CF7" />
-                <stop offset="1" stopColor="#4A6CF7" stopOpacity="0" />
-              </linearGradient>
-              <radialGradient
-                id="paint1_radial_25:217"
-                cx="0"
-                cy="0"
-                r="1"
-                gradientUnits="userSpaceOnUse"
-                gradientTransform="translate(17.9997 182) rotate(90) scale(18)"
-              >
-                <stop offset="0.145833" stopColor="#4A6CF7" stopOpacity="0" />
-                <stop offset="1" stopColor="#4A6CF7" stopOpacity="0.08" />
-              </radialGradient>
-              <radialGradient
-                id="paint2_radial_25:217"
-                cx="0"
-                cy="0"
-                r="1"
-                gradientUnits="userSpaceOnUse"
-                gradientTransform="translate(76.9997 288) rotate(90) scale(34)"
-              >
-                <stop offset="0.145833" stopColor="#4A6CF7" stopOpacity="0" />
-                <stop offset="1" stopColor="#4A6CF7" stopOpacity="0.08" />
-              </radialGradient>
-              <linearGradient
-                id="paint3_linear_25:217"
-                x1="226.775"
-                y1="-66.1548"
-                x2="292.157"
-                y2="351.421"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stopColor="#4A6CF7" />
-                <stop offset="1" stopColor="#4A6CF7" stopOpacity="0" />
-              </linearGradient>
-              <linearGradient
-                id="paint4_linear_25:217"
-                x1="184.521"
-                y1="182.159"
-                x2="184.521"
-                y2="448.882"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stopColor="#4A6CF7" />
-                <stop offset="1" stopColor="white" stopOpacity="0" />
-              </linearGradient>
-              <linearGradient
-                id="paint5_linear_25:217"
-                x1="356"
-                y1="110"
-                x2="356"
-                y2="470"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stopColor="#4A6CF7" />
-                <stop offset="1" stopColor="white" stopOpacity="0" />
-              </linearGradient>
-              <linearGradient
-                id="paint6_linear_25:217"
-                x1="118.524"
-                y1="29.2497"
-                x2="166.965"
-                y2="338.63"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stopColor="#4A6CF7" />
-                <stop offset="1" stopColor="#4A6CF7" stopOpacity="0" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-        <div className="absolute bottom-0 left-0 z-[-1] opacity-30 lg:opacity-100">
-          <svg
-            width="364"
-            height="201"
-            viewBox="0 0 364 201"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5.88928 72.3303C33.6599 66.4798 101.397 64.9086 150.178 105.427C211.155 156.076 229.59 162.093 264.333 166.607C299.076 171.12 337.718 183.657 362.889 212.24"
-              stroke="url(#paint0_linear_25:218)"
-            />
-            <path
-              d="M-22.1107 72.3303C5.65989 66.4798 73.3965 64.9086 122.178 105.427C183.155 156.076 201.59 162.093 236.333 166.607C271.076 171.12 309.718 183.657 334.889 212.24"
-              stroke="url(#paint1_linear_25:218)"
-            />
-            <path
-              d="M-53.1107 72.3303C-25.3401 66.4798 42.3965 64.9086 91.1783 105.427C152.155 156.076 170.59 162.093 205.333 166.607C240.076 171.12 278.718 183.657 303.889 212.24"
-              stroke="url(#paint2_linear_25:218)"
-            />
-            <path
-              d="M-98.1618 65.0889C-68.1416 60.0601 4.73364 60.4882 56.0734 102.431C120.248 154.86 139.905 161.419 177.137 166.956C214.37 172.493 255.575 186.165 281.856 215.481"
-              stroke="url(#paint3_linear_25:218)"
-            />
-            <circle
-              opacity="0.8"
-              cx="214.505"
-              cy="60.5054"
-              r="49.7205"
-              transform="rotate(-13.421 214.505 60.5054)"
-              stroke="url(#paint4_linear_25:218)"
-            />
-            <circle cx="220" cy="63" r="43" fill="url(#paint5_radial_25:218)" />
-            <defs>
-              <linearGradient
-                id="paint0_linear_25:218"
-                x1="184.389"
-                y1="69.2405"
-                x2="184.389"
-                y2="212.24"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stopColor="#4A6CF7" stopOpacity="0" />
-                <stop offset="1" stopColor="#4A6CF7" />
-              </linearGradient>
-              <linearGradient
-                id="paint1_linear_25:218"
-                x1="156.389"
-                y1="69.2405"
-                x2="156.389"
-                y2="212.24"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stopColor="#4A6CF7" stopOpacity="0" />
-                <stop offset="1" stopColor="#4A6CF7" />
-              </linearGradient>
-              <linearGradient
-                id="paint2_linear_25:218"
-                x1="125.389"
-                y1="69.2405"
-                x2="125.389"
-                y2="212.24"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stopColor="#4A6CF7" stopOpacity="0" />
-                <stop offset="1" stopColor="#4A6CF7" />
-              </linearGradient>
-              <linearGradient
-                id="paint3_linear_25:218"
-                x1="93.8507"
-                y1="67.2674"
-                x2="89.9278"
-                y2="210.214"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stopColor="#4A6CF7" stopOpacity="0" />
-                <stop offset="1" stopColor="#4A6CF7" />
-              </linearGradient>
-              <linearGradient
-                id="paint4_linear_25:218"
-                x1="214.505"
-                y1="10.2849"
-                x2="212.684"
-                y2="99.5816"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stopColor="#4A6CF7" />
-                <stop offset="1" stopColor="#4A6CF7" stopOpacity="0" />
-              </linearGradient>
-              <radialGradient
-                id="paint5_radial_25:218"
-                cx="0"
-                cy="0"
-                r="1"
-                gradientUnits="userSpaceOnUse"
-                gradientTransform="translate(220 63) rotate(90) scale(43)"
-              >
-                <stop offset="0.145833" stopColor="white" stopOpacity="0" />
-                <stop offset="1" stopColor="white" stopOpacity="0.08" />
-              </radialGradient>
-            </defs>
-          </svg>
         </div>
       </section>
     </>

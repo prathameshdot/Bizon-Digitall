@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
 
@@ -37,94 +37,185 @@ const Header = () => {
   };
 
   const usePathName = usePathname();
+  
+  // Animated slider
+  const [sliderStyle, setSliderStyle] = useState({});
+  const navRef = useRef<HTMLDivElement>(null);
+  const logoRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const updateSlider = () => {
+      if (!navRef.current || !logoRef.current) return;
+      
+      const activeIndex = menuData.findIndex(item => item.path === usePathName);
+      const navRect = navRef.current.getBoundingClientRect();
+      
+      // Calculate padding offset (24px = 6 * 4px in Tailwind)
+      const padding = 24;
+      
+      // For home page or when no match, cover logo + Home menu item
+      const homeIndex = 0; // Home is always first in menuData
+      const targetIndex = (usePathName === "/" || activeIndex === -1) ? homeIndex : activeIndex;
+      
+      const activeLink = navRef.current.querySelector(`[data-index="${targetIndex}"]`);
+      if (activeLink) {
+        const linkRect = activeLink.getBoundingClientRect();
+        
+        // Start from padding (left edge)
+        const startX = padding;
+        // End at the right edge of the active menu item
+        let endX = linkRect.right - navRect.left;
+        
+        // If there's a next menu item, extend halfway to it
+        const nextIndex = targetIndex + 1;
+        if (nextIndex < menuData.length) {
+          const nextLink = navRef.current.querySelector(`[data-index="${nextIndex}"]`);
+          if (nextLink) {
+            const nextLinkRect = nextLink.getBoundingClientRect();
+            const nextLinkLeft = nextLinkRect.left - navRect.left;
+            
+            // Calculate halfway distance between current right and next left
+            const halfwayPoint = endX + ((nextLinkLeft - endX) / 2);
+            endX = halfwayPoint;
+          }
+        } else {
+          // If it's the last item, just add padding
+          endX += padding;
+        }
+        
+        setSliderStyle({
+          left: startX,
+          width: endX - startX,
+        });
+      }
+    };
+
+    // Update on mount and path change
+    updateSlider();
+    
+    // Update on resize
+    window.addEventListener('resize', updateSlider);
+    
+    // Small delay to ensure DOM is ready
+    const timeout = setTimeout(updateSlider, 100);
+    
+    return () => {
+      window.removeEventListener('resize', updateSlider);
+      clearTimeout(timeout);
+    };
+  }, [usePathName]);
+
+  // Determine if a menu item should be black (inside white slider)
+  const getMenuItemColor = (menuPath: string) => {
+    const currentIndex = menuData.findIndex(item => item.path === usePathName);
+    const itemIndex = menuData.findIndex(item => item.path === menuPath);
+    
+    // If on home page and this is home, make it black
+    if (usePathName === "/" && menuPath === "/") {
+      return "text-black";
+    }
+    
+    // If item is at or before the selected item, make it black
+    if (currentIndex !== -1 && itemIndex <= currentIndex) {
+      return "text-black";
+    }
+    
+    // Otherwise, keep it white
+    return "text-white/70 hover:text-white";
+  };
 
   return (
     <>
       <header
-        className={`header top-0 left-0 z-40 flex w-full items-center ${
-          sticky
-            ? "dark:bg-gray-dark dark:shadow-sticky-dark shadow-sticky fixed z-9999 bg-white/80 backdrop-blur-xs transition"
-            : "absolute bg-transparent"
-        }`}
+        className="header fixed top-0 left-0 z-40 w-full pt-2 px-2 sm:pt-4 sm:px-4 lg:pt-6 lg:px-8"
       >
-        <div className="container">
-          <div className="relative -mx-4 flex items-center justify-between">
-            <div className="w-60 max-w-full px-4 xl:mr-12">
-              <Link
-                href="/"
-                className={`header-logo block w-full ${
-                  sticky ? "py-5 lg:py-2" : "py-8"
-                } `}
-              >
-                <Image
-                  src="/images/logo/logo-2.svg"
-                  alt="logo"
-                  width={140}
-                  height={30}
-                  className="w-full dark:hidden"
-                />
-                <Image
-                  src="/images/logo/logo.svg"
-                  alt="logo"
-                  width={140}
-                  height={30}
-                  className="hidden w-full dark:block"
-                />
-              </Link>
-            </div>
-            <div className="flex w-full items-center justify-between px-4">
-              <div>
+        <div className="container mx-auto">
+          <div className="relative bg-black rounded-full px-3 py-3 sm:px-6 sm:py-6 lg:px-6" ref={navRef}>
+            {/* Animated White Slider with padding - Tablet & Desktop */}
+            <div 
+              className="absolute bg-white rounded-full transition-all duration-500 ease-in-out hidden md:block"
+              style={{
+                left: `${sliderStyle.left}px`,
+                width: `${sliderStyle.width}px`,
+                top: '12px',
+                bottom: '12px',
+                zIndex: 1,
+              }}
+            />
+            
+            {/* Content */}
+            <div className="relative z-10 flex items-center justify-between">
+              {/* Logo - Left Side */}
+              <div className="w-24 sm:w-28 md:w-32 lg:w-40 max-w-full px-2 sm:px-3 md:px-4 lg:px-6 flex-shrink-0" ref={logoRef}>
+                <Link
+                  href="/"
+                  className="header-logo block w-full"
+                >
+                  <Image
+                    src="/images/logo/logo.svg"
+                    alt="logo"
+                    width={140}
+                    height={30}
+                    className="w-full brightness-0 invert md:brightness-0 md:invert-0"
+                  />
+                </Link>
+              </div>
+
+              {/* Menu Items - Right Side */}
+              <div className="flex items-center gap-2 sm:gap-3 md:gap-4 lg:gap-6 xl:gap-8">
                 <button
                   onClick={navbarToggleHandler}
                   id="navbarToggler"
                   aria-label="Mobile Menu"
-                  className="ring-primary absolute top-1/2 right-4 block translate-y-[-50%] rounded-lg px-3 py-[6px] focus:ring-2 lg:hidden"
+                  className="block md:hidden z-20 p-2"
                 >
                   <span
-                    className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 dark:bg-white ${
+                    className={`relative my-1.5 block h-0.5 w-[24px] bg-white transition-all duration-300 ${
                       navbarOpen ? "top-[7px] rotate-45" : " "
                     }`}
                   />
                   <span
-                    className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 dark:bg-white ${
+                    className={`relative my-1.5 block h-0.5 w-[24px] bg-white transition-all duration-300 ${
                       navbarOpen ? "opacity-0" : " "
                     }`}
                   />
                   <span
-                    className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 dark:bg-white ${
+                    className={`relative my-1.5 block h-0.5 w-[24px] bg-white transition-all duration-300 ${
                       navbarOpen ? "top-[-8px] -rotate-45" : " "
                     }`}
                   />
                 </button>
                 <nav
                   id="navbarCollapse"
-                  className={`navbar border-body-color/50 dark:border-body-color/20 dark:bg-dark absolute right-0 z-30 w-[250px] rounded border-[.5px] bg-white px-6 py-4 duration-300 lg:visible lg:static lg:w-auto lg:border-none lg:!bg-transparent lg:p-0 lg:opacity-100 ${
+                  className={`navbar absolute right-2 top-[70px] z-30 w-[calc(100vw-1rem)] rounded-2xl bg-black border-2 border-white px-6 py-6 duration-300 md:visible md:static md:w-auto md:border-none md:!bg-transparent md:p-0 md:opacity-100 md:top-auto ${
                     navbarOpen
-                      ? "visibility top-full opacity-100"
-                      : "invisible top-[120%] opacity-0"
+                      ? "visible opacity-100"
+                      : "invisible opacity-0 md:visible md:opacity-100"
                   }`}
                 >
-                  <ul className="block lg:flex lg:space-x-12">
+                  <ul className="block space-y-2 md:space-y-0 md:flex md:gap-0.5 lg:gap-0.5 xl:gap-1">
                     {menuData.map((menuItem, index) => (
                       <li key={index} className="group relative">
                         {menuItem.path ? (
                           <Link
                             href={menuItem.path}
-                            className={`flex py-2 text-base lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 ${
+                            data-index={index}
+                            onClick={() => setNavbarOpen(false)}
+                            className={`relative flex py-3 px-4 text-base font-medium rounded-lg transition-colors duration-300 md:px-2 md:py-3 md:rounded-none md:transition-colors md:duration-500 lg:px-2 xl:px-4 whitespace-nowrap ${
                               usePathName === menuItem.path
-                                ? "text-primary dark:text-white"
-                                : "text-dark hover:text-primary dark:text-white/70 dark:hover:text-white"
+                                ? "bg-white text-black md:bg-transparent md:text-black"
+                                : `text-white hover:bg-white/10 md:hover:bg-transparent md:${getMenuItemColor(menuItem.path)}`
                             }`}
                           >
-                            {menuItem.title}
+                            <span className="text-sm md:text-[12px] lg:text-[13px] xl:text-[15px]">{menuItem.title}</span>
                           </Link>
                         ) : (
                           <>
                             <p
                               onClick={() => handleSubmenu(index)}
-                              className="text-dark group-hover:text-primary flex cursor-pointer items-center justify-between py-2 text-base lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 dark:text-white/70 dark:group-hover:text-white"
+                              className="flex cursor-pointer items-center justify-between py-3 px-4 text-base font-medium text-white hover:bg-white/10 rounded-lg md:rounded-none md:py-3 md:px-2 lg:px-5 transition-all duration-300"
                             >
-                              {menuItem.title}
+                              <span className="text-sm md:text-[12px] lg:text-[13px] xl:text-[15px]">{menuItem.title}</span>
                               <span className="pl-3">
                                 <svg width="25" height="24" viewBox="0 0 25 24">
                                   <path
@@ -137,7 +228,7 @@ const Header = () => {
                               </span>
                             </p>
                             <div
-                              className={`submenu dark:bg-dark relative top-full left-0 rounded-sm bg-white transition-[top] duration-300 group-hover:opacity-100 lg:invisible lg:absolute lg:top-[110%] lg:block lg:w-[250px] lg:p-4 lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full ${
+                              className={`submenu mt-2 rounded-lg bg-[#1a1a1a] p-2 md:mt-0 md:relative md:top-full md:left-0 md:rounded-2xl md:bg-black md:border-2 md:border-white md:transition-[top] md:duration-300 md:group-hover:opacity-100 md:invisible md:absolute md:top-[110%] md:block md:w-[250px] md:p-4 md:opacity-0 md:shadow-lg md:group-hover:visible md:group-hover:top-full ${
                                 openIndex === index ? "block" : "hidden"
                               }`}
                             >
@@ -145,7 +236,8 @@ const Header = () => {
                                 <Link
                                   href={submenuItem.path}
                                   key={index}
-                                  className="text-dark hover:text-primary block rounded-sm py-2.5 text-sm lg:px-3 dark:text-white/70 dark:hover:text-white"
+                                  onClick={() => setNavbarOpen(false)}
+                                  className="block rounded-lg py-2.5 px-3 text-sm text-white hover:bg-white/10 transition-all duration-300"
                                 >
                                   {submenuItem.title}
                                 </Link>
@@ -156,24 +248,26 @@ const Header = () => {
                       </li>
                     ))}
                   </ul>
+                  
+                  {/* Mobile Get Quotes Button */}
+                  <div className="mt-4 md:hidden">
+                    <Link
+                      href="/contact"
+                      onClick={() => setNavbarOpen(false)}
+                      className="block text-center rounded-full bg-[#FF7A00] hover:bg-[#e66d00] px-8 py-3 text-base font-semibold text-white transition-all duration-300 shadow-lg"
+                    >
+                      Get Quotes
+                    </Link>
+                  </div>
                 </nav>
-              </div>
-              <div className="flex items-center justify-end pr-16 lg:pr-0">
+                
+                {/* Tablet & Desktop Get Quotes Button */}
                 <Link
-                  href="/signin"
-                  className="text-dark hidden px-7 py-3 text-base font-medium hover:opacity-70 md:block dark:text-white"
+                  href="/contact"
+                  className="hidden md:block rounded-full bg-[#FF7A00] hover:bg-[#e66d00] px-3 py-2 md:px-4 md:py-2.5 lg:px-4 lg:py-2.5 xl:px-8 xl:py-3 text-xs md:text-sm xl:text-base font-semibold text-white transition-all duration-300 shadow-lg hover:shadow-xl z-10 relative whitespace-nowrap"
                 >
-                  Sign In
+                  Get Quotes
                 </Link>
-                <Link
-                  href="/signup"
-                  className="ease-in-up shadow-btn hover:shadow-btn-hover bg-primary hover:bg-primary/90 hidden rounded-xs px-8 py-3 text-base font-medium text-white transition duration-300 md:block md:px-9 lg:px-6 xl:px-9"
-                >
-                  Sign Up
-                </Link>
-                <div>
-                  <ThemeToggler />
-                </div>
               </div>
             </div>
           </div>
