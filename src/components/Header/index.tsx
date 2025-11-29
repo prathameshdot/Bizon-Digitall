@@ -39,7 +39,7 @@ const Header = () => {
   const usePathName = usePathname();
   
   // Animated slider
-  const [sliderStyle, setSliderStyle] = useState({});
+  const [sliderStyle, setSliderStyle] = useState<{ left: number; width: number }>({ left: 0, width: 0 });
   const navRef = useRef<HTMLDivElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
 

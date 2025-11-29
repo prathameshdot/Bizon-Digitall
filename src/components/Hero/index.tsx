@@ -88,14 +88,13 @@ const Hero = () => {
                     <div className="absolute left-[15%] top-[18%] h-[140px] w-[140px] animate-orbit sm:left-[17%] sm:top-[20%] sm:h-[170px] sm:w-[170px] md:left-[19%] md:top-[22%] md:h-[200px] md:w-[200px] lg:left-[20%] lg:top-[24%] lg:h-[230px] lg:w-[230px]">
                       {/* Circle 1 - Instagram */}
                       <div className="absolute left-1/2 top-0 h-[55px] w-[55px] -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-dashed border-black/40 sm:h-[65px] sm:w-[65px] md:h-[75px] md:w-[75px] lg:h-[85px] lg:w-[85px] flex items-center justify-center">
-                        <div className="relative h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 animate-counter-rotate">
-                          <Image
-                            src="/images/hero/Instagram.png"
-                            alt="Instagram"
-                            fill
-                            className="object-contain"
-                          />
-                        </div>
+                        <Image
+                          src="/images/hero/Instagram.png"
+                          alt="Instagram"
+                          width={70}
+                          height={70}
+                          className="object-contain"
+                        />
                       </div>
                     </div>
                     
@@ -103,14 +102,13 @@ const Hero = () => {
                     <div className="absolute left-[15%] top-[18%] h-[140px] w-[140px] animate-orbit sm:left-[17%] sm:top-[20%] sm:h-[170px] sm:w-[170px] md:left-[19%] md:top-[22%] md:h-[200px] md:w-[200px] lg:left-[20%] lg:top-[24%] lg:h-[230px] lg:w-[230px]" style={{ animationDelay: '-3.33s' }}>
                       {/* Circle 2 - LinkedIn */}
                       <div className="absolute left-1/2 top-0 h-[55px] w-[55px] -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-dashed border-black/40 sm:h-[65px] sm:w-[65px] md:h-[75px] md:w-[75px] lg:h-[85px] lg:w-[85px] flex items-center justify-center">
-                        <div className="relative h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 animate-counter-rotate">
-                          <Image
-                            src="/images/hero/LinkedIn.png"
-                            alt="LinkedIn"
-                            fill
-                            className="object-contain"
-                          />
-                        </div>
+                        <Image
+                          src="/images/hero/LinkedIn.png"
+                          alt="LinkedIn"
+                          width={70}
+                          height={70}
+                          className="object-contain"
+                        />
                       </div>
                     </div>
                     
@@ -118,14 +116,13 @@ const Hero = () => {
                     <div className="absolute left-[15%] top-[18%] h-[140px] w-[140px] animate-orbit sm:left-[17%] sm:top-[20%] sm:h-[170px] sm:w-[170px] md:left-[19%] md:top-[22%] md:h-[200px] md:w-[200px] lg:left-[20%] lg:top-[24%] lg:h-[230px] lg:w-[230px]" style={{ animationDelay: '-6.66s' }}>
                       {/* Circle 3 - Facebook */}
                       <div className="absolute left-1/2 top-0 h-[55px] w-[55px] -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-dashed border-black/40 sm:h-[65px] sm:w-[65px] md:h-[75px] md:w-[75px] lg:h-[85px] lg:w-[85px] flex items-center justify-center">
-                        <div className="relative h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 animate-counter-rotate">
-                          <Image
-                            src="/images/hero/Facebook.png"
-                            alt="Facebook"
-                            fill
-                            className="object-contain"
-                          />
-                        </div>
+                        <Image
+                          src="/images/hero/Facebook.png"
+                          alt="Facebook"
+                          width={70}
+                          height={70}
+                          className="object-contain"
+                        />
                       </div>
                     </div>
                   </div>
