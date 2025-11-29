@@ -145,7 +145,7 @@ const ServicesSection = () => {
 
                     {/* Title for Previous Cards - Horizontal on mobile (top left), Vertical on desktop (left side) */}
                     {index !== activeIndex && (
-                      <div className="absolute left-6 md:left-8 top-4 md:top-6 bottom-auto md:bottom-[110px] flex flex-row md:flex-col gap-2 md:gap-3 items-center md:items-start justify-start md:justify-center z-20">
+                      <div className="absolute left-6 md:left-8 top-4 md:top-auto md:bottom-[110px] bottom-auto flex flex-row md:flex-row gap-2 md:gap-3 items-center md:items-end justify-start z-20">
                         {service.title.split('\n').map((line, lineIndex) => (
                           <h3 
                             key={lineIndex}
