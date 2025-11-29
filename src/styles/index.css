@@ -124,7 +124,7 @@ layer(base);
 
 @layer base {
   body {
-    font-family: "Inter", sans-serif;
+    font-family: "Poppins", sans-serif;
   }
 }
 
@@ -132,4 +132,30 @@ layer(base);
   input[type="checkbox"]:checked ~ label span svg {
     @apply inline-flex;
   }
+}
+
+@keyframes orbit {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.animate-orbit {
+  animation: orbit 10s linear infinite;
+}
+
+@keyframes counter-rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+
+.animate-counter-rotate {
+  animation: counter-rotate 10s linear infinite;
 }
