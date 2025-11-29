@@ -2,28 +2,28 @@ const AboutSection = () => {
   const cards = [
     {
       number: "01",
-      title: "CUTTING-EDGE INSIGHTS",
-      description: "Gain firsthand knowledge from top AI experts and pioneers shaping the industry."
+      title: "STRATEGIC EXPERTISE",
+      description: "We bring years of experience in crafting data-driven digital marketing strategies that align with your business goals and drive sustainable growth."
     },
     {
       number: "02",
-      title: "HANDS-ON LEARNING",
-      description: "Participate in interactive workshops, live demos, and deep-dive sessions to sharpen your skills."
+      title: "PROVEN RESULTS",
+      description: "Our track record speaks for itself with successful campaigns that have helped businesses increase their online presence, engagement, and conversions."
     },
     {
       number: "03",
-      title: "EXCLUSIVE NETWORKING",
-      description: "Connect with AI leaders, investors, startups, and fellow professionals at curated networking events."
+      title: "INNOVATIVE APPROACH",
+      description: "We stay ahead of industry trends and leverage cutting-edge tools and technologies to deliver creative solutions that make your brand stand out."
     },
     {
       number: "04",
-      title: "INNOVATION SHOWCASE",
-      description: "Explore groundbreaking AI solutions, from emerging startups to tech giants redefining the future."
+      title: "CLIENT-FOCUSED SERVICE",
+      description: "Your success is our priority. We work closely with you to understand your unique needs and deliver customized solutions with transparent communication."
     }
   ];
 
   return (
-    <section id="about" className="bg-white py-16 md:py-20 lg:py-28">
+    <section id="about" className="bg-white py-8 md:py-12 lg:py-16">
       <div className="container">
         <div className="flex flex-col items-center">
           {/* Top Section - About Us Title and Description */}
@@ -38,10 +38,13 @@ const AboutSection = () => {
             {/* Right Side - Description */}
             <div className="lg:text-right">
               <p className="text-sm leading-relaxed text-[#FF7A00] md:text-base">
-                Discover why Next-Gen AI Summit is the must-attend event
+                Bizon Digital is a leading digital marketing agency dedicated to transforming
               </p>
               <p className="text-sm leading-relaxed text-[#FF7A00] md:text-base">
-                for AI professionals, innovators, and industry leaders.
+                businesses through innovative strategies and data-driven solutions that deliver
+              </p>
+              <p className="text-sm leading-relaxed text-[#FF7A00] md:text-base">
+                measurable results and accelerate growth in the digital landscape.
               </p>
             </div>
           </div>
