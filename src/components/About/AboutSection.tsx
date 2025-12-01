@@ -18,8 +18,8 @@ const AboutSection = () => {
     {
       number: "04",
       title: "CLIENT-FOCUSED SERVICE",
-      description: "Your success is our priority. We work closely with you to understand your unique needs and deliver customized solutions with transparent communication."
-      // description: "Your success is our priority. We work closely with you to understand your unique needs and deliver customized solutions with transparent communication."
+      //description: "Your success is our priority. We work closely with you to understand your unique needs and deliver customized solutions with transparent communication."
+       description: "Your success is our priority. We work closely with you to understand your unique needs and deliver customized solutions with transparent communication."
     }
   ];
 
