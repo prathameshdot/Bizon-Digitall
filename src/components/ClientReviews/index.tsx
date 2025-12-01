@@ -100,11 +100,11 @@ const ClientReviews = () => {
 
   const renderStars = (rating: number) => {
     return (
-      <div className="flex gap-1">
+      <div className="flex gap-0.5 xs:gap-1">
         {[1, 2, 3, 4, 5].map((star) => (
           <svg
             key={star}
-            className={`w-4 h-4 sm:w-5 sm:h-5 ${
+            className={`w-3 h-3 xs:w-3.5 xs:h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 ${
               star <= rating ? "text-yellow-400" : "text-gray-300"
             }`}
             fill="currentColor"
@@ -118,43 +118,43 @@ const ClientReviews = () => {
   };
 
   return (
-    <section className="relative bg-white py-8 sm:py-12 md:py-16 lg:py-20 overflow-hidden">
-      <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+    <section className="relative bg-white py-6 xs:py-8 sm:py-10 md:py-14 lg:py-16 overflow-hidden">
+      <div className="container mx-auto px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8">
         {/* Section Title */}
         <h2 
-          className="mb-8 sm:mb-10 md:mb-12 text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold text-[#FF7A00] text-center px-2"
+          className="mb-3 xs:mb-4 sm:mb-5 md:mb-6 text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#FF7A00] text-center px-2"
           style={{ fontFamily: 'var(--font-syne), sans-serif' }}
         >
           What Our Clients Say
         </h2>
 
         {/* Scrolling Reviews Container */}
-        <div className="relative pt-14 sm:pt-16 md:pt-20 lg:pt-24 pb-4">
+        <div className="relative pt-2 xs:pt-3 pb-2 xs:pb-3">
           <div
             ref={scrollRef}
-            className="flex gap-4 sm:gap-5 md:gap-6 overflow-x-hidden"
+            className="flex gap-4 xs:gap-5 sm:gap-6 md:gap-8 lg:gap-10 overflow-x-hidden py-4 xs:py-5 sm:py-6 md:py-7 lg:py-8"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {duplicatedReviews.map((review, index) => (
               <div
                 key={`${review.id}-${index}`}
-                className="flex-shrink-0 w-[300px] sm:w-[340px] md:w-[380px] lg:w-[420px] xl:w-[460px] relative"
+                className="flex-shrink-0 w-[260px] xs:w-[280px] sm:w-[300px] md:w-[340px] lg:w-[380px] xl:w-[400px] relative"
               >
-                {/* Client Photo Circle - positioned at top right corner of the card */}
-                <div className="absolute -top-10 -right-3 sm:-top-12 sm:-right-4 md:-top-14 md:-right-4 lg:-top-16 lg:-right-5 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full border-4 border-white shadow-xl overflow-hidden bg-gray-200 z-30">
+                {/* Client Photo Circle - center positioned at corner point */}
+                <div className="absolute -top-5 xs:-top-6 sm:-top-7 md:-top-8 right-0 w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full border-2 xs:border-3 sm:border-4 border-white shadow-xl overflow-hidden bg-gray-200 z-30 transform translate-x-1/2">
                   <Image
                     src={review.photo}
                     alt={review.clientName}
-                    width={128}
-                    height={128}
-                    className="w-full h-full object-cover"
+                    width={64}
+                    height={64}
+                    className="w-full h-full object-cover object-center"
                   />
                 </div>
 
-                <div className={`relative ${review.bgColor} rounded-3xl p-5 sm:p-6 md:p-7 lg:p-8 shadow-lg h-full min-h-[260px] sm:min-h-[280px] md:min-h-[300px] lg:min-h-[320px]`}>
-                  {/* Top Right Corner Cutout - perfectly aligned with circle */}
-                  <div className="absolute top-0 right-0 w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 overflow-hidden rounded-tr-3xl">
-                    {/* Cutout effect using SVG - white to hide card corner */}
+                <div className={`relative ${review.bgColor} rounded-xl xs:rounded-2xl sm:rounded-2xl md:rounded-3xl p-2.5 xs:p-3 sm:p-4 md:p-5 shadow-lg h-full min-h-[130px] xs:min-h-[140px] sm:min-h-[150px] md:min-h-[160px]`}>
+                  {/* Top Right Corner Cutout - larger radius for more visible curve */}
+                  <div className="absolute top-0 right-0 w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 overflow-hidden rounded-tr-xl xs:rounded-tr-2xl sm:rounded-tr-2xl md:rounded-tr-3xl">
+                    {/* Cutout effect using SVG with larger curve - white to hide card corner */}
                     <svg
                       className="absolute top-0 right-0 w-full h-full"
                       viewBox="0 0 100 100"
@@ -168,28 +168,28 @@ const ClientReviews = () => {
                   </div>
 
                   {/* Content */}
-                  <div className="pt-2 pr-12 sm:pr-14 md:pr-16 lg:pr-20 relative z-10">
+                  <div className="pt-0.5 xs:pt-1 pr-6 xs:pr-7 sm:pr-8 md:pr-10 lg:pr-12 relative z-10">
                     {/* Company Name */}
-                    <h3 className={`text-base sm:text-lg md:text-xl lg:text-2xl font-bold mb-2 leading-tight break-words ${
+                    <h3 className={`text-xs xs:text-sm sm:text-base md:text-lg font-bold mb-1 xs:mb-1.5 leading-tight break-words ${
                       review.bgColor === 'bg-gray-300' ? 'text-gray-900' : 'text-white'
                     }`}>
                       {review.companyName}
                     </h3>
 
                     {/* Client Name */}
-                    <p className={`text-sm sm:text-base md:text-base font-medium mb-3 ${
+                    <p className={`text-[10px] xs:text-xs sm:text-sm font-medium mb-1.5 xs:mb-2 ${
                       review.bgColor === 'bg-gray-300' ? 'text-gray-600' : 'text-gray-300'
                     }`}>
                       {review.clientName}
                     </p>
 
                     {/* Star Rating */}
-                    <div className="mb-4">
+                    <div className="mb-1.5 xs:mb-2">
                       {renderStars(review.rating)}
                     </div>
 
                     {/* Review Text */}
-                    <p className={`text-sm sm:text-base leading-relaxed break-words ${
+                    <p className={`text-[10px] xs:text-xs sm:text-sm leading-relaxed break-words ${
                       review.bgColor === 'bg-gray-300' ? 'text-gray-700' : 'text-gray-200'
                     }`}>
                       {review.review}
@@ -199,10 +199,6 @@ const ClientReviews = () => {
               </div>
             ))}
           </div>
-
-          {/* Gradient Overlays for fade effect */}
-          <div className="absolute top-0 left-0 w-24 h-full bg-gradient-to-r from-white to-transparent pointer-events-none z-10" />
-          <div className="absolute top-0 right-0 w-24 h-full bg-gradient-to-l from-white to-transparent pointer-events-none z-10" />
         </div>
       </div>
 
