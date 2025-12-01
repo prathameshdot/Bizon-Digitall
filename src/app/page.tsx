@@ -2,6 +2,11 @@ import AboutSectionOne from "@/components/About/AboutSectionOne";
 import AboutSectionTwo from "@/components/About/AboutSectionTwo";
 import AboutSection from "@/components/About/AboutSection";
 import ServicesSection from "@/components/Services/ServicesSection";
+import ClientReviews from "@/components/ClientReviews";
+import MarketingScroll from "@/components/MarketingScroll";
+import SocialMediaSection from "@/components/SocialMediaSection";
+import CountryReachout from "@/components/CountryReachout";
+import DigitalMarketingServices from "@/components/DigitalMarketingServices";
 import Blog from "@/components/Blog";
 import Brands from "@/components/Brands";
 import ScrollUp from "@/components/Common/ScrollUp";
@@ -26,6 +31,11 @@ export default function Home() {
       <Hero />
       <AboutSection />
       <ServicesSection />
+      <ClientReviews />
+      <MarketingScroll />
+      <SocialMediaSection />
+      <CountryReachout />
+      <DigitalMarketingServices />
       <Features />
       <Video />
       <Brands />

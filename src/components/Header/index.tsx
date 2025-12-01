@@ -127,10 +127,10 @@ const Header = () => {
   return (
     <>
       <header
-        className="header fixed top-0 left-0 z-40 w-full pt-2 px-2 sm:pt-4 sm:px-4 lg:pt-6 lg:px-8"
+        className="header fixed top-0 left-0 z-40 w-full pt-2 px-3 sm:pt-4 sm:px-4 md:px-6 lg:pt-6 lg:px-8"
       >
         <div className="container mx-auto">
-          <div className="relative bg-black rounded-full px-3 py-3 sm:px-6 sm:py-6 lg:px-6" ref={navRef}>
+          <div className="relative bg-black rounded-full px-3 py-3 sm:px-5 sm:py-6 lg:px-6" ref={navRef}>
             {/* Animated White Slider with padding - Tablet & Desktop */}
             <div 
               className="absolute bg-white rounded-full transition-all duration-500 ease-in-out hidden md:block"
@@ -144,25 +144,25 @@ const Header = () => {
             />
             
             {/* Content */}
-            <div className="relative z-10 flex items-center justify-between">
+            <div className="relative z-10 flex items-center justify-between gap-2">
               {/* Logo - Left Side */}
-              <div className="w-24 sm:w-28 md:w-32 lg:w-40 max-w-full px-2 sm:px-3 md:px-4 lg:px-6 flex-shrink-0" ref={logoRef}>
+              <div className="w-24 sm:w-28 md:w-32 lg:w-40 max-w-full pl-4 pr-2 sm:pl-5 sm:pr-3 md:px-4 lg:px-6 flex-shrink-0" ref={logoRef}>
                 <Link
                   href="/"
                   className="header-logo block w-full"
                 >
                   <Image
-                    src="/images/logo/logo.svg"
+                    src="/images/logo/logo.png"
                     alt="logo"
                     width={140}
                     height={30}
-                    className="w-full brightness-0 invert md:brightness-0 md:invert-0"
+                    className="w-full"
                   />
                 </Link>
               </div>
 
               {/* Menu Items - Right Side */}
-              <div className="flex items-center gap-2 sm:gap-3 md:gap-4 lg:gap-6 xl:gap-8">
+              <div className="flex items-center gap-2 sm:gap-3 md:gap-3 lg:gap-4 xl:gap-6">
                 <button
                   onClick={navbarToggleHandler}
                   id="navbarToggler"
@@ -187,7 +187,7 @@ const Header = () => {
                 </button>
                 <nav
                   id="navbarCollapse"
-                  className={`navbar absolute right-2 top-[70px] z-30 w-[calc(100vw-1rem)] rounded-2xl bg-black border-2 border-white px-6 py-6 duration-300 md:visible md:static md:w-auto md:border-none md:!bg-transparent md:p-0 md:opacity-100 md:top-auto ${
+                  className={`navbar absolute left-3 right-3 top-[70px] z-30 rounded-2xl bg-black border-2 border-white px-6 py-6 duration-300 md:visible md:static md:w-auto md:border-none md:!bg-transparent md:p-0 md:opacity-100 md:top-auto ${
                     navbarOpen
                       ? "visible opacity-100"
                       : "invisible opacity-0 md:visible md:opacity-100"

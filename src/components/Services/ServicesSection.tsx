@@ -91,11 +91,16 @@ const ServicesSection = () => {
       className="relative bg-white py-8 md:py-12 lg:py-16"
       style={{ minHeight: `${services.length * 100}vh` }}
     >
-      <div className="sticky top-0 min-h-screen flex items-center py-16">
+      <div 
+        className="sticky min-h-screen flex items-center py-16 transition-all duration-500"
+        style={{
+          top: isMobile && activeIndex >= 2 ? '-100px' : '0'
+        }}
+      >
         <div className="container">
           {/* Title */}
           <h2 
-            className="mb-12 text-5xl font-bold text-[#FF7A00] md:text-6xl lg:text-7xl"
+            className="mt-8 mb-12 text-5xl font-bold text-[#FF7A00] md:mt-0 md:text-6xl lg:text-7xl"
             style={{ fontFamily: 'var(--font-syne), sans-serif' }}
           >
             How Can We Help You?
@@ -214,9 +219,11 @@ const ServicesSection = () => {
           {/* Progress Indicator */}
           <div className="mt-8 flex items-center justify-center gap-2">
             {services.map((_, index) => (
-              <div
+              <button
                 key={index}
-                className={`h-2 rounded-full transition-all duration-300 ${
+                onClick={() => setActiveIndex(index)}
+                aria-label={`Go to service ${index + 1}`}
+                className={`h-2 rounded-full transition-all duration-300 cursor-pointer hover:opacity-75 ${
                   index === activeIndex 
                     ? 'w-8 bg-[#FF7A00]' 
                     : 'w-2 bg-gray-300'
