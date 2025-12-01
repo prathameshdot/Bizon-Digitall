@@ -67,10 +67,10 @@ const WorkingProcess = () => {
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="mb-8 md:mb-12 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
-            <div className="bg-[#FF7A00] text-black font-bold text-sm sm:text-base px-4 py-2 rounded-lg whitespace-nowrap">
+            <div className="bg-[#FF7A00] text-black font-bold text-xs xs:text-sm sm:text-base md:text-lg px-4 py-2 rounded-lg whitespace-nowrap">
               Our Working Process
             </div>
-            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-black">
+            <h2 className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-black">
               Step-by-Step Guide to Achieving Your Business Goals
             </h2>
           </div>

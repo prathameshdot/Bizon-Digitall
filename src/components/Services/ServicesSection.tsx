@@ -100,7 +100,7 @@ const ServicesSection = () => {
         <div className="container">
           {/* Title */}
           <h2 
-            className="mt-8 mb-12 text-5xl font-bold text-[#FF7A00] md:mt-0 md:text-6xl lg:text-7xl"
+            className="mt-8 mb-12 text-3xl font-bold text-[#FF7A00] xs:text-4xl sm:text-5xl md:mt-0 md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl"
             style={{ fontFamily: 'var(--font-syne), sans-serif' }}
           >
             How Can We Help You?

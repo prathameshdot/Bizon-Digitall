@@ -17,7 +17,7 @@ const EmailSubscribe = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto text-center">
           {/* Heading */}
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-8 sm:mb-10 md:mb-12">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold text-gray-900 mb-8 sm:mb-10 md:mb-12">
             Have an Awsome Project Idea?{" "}
             <span className="text-[#FF7A00]">Let&apos;s Discuss</span>
           </h2>

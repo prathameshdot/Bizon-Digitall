@@ -13,10 +13,10 @@ const Hero = () => {
             {/* Left Content */}
             <div className="w-full px-4 lg:w-1/2">
               <div className="mb-12 max-w-[600px] text-center lg:mb-0 lg:text-left">
-                <p className="mb-3 text-sm font-normal leading-relaxed text-black sm:text-base md:text-base lg:text-sm xl:text-base">
+                <p className="mb-3 text-xs font-normal leading-relaxed text-black xs:text-sm sm:text-base md:text-base lg:text-sm xl:text-base 2xl:text-lg">
                   Transform Your Online Presence with Expert Digital Marketing Services
                 </p>
-                <h1 className="mb-5 text-[2rem] font-extrabold leading-tight text-black sm:text-[2.5rem] md:text-[3rem] lg:text-[2.75rem] xl:text-[3.5rem] 2xl:text-6xl" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                <h1 className="mb-5 text-[1.75rem] font-extrabold leading-tight text-black xs:text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[2.75rem] xl:text-[3.5rem] 2xl:text-6xl" style={{ fontFamily: 'Poppins, sans-serif' }}>
                   <span className="text-[#FF7A00]">Driving Results</span>
                   <br />
                   <span className="text-[#FF7A00]">with </span>
