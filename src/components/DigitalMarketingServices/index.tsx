@@ -42,11 +42,13 @@ const DigitalMarketingServices = () => {
       
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 max-w-7xl mx-auto lg:items-start">
           {servicesData.map((service) => (
             <div
               key={service.id}
-              className="bg-white rounded-tl-[30px] rounded-br-[30px] p-6 sm:p-7 lg:p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
+              className={`bg-white rounded-tl-[30px] rounded-br-[30px] p-6 sm:p-7 lg:p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 h-full ${
+                service.id === 2 ? 'lg:mt-12' : ''
+              }`}
             >
               {/* Icon Circle */}
               <div className={`w-14 h-14 sm:w-16 sm:h-16 rounded-full ${service.iconBg} flex items-center justify-center mb-4 sm:mb-5`}>

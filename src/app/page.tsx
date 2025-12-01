@@ -7,6 +7,12 @@ import MarketingScroll from "@/components/MarketingScroll";
 import SocialMediaSection from "@/components/SocialMediaSection";
 import CountryReachout from "@/components/CountryReachout";
 import DigitalMarketingServices from "@/components/DigitalMarketingServices";
+import Leadership from "@/components/Leadership";
+import CTA from "@/components/CTA";
+import WorkingProcess from "@/components/WorkingProcess";
+import EmailSubscribe from "@/components/EmailSubscribe";
+import CTABanner from "@/components/CTABanner";
+import FAQ from "@/components/FAQ";
 import Blog from "@/components/Blog";
 import Brands from "@/components/Brands";
 import ScrollUp from "@/components/Common/ScrollUp";
@@ -36,7 +42,13 @@ export default function Home() {
       <SocialMediaSection />
       <CountryReachout />
       <DigitalMarketingServices />
-      <Features />
+      <Leadership />
+      <CTA />
+      <WorkingProcess />
+      <EmailSubscribe />
+      <CTABanner />
+      <FAQ />
+      {/* <Features />
       <Video />
       <Brands />
       <AboutSectionOne />
@@ -44,7 +56,7 @@ export default function Home() {
       <Testimonials />
       <Pricing />
       <Blog />
-      <Contact />
+      <Contact /> */}
     </>
   );
 }
