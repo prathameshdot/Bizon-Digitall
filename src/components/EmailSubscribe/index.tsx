@@ -19,7 +19,7 @@ const EmailSubscribe = () => {
           {/* Heading */}
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-8 sm:mb-10 md:mb-12">
             Have an Awsome Project Idea?{" "}
-            <span className="text-[#FF7A00]">Let's Discuss</span>
+            <span className="text-[#FF7A00]">Let&apos;s Discuss</span>
           </h2>
 
           {/* Email Input Form */}

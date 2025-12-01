@@ -36,7 +36,7 @@ const CTA = () => {
               {/* Left Content */}
               <div className="w-full lg:w-1/2 text-center lg:text-left">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-3 sm:mb-4">
-                  Let's make things happen
+                  Let&apos;s make things happen
                 </h2>
                 <p className="text-sm sm:text-base text-gray-700 mb-4 sm:mb-6 leading-relaxed">
                   Contact us today to learn more about how our digital marketing services can help your business grow and succeed online.

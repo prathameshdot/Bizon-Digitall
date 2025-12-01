@@ -27,7 +27,7 @@ const CTABanner = () => {
 
             {/* Description */}
             <p className="text-sm sm:text-base md:text-lg text-white mb-6 sm:mb-8 lg:mb-0 leading-relaxed">
-              We're eager to help you achieve your digital marketing goals with customized solutions. Let's work together to elevate your brand and drive success. Get in touch today, and let's make it happen!
+              We&apos;re eager to help you achieve your digital marketing goals with customized solutions. Let&apos;s work together to elevate your brand and drive success. Get in touch today, and let&apos;s make it happen!
             </p>
           </div>
 
