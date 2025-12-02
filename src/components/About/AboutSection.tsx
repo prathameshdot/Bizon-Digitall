@@ -27,7 +27,6 @@ const AboutSection = () => {
     <section id="about" className="bg-white py-8 md:py-12 lg:py-16">
       <div className="container">
         <div className="flex flex-col items-center">
-          {/* Top Section - About Us Title and Description */}
           <div className="mb-12 flex w-full flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
             {/* Left Side - About Us Title */}
             <div>
