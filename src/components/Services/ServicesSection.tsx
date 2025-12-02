@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 
 const ServicesSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -21,37 +22,43 @@ const ServicesSection = () => {
       title: "SOCIAL MEDIA\nMARKETING",
       subtitle: "Service 01",
       description: "Build your brand presence and engage with your audience across all major social media platforms. We create compelling content strategies that drive engagement, increase followers, and convert social interactions into business results.",
-      bgColor: "bg-black"
+      bgColor: "bg-black",
+      link: "/services/social-media"
     },
     {
       title: "SEARCH ENGINE\nOPTIMIZATION",
       subtitle: "Service 02",
       description: "Improve your website's visibility and organic search rankings with our comprehensive SEO strategies. From keyword research to technical optimization, we ensure your business appears at the top of search results when it matters most.",
-      bgColor: "bg-[#FF7A00]"
+      bgColor: "bg-[#FF7A00]",
+      link: "/services/seo"
     },
     {
-      title: "CONTENT\nMARKETING",
+      title: "WEB DESIGN &\nDEVELOPMENT",
       subtitle: "Service 03",
-      description: "Create valuable, relevant content that attracts and retains your target audience. Our content marketing strategies include blog posts, videos, infographics, and more to establish your brand as an industry authority.",
-      bgColor: "bg-gray-300"
+      description: "Create a stunning, user-friendly website that converts visitors into customers. Our team designs and develops responsive websites optimized for performance, SEO, and user experience across all devices.",
+      bgColor: "bg-gray-300",
+      link: "/services/web-development"
     },
     {
       title: "PAY-PER-CLICK\nADVERTISING",
       subtitle: "Service 04",
       description: "Maximize your ROI with targeted PPC campaigns across Google Ads, social media platforms, and display networks. We create data-driven campaigns that reach your ideal customers at the right time with the right message.",
-      bgColor: "bg-black"
+      bgColor: "bg-black",
+      link: "/services/paid-ads"
     },
     {
-      title: "EMAIL\nMARKETING",
+      title: "ECOMMERCE\nSOLUTIONS",
       subtitle: "Service 05",
-      description: "Connect directly with your customers through personalized email campaigns. From automated workflows to newsletter designs, we help you nurture leads, retain customers, and drive conversions through strategic email marketing.",
-      bgColor: "bg-[#FF7A00]"
+      description: "Build powerful online stores that drive sales and provide exceptional shopping experiences. From product catalogs to secure checkout, we create eCommerce solutions that help you sell successfully online.",
+      bgColor: "bg-[#FF7A00]",
+      link: "/services/ecommerce"
     },
     {
-      title: "WEB DESIGN &\nDEVELOPMENT",
+      title: "BRANDING &\nIDENTITY",
       subtitle: "Service 06",
-      description: "Create a stunning, user-friendly website that converts visitors into customers. Our team designs and develops responsive websites optimized for performance, SEO, and user experience across all devices.",
-      bgColor: "bg-gray-300"
+      description: "Create a distinctive brand identity that stands out and resonates with your audience. From logo design to complete brand systems, we craft visual identities that tell your story and build lasting connections.",
+      bgColor: "bg-gray-300",
+      link: "/services/branding"
     }
   ];
 
@@ -210,8 +217,8 @@ const ServicesSection = () => {
                       )}
 
                       {/* Arrow Circle - Top Right for mobile, Bottom Left for desktop (for all cards, clickable) - All White */}
-                      <button 
-                        onClick={() => setActiveIndex(index)}
+                      <Link 
+                        href={service.link}
                         className="absolute top-4 xs:top-5 sm:top-6 right-4 xs:right-5 sm:right-6 md:top-auto md:bottom-6 lg:bottom-8 md:left-8 lg:left-10 md:right-auto z-30 cursor-pointer transition-transform hover:scale-110 active:scale-95"
                         aria-label={`View ${service.title.replace('\n', ' ')}`}
                       >
@@ -230,7 +237,7 @@ const ServicesSection = () => {
                             />
                           </svg>
                         </div>
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 );
