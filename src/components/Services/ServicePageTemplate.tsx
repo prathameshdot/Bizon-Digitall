@@ -507,7 +507,7 @@ const ServicePageTemplate: React.FC<ServicePageTemplateProps> = ({ serviceData }
                 }
               ].map((testimonial, index) => (
                 <article key={index} className="relative">
-                  <div className="absolute -top-2 sm:-top-3 -left-2 sm:-left-3 text-[#FF7A00] text-4xl sm:text-6xl font-serif opacity-20 leading-none pointer-events-none" aria-hidden="true">"</div>
+                  <div className="absolute -top-2 sm:-top-3 -left-2 sm:-left-3 text-[#FF7A00] text-4xl sm:text-6xl font-serif opacity-20 leading-none pointer-events-none" aria-hidden="true">&ldquo;</div>
                   
                   <div className="relative bg-white/10 rounded-xl p-4 sm:p-5 lg:p-6 border-l-4 border-[#FF7A00] hover:bg-white/20 transition-colors duration-300 h-full flex flex-col">
                     <div className="relative z-10">
@@ -546,7 +546,7 @@ const ServicePageTemplate: React.FC<ServicePageTemplateProps> = ({ serviceData }
                 Ready to Get Started?
               </h2>
               <p className="text-sm sm:text-base lg:text-lg mb-6 sm:mb-8 opacity-90">
-                Let's discuss how we can help you achieve your goals with our expert {serviceData.name.toLowerCase()} services.
+                Let&apos;s discuss how we can help you achieve your goals with our expert {serviceData.name.toLowerCase()} services.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
