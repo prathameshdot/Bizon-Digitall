@@ -31,14 +31,14 @@ const AboutSection = () => {
           <div className="mb-12 flex w-full flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
             {/* Left Side - About Us Title */}
             <div>
-              <h2 className="whitespace-nowrap text-6xl font-bold text-[#FF7A00] md:text-7xl lg:text-8xl" style={{ fontFamily: 'var(--font-syne), sans-serif' }}>
+              <h2 className="whitespace-nowrap text-4xl font-bold text-[#FF7A00] xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl 2xl:text-9xl" style={{ fontFamily: 'var(--font-syne), sans-serif' }}>
                 ABOUT US
               </h2>
             </div>
 
             {/* Right Side - Description */}
             <div className="lg:text-right">
-              <p className="text-sm leading-relaxed text-[#FF7A00] md:text-base">
+              <p className="text-xs leading-relaxed text-[#FF7A00] xs:text-sm md:text-base lg:text-lg 2xl:text-xl">
                 Bizon Digital is a leading digital marketing agency dedicated to transforming
               </p>
               <p className="text-sm leading-relaxed text-[#FF7A00] md:text-base">

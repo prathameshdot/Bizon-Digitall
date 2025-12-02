@@ -1,0 +1,460 @@
+{
+  "services": [
+    {
+      "id": "web-development",
+      "name": "Web Development",
+      "slug": "web-development",
+      "icon": "code",
+      "shortDescription": "Custom, responsive websites that convert visitors into customers",
+      "hero": {
+        "title": "Transform Your Digital Presence with",
+        "subtitle": "Professional Web Development",
+        "description": "At Bizon Digital, we create powerful, responsive websites that don't just look great—they drive real business results. Our web development services combine cutting-edge technology with stunning design to deliver exceptional user experiences that convert visitors into loyal customers."
+      },
+      "mainContent": {
+        "title": "Building Digital Experiences That Drive Growth",
+        "paragraphs": [
+          "Web development is the foundation of your digital presence. At Bizon Digital, we offer comprehensive web development services that go beyond aesthetics. Being a respected web development agency, we adopt a strategic approach to understand your business goals, target audience, and competitive landscape.",
+          "For any successful web project, there must be a clearly defined objective and budget. As part of our web development solution, we define S.M.A.R.T. (Specific – Measurable – Achievable – Reviewable – Timebound) objectives in partnership with your team. With a solid plan in place, our web development team is geared to help your business achieve its goals with greater efficiency.",
+          "We're known as one of the top web development agencies, following best practices in user experience design, performance optimization, and conversion rate optimization. This involves thorough testing, user feedback analysis, and continuous improvement to ensure your website delivers exceptional results."
+        ]
+      },
+      "keyOfferings": {
+        "title": "Our Web Development Approach",
+        "subtitle": "A key differentiator of Bizon Digital is our obsession with results-driven development. Every website we build is crafted to answer critical questions:",
+        "questions": [
+          "What business goals must your website achieve?",
+          "What is the user journey that drives conversions?",
+          "What unique features will set you apart from competitors?",
+          "What is your digital roadmap for scalability and growth?"
+        ]
+      },
+      "serviceAreas": {
+        "title": "Comprehensive Web Solutions",
+        "items": [
+          {
+            "title": "Custom Website Design",
+            "description": "Tailored designs that reflect your brand identity and engage your target audience with intuitive user experiences."
+          },
+          {
+            "title": "Responsive Development",
+            "description": "Mobile-first development ensuring flawless performance across all devices and screen sizes."
+          },
+          {
+            "title": "E-commerce Solutions",
+            "description": "Powerful online stores with secure payment gateways, inventory management, and seamless checkout experiences."
+          },
+          {
+            "title": "Performance Optimization",
+            "description": "Lightning-fast loading speeds and optimal performance for better user experience and search rankings."
+          },
+          {
+            "title": "CMS Integration",
+            "description": "Easy-to-use content management systems that give you complete control over your website content."
+          },
+          {
+            "title": "Ongoing Support",
+            "description": "24/7 technical support, maintenance, and updates to keep your website secure and running smoothly."
+          }
+        ]
+      },
+      "caseStudy": {
+        "title": "How Bizon Digital's Web Development Helped TechCorp Solutions",
+        "challenge": "TechCorp Solutions had an outdated website that wasn't converting visitors. Despite having quality products, their online presence didn't reflect their market position, leading to lost opportunities.",
+        "solution": [
+          "Comprehensive analysis of user behavior, conversion funnels, and competitor websites.",
+          "Complete website redesign with modern UI/UX principles and mobile-first approach.",
+          "Implementation of advanced features including live chat, product configurator, and customer portal.",
+          "Integration with CRM and marketing automation tools for better lead management.",
+          "Ongoing optimization based on analytics and user feedback."
+        ],
+        "results": [
+          "250% increase in organic traffic within 6 months",
+          "180% improvement in conversion rate",
+          "45% reduction in bounce rate",
+          "500+ qualified leads generated monthly"
+        ]
+      }
+    },
+    {
+      "id": "seo",
+      "name": "SEO Services",
+      "slug": "seo",
+      "icon": "search",
+      "shortDescription": "Rank higher on search engines and attract organic traffic",
+      "hero": {
+        "title": "Dominate Search Rankings with",
+        "subtitle": "Strategic SEO Services",
+        "description": "Bizon Digital's SEO services help you rank higher, attract more qualified traffic, and convert visitors into customers. Our data-driven approach combines technical excellence with content strategy to deliver sustainable organic growth."
+      },
+      "mainContent": {
+        "title": "SEO Strategy That Delivers Real Results",
+        "paragraphs": [
+          "Search Engine Optimization is the cornerstone of digital visibility. At Bizon Digital, we offer comprehensive SEO services that go beyond keyword rankings. As a leading SEO agency, we take a holistic approach to understand your business objectives, target audience search behavior, and competitive landscape.",
+          "For sustainable SEO success, there must be clearly defined KPIs and realistic timelines. As part of our SEO solution, we establish S.M.A.R.T. objectives including organic traffic growth, keyword rankings, conversion rates, and ROI targets. With a strategic plan in place, our SEO team works systematically to achieve your goals.",
+          "We're recognized as one of the top SEO agencies, following white-hat practices and staying ahead of algorithm updates. This involves continuous monitoring, testing, and optimization to ensure your website maintains and improves its search visibility over time."
+        ]
+      },
+      "keyOfferings": {
+        "title": "Our SEO Methodology",
+        "subtitle": "Our SEO approach is built on answering critical questions that drive organic success:",
+        "questions": [
+          "What are the high-value keywords your customers are searching for?",
+          "What content strategy will establish your authority and drive rankings?",
+          "What technical optimizations are needed for search engine crawlability?",
+          "What link-building strategy will boost your domain authority?"
+        ]
+      },
+      "serviceAreas": {
+        "title": "Complete SEO Solutions",
+        "items": [
+          {
+            "title": "Technical SEO",
+            "description": "Comprehensive technical audits, site speed optimization, mobile optimization, and structured data implementation."
+          },
+          {
+            "title": "On-Page Optimization",
+            "description": "Strategic keyword optimization, content optimization, meta tags, internal linking, and user experience improvements."
+          },
+          {
+            "title": "Content Strategy",
+            "description": "SEO-optimized content creation, blog strategy, pillar pages, and content gap analysis to drive rankings."
+          },
+          {
+            "title": "Link Building",
+            "description": "White-hat link acquisition strategies to build domain authority and improve search rankings organically."
+          },
+          {
+            "title": "Local SEO",
+            "description": "Google Business Profile optimization, local citations, and strategies to dominate local search results."
+          },
+          {
+            "title": "Analytics & Reporting",
+            "description": "Detailed performance tracking, ranking reports, traffic analysis, and actionable insights for continuous improvement."
+          }
+        ]
+      },
+      "caseStudy": {
+        "title": "How Bizon Digital's SEO Helped HealthPlus Clinic",
+        "challenge": "HealthPlus Clinic was invisible in search results despite offering premium healthcare services. They were losing patients to competitors who ranked higher in local searches.",
+        "solution": [
+          "Comprehensive SEO audit identifying 150+ technical and content issues.",
+          "Complete website optimization with focus on mobile experience and page speed.",
+          "Strategic content creation targeting high-value healthcare keywords and patient queries.",
+          "Local SEO campaign with Google Business Profile optimization and citation building.",
+          "Monthly reporting and continuous optimization based on performance data."
+        ],
+        "results": [
+          "450% increase in organic traffic within 8 months",
+          "Ranking #1 for 35+ target keywords",
+          "300+ qualified patient inquiries per month",
+          "ROI of 680% on SEO investment"
+        ]
+      }
+    },
+    {
+      "id": "paid-ads",
+      "name": "Paid Advertising",
+      "slug": "paid-ads",
+      "icon": "megaphone",
+      "shortDescription": "Strategic PPC campaigns that maximize your advertising ROI",
+      "hero": {
+        "title": "Accelerate Growth with",
+        "subtitle": "High-Performance Paid Advertising",
+        "description": "Bizon Digital's paid advertising services deliver immediate results through strategic campaigns across Google Ads, Facebook, Instagram, LinkedIn, and more. Our data-driven approach ensures every dollar spent generates maximum return on investment."
+      },
+      "mainContent": {
+        "title": "Paid Advertising That Drives Immediate Results",
+        "paragraphs": [
+          "Paid advertising is the fastest way to reach your target audience and drive conversions. At Bizon Digital, we offer comprehensive paid advertising services across all major platforms. As a certified advertising agency, we leverage advanced targeting, creative testing, and continuous optimization to maximize your ROI.",
+          "For successful paid campaigns, there must be clearly defined objectives and budget allocation strategies. We establish S.M.A.R.T. goals including cost per acquisition (CPA), return on ad spend (ROAS), conversion rates, and customer lifetime value (CLV) targets. With strategic planning and expert execution, we help you achieve profitable growth.",
+          "We're recognized as one of the top paid advertising agencies, managing millions in ad spend with proven results. Our approach involves continuous A/B testing, audience refinement, and campaign optimization to ensure your advertising budget works harder and smarter."
+        ]
+      },
+      "keyOfferings": {
+        "title": "Our Paid Advertising Approach",
+        "subtitle": "Our campaigns are built on strategic foundations that answer key questions:",
+        "questions": [
+          "Who is your ideal customer and where do they spend time online?",
+          "What messaging and creative will resonate with your target audience?",
+          "What bidding strategy and budget allocation will maximize ROI?",
+          "What conversion tracking and attribution model will measure true success?"
+        ]
+      },
+      "serviceAreas": {
+        "title": "Full-Service Paid Advertising",
+        "items": [
+          {
+            "title": "Google Ads Management",
+            "description": "Search, Display, Shopping, and YouTube campaigns optimized for maximum conversions and ROI."
+          },
+          {
+            "title": "Social Media Advertising",
+            "description": "Facebook, Instagram, LinkedIn, and Twitter ads with advanced targeting and creative testing."
+          },
+          {
+            "title": "Retargeting Campaigns",
+            "description": "Strategic retargeting to re-engage website visitors and convert abandoned carts into sales."
+          },
+          {
+            "title": "Landing Page Optimization",
+            "description": "High-converting landing pages designed and tested to maximize campaign performance."
+          },
+          {
+            "title": "Campaign Strategy",
+            "description": "Comprehensive campaign planning, audience research, and competitive analysis for optimal results."
+          },
+          {
+            "title": "Performance Analytics",
+            "description": "Real-time dashboards, detailed reporting, and actionable insights to continuously improve ROAS."
+          }
+        ]
+      },
+      "caseStudy": {
+        "title": "How Bizon Digital's Paid Ads Helped StyleHub Fashion",
+        "challenge": "StyleHub Fashion needed to scale their online sales quickly but was struggling with high CPAs and low ROAS from their existing campaigns.",
+        "solution": [
+          "Complete campaign restructure with refined audience targeting and ad group segmentation.",
+          "Creative refresh with A/B testing of 50+ ad variations to identify top performers.",
+          "Implementation of advanced conversion tracking and attribution modeling.",
+          "Strategic budget allocation based on performance data and seasonal trends.",
+          "Retargeting campaigns to recover abandoned carts and increase customer lifetime value."
+        ],
+        "results": [
+          "320% increase in ROAS within 3 months",
+          "65% reduction in cost per acquisition",
+          "$250K+ in monthly revenue from paid ads",
+          "4.2X return on advertising spend"
+        ]
+      }
+    },
+    {
+      "id": "social-media",
+      "name": "Social Media Marketing",
+      "slug": "social-media",
+      "icon": "share",
+      "shortDescription": "Build and engage your audience across all social platforms",
+      "hero": {
+        "title": "Build a Thriving Community with",
+        "subtitle": "Strategic Social Media Marketing",
+        "description": "Bizon Digital's social media marketing services help you build brand awareness, engage your audience, and drive conversions. Our creative content and strategic campaigns turn followers into loyal customers and brand advocates."
+      },
+      "mainContent": {
+        "title": "Social Media Strategy That Builds Communities",
+        "paragraphs": [
+          "Social media marketing is essential for modern brand building. At Bizon Digital, we offer comprehensive social media services that go beyond posting content. As a leading social media agency, we craft strategies that align with your brand voice, resonate with your audience, and drive measurable business results.",
+          "For social media success, there must be clearly defined goals and content strategies. We establish S.M.A.R.T. objectives including follower growth, engagement rates, reach, website traffic, and conversion metrics. With creative excellence and data-driven optimization, we help your brand stand out in crowded social feeds.",
+          "We're known as one of the top social media agencies, creating viral campaigns and building engaged communities. Our approach involves audience analysis, content planning, influencer partnerships, and community management to build authentic connections with your target audience."
+        ]
+      },
+      "keyOfferings": {
+        "title": "Our Social Media Methodology",
+        "subtitle": "Our social media strategy is built on answering essential questions:",
+        "questions": [
+          "What platforms does your target audience actively use?",
+          "What content style and voice will resonate with your followers?",
+          "What posting schedule and frequency will maximize engagement?",
+          "What metrics will measure social media ROI and business impact?"
+        ]
+      },
+      "serviceAreas": {
+        "title": "Complete Social Media Solutions",
+        "items": [
+          {
+            "title": "Social Strategy",
+            "description": "Comprehensive social media strategy aligned with business goals, audience insights, and competitive analysis."
+          },
+          {
+            "title": "Content Creation",
+            "description": "Eye-catching graphics, engaging videos, compelling copy, and stories that stop the scroll and drive engagement."
+          },
+          {
+            "title": "Community Management",
+            "description": "Active engagement with your audience, responding to comments, messages, and building loyal communities."
+          },
+          {
+            "title": "Influencer Marketing",
+            "description": "Strategic influencer partnerships to expand reach, build credibility, and drive authentic engagement."
+          },
+          {
+            "title": "Social Media Ads",
+            "description": "Targeted paid social campaigns to amplify reach, drive traffic, and generate leads and sales."
+          },
+          {
+            "title": "Analytics & Reporting",
+            "description": "Detailed performance tracking, competitor analysis, and insights to optimize your social presence."
+          }
+        ]
+      },
+      "caseStudy": {
+        "title": "How Bizon Digital's Social Media Helped FitLife Gym",
+        "challenge": "FitLife Gym had minimal social media presence and struggled to attract new members. Their competitors were dominating social platforms with engaging content.",
+        "solution": [
+          "Development of comprehensive social media strategy targeting fitness enthusiasts in local area.",
+          "Creation of engaging content including workout tips, transformation stories, and behind-the-scenes content.",
+          "Implementation of user-generated content campaigns encouraging members to share their journeys.",
+          "Strategic paid social campaigns targeting specific demographics and interests.",
+          "Active community management building relationships with followers and prospects."
+        ],
+        "results": [
+          "2,400% increase in social media followers",
+          "Average engagement rate of 8.5% (industry avg: 1.2%)",
+          "450+ new member sign-ups from social media",
+          "Built thriving online community of 25K+ engaged followers"
+        ]
+      }
+    },
+    {
+      "id": "ecommerce",
+      "name": "E-Commerce Solutions",
+      "slug": "ecommerce",
+      "icon": "shopping-cart",
+      "shortDescription": "Complete eCommerce solutions to sell online successfully",
+      "hero": {
+        "title": "Launch Your Online Empire with",
+        "subtitle": "Powerful E-Commerce Solutions",
+        "description": "Bizon Digital's e-commerce solutions help you build, launch, and scale successful online stores. From platform selection to conversion optimization, we provide end-to-end services that turn browsers into buyers and one-time customers into repeat purchasers."
+      },
+      "mainContent": {
+        "title": "E-Commerce Solutions That Drive Sales",
+        "paragraphs": [
+          "E-commerce is transforming retail, and at Bizon Digital, we help businesses capitalize on this opportunity. Our comprehensive e-commerce services cover everything from store setup to ongoing optimization. As an experienced e-commerce agency, we understand the complexities of online retail and deliver solutions that drive revenue.",
+          "For e-commerce success, there must be clearly defined sales targets and customer acquisition strategies. We establish S.M.A.R.T. objectives including revenue goals, average order value (AOV), conversion rates, and customer retention metrics. With strategic planning and expert execution, we help you build a profitable online business.",
+          "We're recognized as one of the top e-commerce agencies, having launched and scaled hundreds of successful online stores. Our approach involves user experience optimization, conversion rate testing, and marketing integration to maximize every visitor's potential value."
+        ]
+      },
+      "keyOfferings": {
+        "title": "Our E-Commerce Approach",
+        "subtitle": "Our e-commerce solutions are built on answering critical questions:",
+        "questions": [
+          "What platform and features will best support your business model?",
+          "What user experience will minimize friction and maximize conversions?",
+          "What payment and shipping options will customers expect?",
+          "What marketing and retention strategies will drive repeat purchases?"
+        ]
+      },
+      "serviceAreas": {
+        "title": "Full-Service E-Commerce Solutions",
+        "items": [
+          {
+            "title": "Store Development",
+            "description": "Custom e-commerce stores on Shopify, WooCommerce, Magento, or custom platforms tailored to your needs."
+          },
+          {
+            "title": "UX/UI Design",
+            "description": "Intuitive shopping experiences, seamless checkout flows, and mobile-optimized designs that convert."
+          },
+          {
+            "title": "Payment Integration",
+            "description": "Secure payment gateways, multiple payment options, and fraud protection for safe transactions."
+          },
+          {
+            "title": "Inventory Management",
+            "description": "Automated inventory tracking, order management, and integration with fulfillment services."
+          },
+          {
+            "title": "Conversion Optimization",
+            "description": "A/B testing, cart abandonment recovery, and optimization strategies to increase sales and AOV."
+          },
+          {
+            "title": "E-Commerce Marketing",
+            "description": "Complete marketing services including SEO, PPC, email marketing, and social media for online stores."
+          }
+        ]
+      },
+      "caseStudy": {
+        "title": "How Bizon Digital's E-Commerce Solutions Helped HomeDecor Plus",
+        "challenge": "HomeDecor Plus wanted to transition from brick-and-mortar to online sales but lacked the expertise and infrastructure for e-commerce success.",
+        "solution": [
+          "Complete e-commerce store development on Shopify with custom features and design.",
+          "Product photography, catalog setup, and SEO-optimized product descriptions for 500+ items.",
+          "Implementation of abandoned cart recovery, email marketing automation, and loyalty program.",
+          "Multi-channel marketing strategy including Google Shopping, social media, and influencer partnerships.",
+          "Ongoing optimization based on analytics, user feedback, and conversion rate testing."
+        ],
+        "results": [
+          "$1.2M in online revenue within first year",
+          "Average order value of $285",
+          "Conversion rate of 3.8% (industry avg: 2.1%)",
+          "Successfully scaled to 5,000+ orders per month"
+        ]
+      }
+    },
+    {
+      "id": "branding",
+      "name": "Brand Identity & Design",
+      "slug": "branding",
+      "icon": "palette",
+      "shortDescription": "Create a powerful brand identity that resonates with your audience",
+      "hero": {
+        "title": "Build an Unforgettable Brand with",
+        "subtitle": "Strategic Brand Identity & Design",
+        "description": "Bizon Digital's branding services help you create a distinctive brand identity that stands out, resonates with your audience, and drives business growth. From logo design to complete brand systems, we craft visual identities that tell your story and build lasting connections."
+      },
+      "mainContent": {
+        "title": "Brand Strategy That Creates Lasting Impact",
+        "paragraphs": [
+          "Branding is the foundation of business success. At Bizon Digital, we offer comprehensive branding services that go beyond aesthetics. As a strategic branding agency, we dive deep into your business DNA, target audience psychographics, and competitive positioning to create brands that truly resonate.",
+          "For powerful branding, there must be clearly defined brand positioning and personality. We establish S.M.A.R.T. objectives including brand awareness, brand recall, emotional connection, and market differentiation. With strategic thinking and creative excellence, we help you build a brand that stands the test of time.",
+          "We're known as one of the top branding agencies, creating memorable brands across industries. Our approach involves collaborative discovery, strategic positioning, and meticulous design execution to ensure your brand communicates authentically and effectively across all touchpoints."
+        ]
+      },
+      "keyOfferings": {
+        "title": "Our Branding Methodology",
+        "subtitle": "Our branding process is built on answering fundamental questions:",
+        "questions": [
+          "What is your brand's core purpose and unique value proposition?",
+          "What emotional connection should your brand create with customers?",
+          "What visual and verbal identity will differentiate your brand?",
+          "What brand experience will turn customers into loyal advocates?"
+        ]
+      },
+      "serviceAreas": {
+        "title": "Complete Branding Solutions",
+        "items": [
+          {
+            "title": "Brand Strategy",
+            "description": "Brand positioning, messaging framework, value proposition, and competitive differentiation strategy."
+          },
+          {
+            "title": "Logo & Identity Design",
+            "description": "Memorable logos, color palettes, typography, and visual systems that embody your brand essence."
+          },
+          {
+            "title": "Brand Guidelines",
+            "description": "Comprehensive brand guidelines ensuring consistent application across all channels and touchpoints."
+          },
+          {
+            "title": "Packaging Design",
+            "description": "Eye-catching packaging that stands out on shelves and creates memorable unboxing experiences."
+          },
+          {
+            "title": "Marketing Collateral",
+            "description": "Business cards, brochures, presentations, and all marketing materials in your new brand identity."
+          },
+          {
+            "title": "Brand Implementation",
+            "description": "Full rollout support including website, social media, signage, and all customer touchpoints."
+          }
+        ]
+      },
+      "caseStudy": {
+        "title": "How Bizon Digital's Branding Helped EcoLife Products",
+        "challenge": "EcoLife Products had quality sustainable products but a generic brand identity that didn't reflect their values or connect with eco-conscious consumers.",
+        "solution": [
+          "Comprehensive brand discovery process identifying core values, target audience, and market positioning.",
+          "Development of brand strategy centered on 'Living Sustainably Made Simple' positioning.",
+          "Creation of nature-inspired visual identity with earthy color palette and organic design elements.",
+          "Redesign of packaging using eco-friendly materials with educational content and brand storytelling.",
+          "Implementation across website, social media, retail displays, and all customer touchpoints."
+        ],
+        "results": [
+          "185% increase in brand recognition in target market",
+          "320% growth in social media engagement",
+          "Retail expansion from 50 to 250 stores",
+          "Premium pricing strategy increased profit margins by 45%"
+        ]
+      }
+    }
+  ]
+}

@@ -17,19 +17,19 @@ const EmailSubscribe = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto text-center">
           {/* Heading */}
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-8 sm:mb-10 md:mb-12">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold text-gray-900 mb-8 sm:mb-10 md:mb-12">
             Have an Awsome Project Idea?{" "}
             <span className="text-[#FF7A00]">Let&apos;s Discuss</span>
           </h2>
 
           {/* Email Input Form */}
-          <form onSubmit={handleSubmit} className="mb-8 sm:mb-10">
+          <form onSubmit={handleSubmit} className="mb-8 sm:mb-10 px-2">
             <div className="relative max-w-3xl mx-auto">
-              <div className="flex items-center bg-white rounded-full border-2 border-gray-300 p-2 sm:p-3 shadow-md">
+              <div className="flex items-center bg-white rounded-full border-2 border-gray-300 p-1.5 sm:p-2 md:p-3 shadow-md">
                 {/* Email Icon */}
-                <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-[#FF7A00] rounded-full flex items-center justify-center ml-1 sm:ml-2">
+                <div className="flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-[#FF7A00] rounded-full flex items-center justify-center ml-0.5 sm:ml-1 md:ml-2">
                   <svg
-                    className="w-5 h-5 sm:w-6 sm:h-6 text-white"
+                    className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -50,13 +50,13 @@ const EmailSubscribe = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter Email Address"
                   required
-                  className="flex-1 px-4 sm:px-6 py-2 text-sm sm:text-base text-gray-900 placeholder-gray-500 bg-transparent focus:outline-none"
+                  className="flex-1 min-w-0 px-2 sm:px-4 md:px-6 py-2 text-xs sm:text-sm md:text-base text-gray-900 placeholder-gray-500 bg-transparent focus:outline-none"
                 />
 
                 {/* Send Button */}
                 <button
                   type="submit"
-                  className="flex-shrink-0 bg-[#FF7A00] hover:bg-[#E66D00] text-white font-semibold px-6 sm:px-8 md:px-10 py-2.5 sm:py-3 md:py-3.5 rounded-full transition-colors duration-300 text-sm sm:text-base"
+                  className="flex-shrink-0 bg-[#FF7A00] hover:bg-[#E66D00] text-white font-semibold px-3 sm:px-6 md:px-8 lg:px-10 py-2 sm:py-2.5 md:py-3 lg:py-3.5 rounded-full transition-colors duration-300 text-xs sm:text-sm md:text-base"
                 >
                   Send
                 </button>

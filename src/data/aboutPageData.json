@@ -1,0 +1,195 @@
+{
+  "hero": {
+    "title": "ABOUT US",
+    "subtitle": "Welcome to The BizOn Digital",
+    "description": "At Bizon Digital, we provide a 360-degree digital marketing solution to boost your online presence and drive growth. From web development and SEO to social media marketing and paid campaigns, we create customized strategies that deliver real results. Let's bring your vision to life!",
+    "image": "/images/about/Frame 1357.png"
+  },
+  "globalReach": {
+    "title": "We're here for you",
+    "subtitle": "no matter where you are",
+    "description": "Serving clients worldwide with our comprehensive digital marketing solutions",
+    "image": "/images/about/Container.png"
+  },
+  "mission": {
+    "title": "Our Mission",
+    "items": [
+      {
+        "title": "Empower Businesses",
+        "description": "Our mission is to empower businesses with innovative digital marketing strategies that drive growth and maximize online impact. We're dedicated to delivering measurable results and helping you connect with your audience."
+      },
+      {
+        "title": "Tailored Solutions",
+        "description": "We create customized strategies specifically designed for your business goals, ensuring every campaign aligns with your unique needs and delivers real results that matter to your bottom line."
+      },
+      {
+        "title": "Proven Expertise",
+        "description": "With 10+ years of experience and over 1,000 successful campaigns, our team brings deep expertise across all digital marketing channels to help you achieve sustainable growth and market leadership."
+      },
+      {
+        "title": "Innovation First",
+        "description": "We leverage the latest technology, tools, and trends to keep your brand ahead of the competition, combining cutting-edge digital marketing techniques with creative excellence."
+      }
+    ]
+  },
+  "commitment": {
+    "title": "Our Commitment",
+    "items": [
+      {
+        "title": "Results-Driven",
+        "description": "We focus on delivering measurable ROI and tangible business outcomes. Every strategy we implement is backed by data, optimized for performance, and designed to achieve your specific business objectives."
+      },
+      {
+        "title": "24x7 Support",
+        "description": "Our dedicated team provides round-the-clock support to ensure your campaigns run smoothly. We're always available to address your concerns, optimize performance, and help you capitalize on opportunities."
+      },
+      {
+        "title": "Transparency",
+        "description": "We believe in complete transparency with our clients. You'll receive detailed reports, clear communication, and honest insights about your campaigns, ensuring you're always informed and empowered."
+      }
+    ]
+  },
+  "services": {
+    "title": "What We Do",
+    "items": [
+      {
+        "name": "Website Development",
+        "description": "Custom, responsive websites that convert visitors into customers"
+      },
+      {
+        "name": "SEO",
+        "description": "Rank higher on search engines and attract organic traffic"
+      },
+      {
+        "name": "Paid Ads",
+        "description": "Strategic PPC campaigns that maximize your advertising ROI"
+      },
+      {
+        "name": "Social Media Marketing",
+        "description": "Build and engage your audience across all social platforms"
+      },
+      {
+        "name": "eCommerce Store",
+        "description": "Complete eCommerce solutions to sell online successfully"
+      },
+      {
+        "name": "Branding",
+        "description": "Create a powerful brand identity that resonates with your audience"
+      },
+      {
+        "name": "Email Marketing",
+        "description": "Targeted email campaigns that drive engagement and conversions"
+      },
+      {
+        "name": "App Development",
+        "description": "Custom mobile applications to expand your digital reach"
+      }
+    ]
+  },
+  "whyChooseUs": {
+    "title": "Why Choose Us?",
+    "description": "Choose Bizon Digital for tailored, results-driven strategies that elevate your online presence. Our expertise and commitment to your success ensure measurable growth and lasting impact.",
+    "features": [
+      {
+        "title": "Best Quality Designs",
+        "description": "We deliver exceptional, high-quality designs that capture your brand's essence and engage your audience. Our creative team crafts visually stunning and user-friendly designs that drive results and enhance your digital presence."
+      },
+      {
+        "title": "24x7 Live Support",
+        "description": "Round-the-clock assistance from our dedicated team ensures your campaigns run smoothly and your questions are answered promptly, no matter the time zone."
+      },
+      {
+        "title": "Result Oriented Projects",
+        "description": "Every project is executed with a focus on achieving measurable results that contribute directly to your business growth and success metrics."
+      },
+      {
+        "title": "Best ROI Techniques",
+        "description": "We employ proven strategies and optimization techniques to ensure you get the maximum return on your marketing investment."
+      },
+      {
+        "title": "Experienced Professionals",
+        "description": "Our team comprises seasoned digital marketing experts with years of experience delivering successful campaigns across diverse industries."
+      }
+    ]
+  },
+  "stats": {
+    "title": "Our Impact in Numbers",
+    "items": [
+      {
+        "number": "2,500+",
+        "label": "Satisfied Clients",
+        "description": "Businesses trust us with their digital growth"
+      },
+      {
+        "number": "10+",
+        "label": "Years of Expertise",
+        "description": "A decade of digital marketing excellence"
+      },
+      {
+        "number": "1,000+",
+        "label": "Successful Campaigns",
+        "description": "Proven track record of delivering results"
+      },
+      {
+        "number": "95%",
+        "label": "Client Retention",
+        "description": "Long-term partnerships built on trust"
+      }
+    ]
+  },
+  "team": {
+    "title": "Our Success Team",
+    "description": "Meet the experts who drive your digital success",
+    "members": [
+      {
+        "name": "Sarah Johnson",
+        "role": "Chief Executive Officer",
+        "image": "/images/testimonials/auth-01.png"
+      },
+      {
+        "name": "Michael Chen",
+        "role": "Head of Strategy",
+        "image": "/images/testimonials/auth-02.png"
+      },
+      {
+        "name": "Emily Rodriguez",
+        "role": "Creative Director",
+        "image": "/images/testimonials/auth-03.png"
+      },
+      {
+        "name": "David Thompson",
+        "role": "Technical Lead",
+        "image": "/images/testimonials/auth-01.png"
+      }
+    ]
+  },
+  "cta": {
+    "title": "Would you like to start a project with us?",
+    "description": "We're eager to help you achieve your digital marketing goals with customized solutions. Let's work together to elevate your brand and drive success. Get in touch today, and let's make it happen!",
+    "buttonText": "Get Started Today"
+  },
+  "contact": {
+    "formTitle": "Get in touch",
+    "formSubtitle": "We'd love to hear from you. Please fill out this form.",
+    "details": {
+      "title": "Our Contact Details",
+      "subtitle": "Let's connect.",
+      "phone": {
+        "label": "Telephone",
+        "value": "+1 (516) 440-5037"
+      },
+      "whatsapp": {
+        "label": "WhatsApp",
+        "value": "+1 (516) 440-5037"
+      },
+      "office": {
+        "label": "Office",
+        "value": "169 Madison Ave STE 2945, New York, NY 10016"
+      },
+      "email": {
+        "label": "Email",
+        "value": "info@bizondigital.com"
+      }
+    }
+  }
+}

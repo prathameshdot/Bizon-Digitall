@@ -16,8 +16,45 @@ const menuData: Menu[] = [
   {
     id: 3,
     title: "Services",
-    path: "/services",
     newTab: false,
+    submenu: [
+      {
+        id: 31,
+        title: "Web Development",
+        path: "/services/web-development",
+        newTab: false,
+      },
+      {
+        id: 32,
+        title: "SEO Services",
+        path: "/services/seo",
+        newTab: false,
+      },
+      {
+        id: 33,
+        title: "Paid Advertising",
+        path: "/services/paid-ads",
+        newTab: false,
+      },
+      {
+        id: 34,
+        title: "Social Media Marketing",
+        path: "/services/social-media",
+        newTab: false,
+      },
+      {
+        id: 35,
+        title: "E-Commerce Solutions",
+        path: "/services/ecommerce",
+        newTab: false,
+      },
+      {
+        id: 36,
+        title: "Brand Identity & Design",
+        path: "/services/branding",
+        newTab: false,
+      },
+    ],
   },
   {
     id: 4,

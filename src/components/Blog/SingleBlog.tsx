@@ -6,33 +6,34 @@ const SingleBlog = ({ blog }: { blog: Blog }) => {
   const { title, image, paragraph, author, tags, publishDate } = blog;
   return (
     <>
-      <div className="group shadow-one hover:shadow-two dark:bg-dark dark:hover:shadow-gray-dark relative overflow-hidden rounded-xs bg-white duration-300">
+      <div className="group relative overflow-hidden rounded-2xl bg-white dark:bg-dark shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_20px_60px_rgba(255,122,0,0.25)] duration-300 border border-gray-100 dark:border-gray-800 hover:border-[#FF7A00]/30 h-full flex flex-col">
         <Link
           href="/blog-details"
-          className="relative block aspect-37/22 w-full"
+          className="relative block aspect-[16/10] w-full overflow-hidden"
         >
-          <span className="bg-primary absolute top-6 right-6 z-20 inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold text-white capitalize">
+          <span className="bg-[#FF7A00] absolute top-4 right-4 z-20 inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold text-white capitalize shadow-lg">
             {tags[0]}
           </span>
-          <Image src={image} alt="image" fill />
+          <Image src={image} alt="image" fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </Link>
-        <div className="p-6 sm:p-8 md:px-6 md:py-8 lg:p-8 xl:px-5 xl:py-8 2xl:p-8">
-          <h3>
+        <div className="p-6 sm:p-8 flex flex-col flex-grow">
+          <h3 className="flex-grow">
             <Link
               href="/blog-details"
-              className="hover:text-primary dark:hover:text-primary mb-4 block text-xl font-bold text-black sm:text-2xl dark:text-white"
+              className="hover:text-[#FF7A00] dark:hover:text-[#FF7A00] mb-4 block text-xl font-bold text-black sm:text-2xl dark:text-white transition-colors duration-300"
             >
               {title}
             </Link>
           </h3>
-          <p className="border-body-color/10 text-body-color mb-6 border-b pb-6 text-base font-medium dark:border-white/10">
+          <p className="text-body-color mb-6 pb-6 text-base font-medium border-b border-gray-200 dark:border-gray-700">
             {paragraph}
           </p>
           <div className="flex items-center">
-            <div className="border-body-color/10 mr-5 flex items-center border-r pr-5 xl:mr-3 xl:pr-3 2xl:mr-5 2xl:pr-5 dark:border-white/10">
-              <div className="mr-4">
-                <div className="relative h-10 w-10 overflow-hidden rounded-full">
-                  <Image src={author.image} alt="author" fill />
+            <div className="mr-5 flex items-center border-r border-gray-200 dark:border-gray-700 pr-5">
+              <div className="mr-3">
+                <div className="relative h-10 w-10 overflow-hidden rounded-full ring-2 ring-[#FF7A00]/20">
+                  <Image src={author.image} alt="author" fill className="object-cover" />
                 </div>
               </div>
               <div className="w-full">

@@ -105,7 +105,7 @@ const MarketingScroll = () => {
                 {[...Array(15)].map((_, index) => (
                   <span
                     key={index}
-                    className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-black whitespace-nowrap tracking-wide inline-block"
+                    className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-extrabold text-black whitespace-nowrap tracking-wide inline-block"
                     style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
                   >
                     {text1}
@@ -123,7 +123,7 @@ const MarketingScroll = () => {
                 {[...Array(15)].map((_, index) => (
                   <span
                     key={index}
-                    className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-black whitespace-nowrap tracking-wide inline-block"
+                    className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-extrabold text-black whitespace-nowrap tracking-wide inline-block"
                     style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
                   >
                     {text2}

@@ -9,25 +9,25 @@ const PricingBox = (props: {
 
   return (
     <div className="w-full">
-      <div className="shadow-three hover:shadow-one dark:bg-gray-dark dark:shadow-two dark:hover:shadow-gray-dark relative z-10 rounded-xs bg-white px-8 py-10">
-        <div className="flex items-center justify-between">
-          <h3 className="price mb-2 text-[32px] font-bold text-black dark:text-white">
+      <div className="relative z-10 rounded-2xl bg-white dark:bg-gray-dark px-8 py-10 shadow-[0_10px_40px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_60px_rgba(255,122,0,0.25)] border border-gray-100 dark:border-gray-800 hover:border-[#FF7A00]/30 transition-all duration-300 h-full flex flex-col">
+        <div className="flex items-center justify-between mb-6">
+          <h3 className="price text-[32px] font-bold text-black dark:text-white">
             $<span className="amount">{price}</span>
             <span className="time text-body-color text-lg font-medium">
               /{duration}
             </span>
           </h3>
-          <h4 className="text-dark mb-2 text-xl font-bold dark:text-white">
+          <h4 className="text-dark text-xl font-bold dark:text-white bg-[#FF7A00]/10 px-4 py-2 rounded-lg">
             {packageName}
           </h4>
         </div>
-        <p className="text-body-color mb-7 text-base">{subtitle}</p>
-        <div className="border-body-color/10 mb-8 border-b pb-8 dark:border-white/10">
-          <button className="bg-primary/80 hover:shadow-signUp flex w-full items-center justify-center rounded-xs p-3 text-base font-semibold text-white transition duration-300 ease-in-out">
+        <p className="text-body-color mb-8 text-base">{subtitle}</p>
+        <div className="mb-8 pb-8 border-b border-gray-200 dark:border-gray-700">
+          <button className="bg-[#FF7A00] hover:bg-[#e66d00] flex w-full items-center justify-center rounded-xl p-4 text-base font-semibold text-white transition duration-300 ease-in-out shadow-lg hover:shadow-xl">
             Start Free Trial
           </button>
         </div>
-        <div>{children}</div>
+        <div className="flex-grow">{children}</div>
         <div className="absolute right-0 bottom-0 z-[-1]">
           <svg
             width="179"

@@ -29,7 +29,7 @@ const SocialMediaSection = () => {
                   className="object-contain"
                 />
               </div>
-              <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 relative hover:scale-110 transition-transform">
+              <div className="w-12 h-12 xs:w-16 xs:h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 2xl:w-36 2xl:h-36 relative hover:scale-110 transition-transform">
                 <Image
                   src="/images/hero/LinkedIn.png"
                   alt="LinkedIn"
@@ -37,7 +37,7 @@ const SocialMediaSection = () => {
                   className="object-contain"
                 />
               </div>
-              <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 relative hover:scale-110 transition-transform">
+              <div className="w-12 h-12 xs:w-16 xs:h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 2xl:w-36 2xl:h-36 relative hover:scale-110 transition-transform">
                 <Image
                   src="/images/hero/Twitter.png"
                   alt="Twitter"
@@ -48,8 +48,8 @@ const SocialMediaSection = () => {
             </div>
 
             {/* Row 2: Instagram, Messenger */}
-            <div className="flex items-center justify-center gap-16 sm:gap-24 md:gap-32 lg:gap-40 xl:gap-48">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 relative hover:scale-110 transition-transform">
+            <div className="flex items-center justify-center gap-12 xs:gap-16 sm:gap-24 md:gap-32 lg:gap-40 xl:gap-48 2xl:gap-56">
+              <div className="w-12 h-12 xs:w-16 xs:h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 2xl:w-36 2xl:h-36 relative hover:scale-110 transition-transform">
                 <Image
                   src="/images/hero/Instagram.png"
                   alt="Instagram"
@@ -57,7 +57,7 @@ const SocialMediaSection = () => {
                   className="object-contain"
                 />
               </div>
-              <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 relative hover:scale-110 transition-transform">
+              <div className="w-12 h-12 xs:w-16 xs:h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 2xl:w-36 2xl:h-36 relative hover:scale-110 transition-transform">
                 <Image
                   src="/images/hero/Messenger.png"
                   alt="Messenger"

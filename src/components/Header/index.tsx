@@ -47,7 +47,17 @@ const Header = () => {
     const updateSlider = () => {
       if (!navRef.current || !logoRef.current) return;
       
-      const activeIndex = menuData.findIndex(item => item.path === usePathName);
+      // Check if current path is a service subpage (starts with /services/)
+      const isServiceSubpage = usePathName.startsWith('/services/');
+      
+      let activeIndex;
+      if (isServiceSubpage) {
+        // Find the Services menu item index (the one without a path but has submenu)
+        activeIndex = menuData.findIndex(item => !item.path && item.submenu?.some(sub => sub.path.startsWith('/services/')));
+      } else {
+        activeIndex = menuData.findIndex(item => item.path === usePathName);
+      }
+      
       const navRect = navRef.current.getBoundingClientRect();
       
       // Calculate padding offset (24px = 6 * 4px in Tailwind)
@@ -106,8 +116,22 @@ const Header = () => {
   }, [usePathName]);
 
   // Determine if a menu item should be black (inside white slider)
-  const getMenuItemColor = (menuPath: string) => {
-    const currentIndex = menuData.findIndex(item => item.path === usePathName);
+  const getMenuItemColor = (menuPath: string, isServicesMenu: boolean = false) => {
+    // Check if current path is a service subpage
+    const isServiceSubpage = usePathName.startsWith('/services/');
+    
+    // If we're on a service subpage and this is the Services menu, make it black
+    if (isServiceSubpage && isServicesMenu) {
+      return "text-black";
+    }
+    
+    const currentIndex = menuData.findIndex(item => {
+      if (isServiceSubpage) {
+        return !item.path && item.submenu?.some(sub => sub.path.startsWith('/services/'));
+      }
+      return item.path === usePathName;
+    });
+    
     const itemIndex = menuData.findIndex(item => item.path === menuPath);
     
     // If on home page and this is home, make it black
@@ -194,7 +218,15 @@ const Header = () => {
                   }`}
                 >
                   <ul className="block space-y-2 md:space-y-0 md:flex md:gap-0.5 lg:gap-0.5 xl:gap-1">
-                    {menuData.map((menuItem, index) => (
+                    {menuData.map((menuItem, index) => {
+                      // Check if current path matches any submenu item OR if it's a service subpage
+                      const isServiceSubpage = usePathName.startsWith('/services/');
+                      const isServicesMenu = !menuItem.path && menuItem.submenu?.some(sub => sub.path.startsWith('/services/'));
+                      const isSubmenuActive = menuItem.submenu?.some(
+                        (subItem) => usePathName === subItem.path
+                      ) || (isServiceSubpage && isServicesMenu);
+                      
+                      return (
                       <li key={index} className="group relative">
                         {menuItem.path ? (
                           <Link
@@ -213,7 +245,12 @@ const Header = () => {
                           <>
                             <p
                               onClick={() => handleSubmenu(index)}
-                              className="flex cursor-pointer items-center justify-between py-3 px-4 text-base font-medium text-white hover:bg-white/10 rounded-lg md:rounded-none md:py-3 md:px-2 lg:px-5 transition-all duration-300"
+                              data-index={index}
+                              className={`flex cursor-pointer items-center justify-between py-3 px-4 text-base font-medium rounded-lg md:rounded-none md:py-3 md:px-2 lg:px-5 transition-all duration-300 ${
+                                isSubmenuActive
+                                  ? "bg-white text-black md:bg-transparent md:text-black"
+                                  : `text-white hover:bg-white/10 md:hover:bg-transparent md:${getMenuItemColor(menuItem.path, isServicesMenu)}`
+                              }`}
                             >
                               <span className="text-sm md:text-[12px] lg:text-[13px] xl:text-[15px]">{menuItem.title}</span>
                               <span className="pl-3">
@@ -228,16 +265,19 @@ const Header = () => {
                               </span>
                             </p>
                             <div
-                              className={`submenu mt-2 rounded-lg bg-[#1a1a1a] p-2 md:mt-0 md:relative md:top-full md:left-0 md:rounded-2xl md:bg-black md:border-2 md:border-white md:transition-[top] md:duration-300 md:group-hover:opacity-100 md:invisible md:absolute md:top-[110%] md:block md:w-[250px] md:p-4 md:opacity-0 md:shadow-lg md:group-hover:visible md:group-hover:top-full ${
+                              className={`submenu mt-2 rounded-lg bg-[#1a1a1a] p-2 md:mt-0 md:absolute md:top-full md:left-0 md:rounded-2xl md:bg-black md:border-2 md:border-white md:transition-all md:duration-300 md:group-hover:opacity-100 md:invisible md:top-[110%] md:block md:w-[250px] md:p-4 md:opacity-0 md:shadow-2xl md:group-hover:visible md:group-hover:top-full lg:w-[280px] md:z-50 ${
                                 openIndex === index ? "block" : "hidden"
                               }`}
                             >
-                              {menuItem.submenu.map((submenuItem, index) => (
+                              {menuItem.submenu.map((submenuItem, subIndex) => (
                                 <Link
                                   href={submenuItem.path}
-                                  key={index}
-                                  onClick={() => setNavbarOpen(false)}
-                                  className="block rounded-lg py-2.5 px-3 text-sm text-white hover:bg-white/10 transition-all duration-300"
+                                  key={subIndex}
+                                  onClick={() => {
+                                    setNavbarOpen(false);
+                                    setOpenIndex(-1);
+                                  }}
+                                  className="block rounded-lg py-2.5 px-3 text-sm text-white hover:bg-white/10 transition-all duration-300 hover:text-[#FF7A00]"
                                 >
                                   {submenuItem.title}
                                 </Link>
@@ -246,7 +286,8 @@ const Header = () => {
                           </>
                         )}
                       </li>
-                    ))}
+                    )})}
+                    
                   </ul>
                   
                   {/* Mobile Get Quotes Button */}

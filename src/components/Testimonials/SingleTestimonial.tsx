@@ -20,17 +20,17 @@ const SingleTestimonial = ({ testimonial }: { testimonial: Testimonial }) => {
 
   return (
     <div className="w-full">
-      <div className="shadow-two hover:shadow-one dark:bg-dark dark:shadow-three dark:hover:shadow-gray-dark rounded-xs bg-white p-8 duration-300 lg:px-5 xl:px-8">
-        <div className="mb-5 flex items-center space-x-1">{ratingIcons}</div>
-        <p className="border-body-color/10 text-body-color mb-8 border-b pb-8 text-base leading-relaxed dark:border-white/10 dark:text-white">
-          “{content}
+      <div className="rounded-2xl bg-white dark:bg-dark p-8 lg:p-6 xl:p-8 shadow-[0_10px_40px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_60px_rgba(255,122,0,0.2)] duration-300 border border-gray-100 dark:border-gray-800 h-full flex flex-col">
+        <div className="mb-6 flex items-center space-x-1">{ratingIcons}</div>
+        <p className="text-body-color mb-8 pb-8 text-base leading-relaxed dark:text-white flex-grow border-b border-gray-200 dark:border-gray-700">
+          &ldquo;{content}
         </p>
         <div className="flex items-center">
-          <div className="relative mr-4 h-[50px] w-full max-w-[50px] overflow-hidden rounded-full">
-            <Image src={image} alt={name} fill />
+          <div className="relative mr-4 h-14 w-14 overflow-hidden rounded-full ring-2 ring-[#FF7A00]/20">
+            <Image src={image} alt={name} fill className="object-cover" />
           </div>
           <div className="w-full">
-            <h3 className="text-dark mb-1 text-lg font-semibold lg:text-base xl:text-lg dark:text-white">
+            <h3 className="text-dark mb-1 text-lg font-semibold dark:text-white">
               {name}
             </h3>
             <p className="text-body-color text-sm">{designation}</p>
