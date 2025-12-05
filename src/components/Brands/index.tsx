@@ -10,7 +10,7 @@ const Brands = ({ data }: { data?: { items?: { name: string; logo: string }[] } 
           <div className="w-full px-4">
             <div className="flex flex-wrap items-center justify-center rounded-xs bg-gray-light px-8 py-8 dark:bg-gray-dark sm:px-10 md:px-[50px] md:py-[40px] xl:p-[50px] 2xl:px-[70px] 2xl:py-[60px]">
               {(data?.items || brandsData).map((brand: any, idx: number) => (
-                <SingleBrand key={brand.id || idx} brand={{ href: brand.href || '#', image: brand.logo || brand.image || '/images/brands/brand-01.png', imageLight: brand.logo || brand.imageLight || brand.logo || '/images/brands/brand-01.png', name: brand.name || `Brand ${idx + 1}` }} />
+                <SingleBrand key={brand.id || idx} brand={{id: brand.id || idx, href: brand.href || '#', image: brand.logo || brand.image || '/images/brands/brand-01.png', imageLight: brand.logo || brand.imageLight || brand.logo || '/images/brands/brand-01.png', name: brand.name || `Brand ${idx + 1}` }} />
               ))}
             </div>
           </div>

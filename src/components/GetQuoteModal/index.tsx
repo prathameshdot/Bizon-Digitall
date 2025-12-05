@@ -112,8 +112,8 @@ const GetQuoteModal = () => {
 
         <div className="flex items-center justify-between border-b border-gray-800 px-4 py-3">
           <div>
-            <h3 className="text-lg font-semibold">Let's Connect</h3>
-            <p className="mt-1 text-sm text-gray-300">Share a few details and we'll prepare a tailored proposal and timeline.</p>
+            <h3 className="text-lg font-semibold">Let&apos;s Connect</h3>
+            <p className="mt-1 text-sm text-gray-300">Share a few details and we&apos;ll prepare a tailored proposal and timeline.</p>
           </div>
           <button aria-label="close" onClick={close} className="text-white/80 hover:text-white text-lg">
             ✕
