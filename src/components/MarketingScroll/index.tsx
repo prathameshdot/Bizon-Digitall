@@ -34,28 +34,27 @@ const MarketingScroll = () => {
     const textWidth1 = getSingleTextWidth(scrollContainer1);
     const textWidth2 = getSingleTextWidth(scrollContainer2);
 
-    // Scroll left to right
+    // Simpler, deterministic animations:
+    // Line 1: move rightwards (left-to-right) using positive translateX
     const animate1 = () => {
-      position1 += scrollSpeed;
-      
-      // Reset position seamlessly when one full text has scrolled
+      position1 += scrollSpeed; // increase to move right
+
       if (position1 >= textWidth1) {
         position1 = position1 - textWidth1;
       }
-      
-      scrollContainer1.style.transform = `translateX(-${position1}px)`;
+
+      scrollContainer1.style.transform = `translateX(${position1}px)`;
       animationFrameId1 = requestAnimationFrame(animate1);
     };
 
-    // Scroll right to left (reverse direction)
+    // Line 2: move leftwards (right-to-left) using negative translateX
     const animate2 = () => {
-      position2 += scrollSpeed;
-      
-      // Reset position seamlessly when one full text has scrolled
+      position2 += scrollSpeed; // increase to move left
+
       if (position2 >= textWidth2) {
         position2 = position2 - textWidth2;
       }
-      
+
       scrollContainer2.style.transform = `translateX(-${position2}px)`;
       animationFrameId2 = requestAnimationFrame(animate2);
     };

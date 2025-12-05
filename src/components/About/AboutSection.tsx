@@ -36,15 +36,9 @@ const AboutSection = () => {
             </div>
 
             {/* Right Side - Description */}
-            <div className="lg:text-right">
-              <p className="text-xs leading-relaxed text-[#FF7A00] xs:text-sm md:text-base lg:text-lg 2xl:text-xl">
-                Bizon Digital is a leading digital marketing agency dedicated to transforming
-              </p>
-              <p className="text-sm leading-relaxed text-[#FF7A00] md:text-base">
-                businesses through innovative strategies and data-driven solutions that deliver
-              </p>
-              <p className="text-sm leading-relaxed text-[#FF7A00] md:text-base">
-                measurable results and accelerate growth in the digital landscape.
+            <div className="w-full lg:w-1/2">
+              <p className="text-sm leading-relaxed text-[#FF7A00] xs:text-sm md:text-base lg:text-lg 2xl:text-xl text-left lg:text-right max-w-lg lg:ml-auto">
+                Bizon Digital is a leading digital marketing agency dedicated to transforming businesses through innovative strategies and data-driven solutions that deliver measurable results and accelerate growth in the digital landscape.
               </p>
             </div>
           </div>

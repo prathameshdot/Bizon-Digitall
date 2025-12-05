@@ -2,6 +2,7 @@
 
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import GetQuoteModal from "@/components/GetQuoteModal";
 import ScrollToTop from "@/components/ScrollToTop";
 import { Poppins, Syne } from "next/font/google";
 import "../styles/index.css";
@@ -35,6 +36,7 @@ export default function RootLayout({
       <body className={`bg-[#FCFCFC] dark:bg-black ${poppins.className} ${syne.variable}`}>
         <Providers>
           <Header />
+          <GetQuoteModal />
           {children}
           <Footer />
           <ScrollToTop />

@@ -2,15 +2,15 @@ import { Brand } from "@/types/brand";
 import Image from "next/image";
 import brandsData from "./brandsData";
 
-const Brands = () => {
+const Brands = ({ data }: { data?: { items?: { name: string; logo: string }[] } }) => {
   return (
     <section className="pt-16">
       <div className="container">
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4">
             <div className="flex flex-wrap items-center justify-center rounded-xs bg-gray-light px-8 py-8 dark:bg-gray-dark sm:px-10 md:px-[50px] md:py-[40px] xl:p-[50px] 2xl:px-[70px] 2xl:py-[60px]">
-              {brandsData.map((brand) => (
-                <SingleBrand key={brand.id} brand={brand} />
+              {(data?.items || brandsData).map((brand: any, idx: number) => (
+                <SingleBrand key={brand.id || idx} brand={{ href: brand.href || '#', image: brand.logo || brand.image || '/images/brands/brand-01.png', imageLight: brand.logo || brand.imageLight || brand.logo || '/images/brands/brand-01.png', name: brand.name || `Brand ${idx + 1}` }} />
               ))}
             </div>
           </div>

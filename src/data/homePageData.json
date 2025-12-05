@@ -1,0 +1,159 @@
+{
+  "hero": {
+    "title": "Grow With BizOn Digital",
+    "tagline": "We build digital experiences that convert",
+    "subtitle": "Full-service digital marketing & web development for ambitious brands",
+    "description": "We combine strategy, design and performance marketing to help your business attract, convert and retain customers. From crafted websites and e‑commerce stores to data-driven ad campaigns and SEO, we deliver measurable growth.",
+    "backgroundImage": "/images/hero/hero-bg.png",
+    "heroImage": "/images/hero/Group 9213.png",
+    "ctaPrimary": {
+      "text": "Get a Free Quote",
+      "action": "openGetQuote"
+    },
+    "ctaSecondary": {
+      "text": "See Our Work",
+      "link": "/portfolio"
+    }
+  },
+
+  "features": {
+    "title": "What we offer",
+    "subtitle": "End-to-end services to accelerate growth",
+    "items": [
+      {
+        "id": "strategy",
+        "icon": "/images/hero/strategy-icon.svg",
+        "title": "Strategy & Research",
+        "description": "Audience research, market analysis and conversion-driven roadmaps to guide every campaign.",
+        "note": "Start of project; recommended 2–4 week discovery phase"
+      },
+      {
+        "id": "design",
+        "icon": "/images/hero/design-icon.svg",
+        "title": "UX & Design",
+        "description": "Beautiful, usable interfaces that keep users engaged and reduce friction.",
+        "note": "Figma source files provided with handoff"
+      },
+      {
+        "id": "development",
+        "icon": "/images/hero/dev-icon.svg",
+        "title": "Web & E‑commerce",
+        "description": "Fast, accessible websites and online stores built to convert and scale.",
+        "note": "Next.js + headless CMS recommended" 
+      },
+      {
+        "id": "growth",
+        "icon": "/images/hero/growth-icon.svg",
+        "title": "Performance Marketing",
+        "description": "PPC, paid social and programmatic campaigns optimized for ROI and LTV.",
+        "note": "Budgeted campaigns require minimum ad spend depending on region"
+      }
+    ]
+  },
+
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Choose the services you need",
+    "items": [
+      { "name": "Web Development", "icon": "/images/services/web-dev.svg", "description": "Responsive sites, PWAs and custom integrations" },
+      { "name": "E‑Commerce", "icon": "/images/services/ecommerce.svg", "description": "Shopify, BigCommerce, or custom storefronts" },
+      { "name": "SEO", "icon": "/images/services/seo.svg", "description": "Technical SEO, content strategy and link building" },
+      { "name": "Paid Advertising", "icon": "/images/services/paid-ads.svg", "description": "Google, Meta, and programmatic campaigns" },
+      { "name": "Social Media", "icon": "/images/services/social.svg", "description": "Organic and paid social strategies that grow communities" },
+      { "name": "Branding", "icon": "/images/services/branding.svg", "description": "Identity, messaging and visual systems" },
+      { "name": "Email Marketing", "icon": "/images/services/email.svg", "description": "Lifecycle and promotional campaigns with measurement" },
+      { "name": "Analytics & CRO", "icon": "/images/services/analytics.svg", "description": "Measurement plans, dashboards and conversion optimization" }
+    ]
+  },
+
+  "featuredWork": {
+    "title": "Featured Case Study",
+    "subtitle": "Real results, real growth",
+    "items": [
+      {
+        "id": "case-1",
+        "title": "E‑commerce Growth for Acme Co.",
+        "summary": "50% increase in revenue in 6 months via landing page optimization and targeted paid campaigns.",
+        "image": "/images/brands/featured-1.png",
+        "link": "/work/acme"
+      }
+    ]
+  },
+
+  "brands": {
+    "title": "Trusted by",
+    "items": [
+      { "name": "Brand A", "logo": "/images/brands/brand-01.png" },
+      { "name": "Brand B", "logo": "/images/brands/brand-02.png" },
+      { "name": "Brand C", "logo": "/images/brands/brand-03.png" },
+      { "name": "Brand D", "logo": "/images/brands/brand-04.png" }
+    ]
+  },
+
+  "stats": {
+    "title": "Our Impact",
+    "items": [
+      { "number": "2,500+", "label": "Happy Clients", "description": "Organizations we've helped grow" },
+      { "number": "10+", "label": "Years Experience", "description": "Industry experience across teams" },
+      { "number": "1,000+", "label": "Campaigns", "description": "Optimized for performance" },
+      { "number": "95%", "label": "Retention", "description": "Long-term partner relationships" }
+    ]
+  },
+
+  "testimonials": {
+    "title": "Client Testimonials",
+    "items": [
+      {
+        "quote": "BizOn Digital transformed our online store — revenue grew 3x in four months.",
+        "author": "Priya Sharma",
+        "role": "Head of eCommerce, RetailCo",
+        "avatar": "/images/testimonials/auth-01.png"
+      },
+      {
+        "quote": "Their strategy gave us predictable, profitable lead flow.",
+        "author": "Carlos M.",
+        "role": "Marketing Director, SaaSCo",
+        "avatar": "/images/testimonials/auth-02.png"
+      }
+    ]
+  },
+
+  "blogPreview": {
+    "title": "From the Blog",
+    "subtitle": "Insights, trends and actionable marketing advice",
+    "items": [
+      { "title": "How to scale Shopify stores in 2025", "slug": "scale-shopify-2025", "image": "/images/blog/hero-01.png" },
+      { "title": "PPC creative that drives ROAS", "slug": "ppc-creative-roas", "image": "/images/blog/hero-02.png" }
+    ]
+  },
+
+  "newsletter": {
+    "title": "Stay in the loop",
+    "subtitle": "Weekly tips on growth, e‑commerce & performance marketing",
+    "placeholder": "Enter your email",
+    "buttonText": "Subscribe"
+  },
+
+  "ctaBanner": {
+    "title": "Ready to grow your revenue?",
+    "description": "Book a free discovery call and get a custom growth plan.",
+    "buttonText": "Book a Call",
+    "buttonAction": "openGetQuote"
+  },
+
+  "footerHighlights": {
+    "address": "169 Madison Ave STE 2945, New York, NY 10016",
+    "phone": "+1 (516) 440-5037",
+    "email": "info@bizondigital.com",
+    "social": [
+      { "name": "LinkedIn", "url": "https://linkedin.com/company/bizondigital" },
+      { "name": "Twitter", "url": "https://twitter.com/bizondigital" },
+      { "name": "Instagram", "url": "https://instagram.com/bizondigital" }
+    ]
+  },
+
+  "meta": {
+    "lastUpdated": "2025-12-05",
+    "notes": "This file provides structured content for the home page. Replace logo/image paths with production assets as required. Use `ctaPrimary.action: 'openGetQuote'` to wire the hero button to the modal event. Icons referenced in `features.items.icon` should exist under `public/images/hero` or be replaced with inline SVGs."
+  }
+}

@@ -32,18 +32,27 @@ const testimonialData: Testimonial[] = [
   },
 ];
 
-const Testimonials = () => {
+const Testimonials = ({ data }: { data?: { title?: string; items?: any[] } }) => {
+  const items = data?.items?.map((it: any, idx: number) => ({
+    id: it.id ?? idx,
+    name: it.author || it.name || `Client ${idx + 1}`,
+    designation: it.role || it.role || '',
+    content: it.quote || it.content || '',
+    image: it.avatar || it.image || '/images/testimonials/auth-01.png',
+    star: it.star || 5
+  })) || testimonialData;
+
   return (
     <section className="dark:bg-bg-color-dark bg-gray-light relative z-10 py-16 md:py-20 lg:py-28">
       <div className="container">
         <SectionTitle
-          title="What Our Users Says"
-          paragraph="There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form."
+          title={data?.title || 'What Our Users Says'}
+          paragraph={data?.subtitle || 'There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form.'}
           center
         />
 
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
-          {testimonialData.map((testimonial) => (
+          {items.map((testimonial) => (
             <SingleTestimonial key={testimonial.id} testimonial={testimonial} />
           ))}
         </div>
