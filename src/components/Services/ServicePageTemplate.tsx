@@ -100,7 +100,7 @@ const ServicePageTemplate: React.FC<ServicePageTemplateProps> = ({ serviceData }
             </div>
 
             {/* Right Image */}
-            <div className="w-full lg:w-1/2 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+            <div className="w-full flex items-center justify-center px-4 sm:px-6 lg:px-8">
               <div className="relative w-full h-full max-w-[600px] py-8 sm:py-12 lg:py-16">
                 <div className="relative w-full h-[450px] sm:h-[550px] lg:h-[600px]">
                   <Image

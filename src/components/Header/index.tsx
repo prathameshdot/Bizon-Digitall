@@ -22,13 +22,21 @@ const Header = () => {
       setSticky(false);
     }
   };
+  
   useEffect(() => {
     window.addEventListener("scroll", handleStickyNavbar);
-  });
+    
+    // Check initial scroll position
+    handleStickyNavbar();
+    
+    return () => {
+      window.removeEventListener("scroll", handleStickyNavbar);
+    };
+  }, []);
 
   // submenu handler
   const [openIndex, setOpenIndex] = useState(-1);
-  const handleSubmenu = (index) => {
+  const handleSubmenu = (index: number) => {
     if (openIndex === index) {
       setOpenIndex(-1);
     } else {
@@ -40,85 +48,114 @@ const Header = () => {
   
   // Animated slider
   const [sliderStyle, setSliderStyle] = useState<{ left: number; width: number }>({ left: 0, width: 0 });
+  const [isMounted, setIsMounted] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
-  const logoRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const updateSlider = () => {
-      if (!navRef.current || !logoRef.current) return;
-      // Check if current path is a service subpage (starts with /services/)
-      const isServiceSubpage = usePathName.startsWith('/services/');
-      // Treat blog-details and any /blog* paths as Blog page
-      const isBlogPage = usePathName.startsWith('/blog') || usePathName.startsWith('/blog-details');
+    setIsMounted(true);
+  }, []);
 
-      let activeIndex;
-      if (isServiceSubpage) {
-        // Find the Services menu item index (the one without a path but has submenu)
-        activeIndex = menuData.findIndex(item => !item.path && item.submenu?.some(sub => sub.path.startsWith('/services/')));
-      } else if (isBlogPage) {
-        // Find the Blogs menu item index
-        activeIndex = menuData.findIndex(item => item.path === '/blog');
-      } else {
-        activeIndex = menuData.findIndex(item => item.path === usePathName);
-      }
+  // Helper function to get slider style object
+  const getSliderStyle = () => ({
+    left: sliderStyle.left,
+    width: sliderStyle.width,
+    top: 12,
+    bottom: 12,
+    zIndex: 1,
+  });
+
+  useEffect(() => {
+    if (!isMounted) return;
+    
+    const updateSlider = () => {
+      if (!navRef.current) return;
       
-      const navRect = navRef.current.getBoundingClientRect();
-      
-      // Calculate padding offset (24px = 6 * 4px in Tailwind)
-      const padding = 24;
-      
-      // For home page or when no match, cover logo + Home menu item
-      const homeIndex = 0; // Home is always first in menuData
-      const targetIndex = (usePathName === "/" || activeIndex === -1) ? homeIndex : activeIndex;
-      
-      const activeLink = navRef.current.querySelector(`[data-index="${targetIndex}"]`);
-      if (activeLink) {
-        const linkRect = activeLink.getBoundingClientRect();
+      // Wait for DOM to be fully rendered
+      requestAnimationFrame(() => {
+        if (!navRef.current) return;
         
-        // Start from padding (left edge)
-        const startX = padding;
-        // End at the right edge of the active menu item
-        let endX = linkRect.right - navRect.left;
-        
-        // If there's a next menu item, extend halfway to it
-        const nextIndex = targetIndex + 1;
-        if (nextIndex < menuData.length) {
-          const nextLink = navRef.current.querySelector(`[data-index="${nextIndex}"]`);
-          if (nextLink) {
-            const nextLinkRect = nextLink.getBoundingClientRect();
-            const nextLinkLeft = nextLinkRect.left - navRect.left;
-            
-            // Calculate halfway distance between current right and next left
-            const halfwayPoint = endX + ((nextLinkLeft - endX) / 2);
-            endX = halfwayPoint;
-          }
+        // Check if current path is a service subpage (starts with /services/)
+        const isServiceSubpage = usePathName.startsWith('/services/');
+        // Treat blog-details and any /blog* paths as Blog page
+        const isBlogPage = usePathName.startsWith('/blog') || usePathName.startsWith('/blog-details');
+
+        let activeIndex;
+        if (isServiceSubpage) {
+          // Find the Services menu item index (the one without a path but has submenu)
+          activeIndex = menuData.findIndex(item => !item.path && item.submenu?.some(sub => sub.path?.startsWith('/services/')));
+        } else if (isBlogPage) {
+          // Find the Blogs menu item index
+          activeIndex = menuData.findIndex(item => item.path === '/blog');
         } else {
-          // If it's the last item, just add padding
-          endX += padding;
+          activeIndex = menuData.findIndex(item => item.path === usePathName);
         }
         
-        setSliderStyle({
-          left: startX,
-          width: endX - startX,
-        });
-      }
+        const navRect = navRef.current.getBoundingClientRect();
+        
+        // Calculate padding offset (24px = 6 * 4px in Tailwind)
+        const padding = 24;
+        
+        // For home page or when no match, cover logo + Home menu item
+        const homeIndex = 0; // Home is always first in menuData
+        const targetIndex = (usePathName === "/" || activeIndex === -1) ? homeIndex : activeIndex;
+        
+        const activeLink = navRef.current.querySelector(`[data-index="${targetIndex}"]`);
+        if (activeLink) {
+          const linkRect = activeLink.getBoundingClientRect();
+          
+          // Start from padding (left edge)
+          const startX = padding;
+          // End at the right edge of the active menu item
+          let endX = linkRect.right - navRect.left;
+          
+          // If there's a next menu item, extend halfway to it
+          const nextIndex = targetIndex + 1;
+          if (nextIndex < menuData.length) {
+            const nextLink = navRef.current.querySelector(`[data-index="${nextIndex}"]`);
+            if (nextLink) {
+              const nextLinkRect = nextLink.getBoundingClientRect();
+              const nextLinkLeft = nextLinkRect.left - navRect.left;
+              
+              // Calculate halfway distance between current right and next left
+              const halfwayPoint = endX + ((nextLinkLeft - endX) / 2);
+              endX = halfwayPoint;
+            }
+          } else {
+            // If it's the last item, just add padding
+            endX += padding;
+          }
+          
+          setSliderStyle({
+            left: startX,
+            width: endX - startX,
+          });
+        }
+      });
     };
 
     // Update on mount and path change
     updateSlider();
     
     // Update on resize
-    window.addEventListener('resize', updateSlider);
+    const handleResize = () => {
+      requestAnimationFrame(updateSlider);
+    };
     
-    // Small delay to ensure DOM is ready
-    const timeout = setTimeout(updateSlider, 100);
+    window.addEventListener('resize', handleResize);
+    
+    // Multiple timeouts to ensure proper positioning after page load
+    const timeouts = [
+      setTimeout(updateSlider, 50),
+      setTimeout(updateSlider, 150),
+      setTimeout(updateSlider, 300)
+    ];
     
     return () => {
-      window.removeEventListener('resize', updateSlider);
-      clearTimeout(timeout);
+      window.removeEventListener('resize', handleResize);
+      timeouts.forEach(timeout => clearTimeout(timeout));
     };
-  }, [usePathName]);
-
+  }, [usePathName, isMounted]);
+   
   // Determine if a menu item should be black (inside white slider)
   const getMenuItemColor = (menuPath: string, isServicesMenu: boolean = false) => {
     // Check if current path is a service subpage
@@ -165,26 +202,28 @@ const Header = () => {
   return (
     <>
       <header
-        className="header fixed top-0 left-0 z-50 w-full pt-2 px-3 sm:pt-4 sm:px-4 md:px-6 lg:pt-6 lg:px-8"
+        className="header fixed top-0 left-0 z-50 w-full pt-2 px-2 xs:px-3 sm:pt-4 sm:px-4 md:px-6 lg:pt-6 lg:px-8"
       >
         <div className="container mx-auto">
-          <div className="relative bg-black/95 backdrop-blur-sm rounded-full px-3 py-3 sm:px-5 sm:py-6 lg:px-6" ref={navRef}>
+          <div className="relative bg-black/95 backdrop-blur-sm rounded-full px-2 py-2 xs:px-3 xs:py-3 sm:px-5 sm:py-4 md:py-6 lg:px-6" ref={navRef}>
             {/* Animated White Slider with padding - Tablet & Desktop */}
-            <div 
-              className="absolute bg-white rounded-full transition-all duration-500 ease-in-out hidden md:block"
-              style={{
-                left: `${sliderStyle.left}px`,
-                width: `${sliderStyle.width}px`,
-                top: '12px',
-                bottom: '12px',
-                zIndex: 1,
-              }}
-            />
+            {isMounted && (
+              <div 
+                className="absolute bg-white rounded-full transition-all duration-500 ease-in-out hidden md:block"
+                style={{
+                  left: `${sliderStyle.left}px`,
+                  width: `${sliderStyle.width}px`,
+                  top: '21px',
+                  bottom: '20px',
+                  zIndex: 1,
+                }}
+              />
+            )}
             
             {/* Content */}
             <div className="relative z-10 flex items-center justify-between gap-2">
               {/* Logo - Left Side */}
-              <div className="w-24 sm:w-28 md:w-32 lg:w-40 max-w-full pl-4 pr-2 sm:pl-5 sm:pr-3 md:px-4 lg:px-6 flex-shrink-0" ref={logoRef}>
+              <div className="w-20 xs:w-24 sm:w-28 md:w-32 lg:w-40 max-w-full pl-2 pr-1 xs:pl-4 xs:pr-2 sm:pl-5 sm:pr-3 md:px-4 lg:px-6 flex-shrink-0">
                 <Link
                   href="/"
                   className="header-logo block w-full"
@@ -194,18 +233,20 @@ const Header = () => {
                     alt="logo"
                     width={140}
                     height={30}
-                    className="w-full"
+                    className="w-full h-auto"
+                    style={{marginLeft: "10px"}}
+                    priority
                   />
                 </Link>
               </div>
 
               {/* Menu Items - Right Side */}
-              <div className="flex items-center gap-2 sm:gap-3 md:gap-3 lg:gap-4 xl:gap-6">
+              <div className="flex items-center gap-1 xs:gap-2 sm:gap-3 md:gap-3 lg:gap-4 xl:gap-6">
                 <button
                   onClick={navbarToggleHandler}
                   id="navbarToggler"
                   aria-label="Mobile Menu"
-                  className="block md:hidden z-20 p-2"
+                  className="block md:hidden z-20 p-1 xs:p-2"
                 >
                   <span
                     className={`relative my-1.5 block h-0.5 w-[24px] bg-white transition-all duration-300 ${
@@ -225,7 +266,7 @@ const Header = () => {
                 </button>
                 <nav
                   id="navbarCollapse"
-                  className={`navbar absolute left-3 right-3 top-[70px] z-30 rounded-2xl bg-black border-2 border-white px-6 py-6 duration-300 md:visible md:static md:w-auto md:border-none md:!bg-transparent md:p-0 md:opacity-100 md:top-auto ${
+                  className={`navbar absolute left-2 right-2 xs:left-3 xs:right-3 top-[60px] xs:top-[70px] z-30 rounded-2xl bg-black border-2 border-white px-4 py-4 xs:px-6 xs:py-6 duration-300 md:visible md:static md:w-auto md:border-none md:!bg-transparent md:p-0 md:opacity-100 md:top-auto ${
                     navbarOpen
                       ? "visible opacity-100"
                       : "invisible opacity-0 md:visible md:opacity-100"
@@ -330,7 +371,7 @@ const Header = () => {
                 <button
                   type="button"
                   onClick={() => window.dispatchEvent(new CustomEvent('openGetQuote'))}
-                  className="hidden md:inline-block rounded-full bg-[#FF7A00] hover:bg-[#e66d00] px-3 py-2 md:px-4 md:py-2.5 lg:px-4 lg:py-2.5 xl:px-8 xl:py-3 text-xs md:text-sm xl:text-base font-semibold text-white transition-all duration-300 shadow-lg hover:shadow-xl z-10 relative whitespace-nowrap"
+                  className="hidden md:inline-block rounded-full bg-[#FF7A00] hover:bg-[#e66d00] px-2 py-1.5 md:px-4 md:py-2.5 lg:px-4 lg:py-2.5 xl:px-8 xl:py-3 text-xs md:text-sm xl:text-base font-semibold text-white transition-all duration-300 shadow-lg hover:shadow-xl z-10 relative whitespace-nowrap"
                 >
                   Get Quotes
                 </button>
