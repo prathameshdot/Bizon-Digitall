@@ -121,6 +121,7 @@ const GetQuoteModal = () => {
         </div>
 
         {/* Trust bar: short credibility items to build trust */}
+        {/* <div className="px-4 pt-4"> */}
         <div className="px-4 pt-4">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-3">
