@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
-const ServicesSection = () => {
+const ServicesSection = ({ data }: { data?: { title?: string; items?: any[] } }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -17,50 +17,76 @@ const ServicesSection = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  const services = [
+  const defaultBgColors = ['bg-black','bg-[#FF7A00]','bg-gray-300','bg-black','bg-[#FF7A00]','bg-gray-300'];
+
+  // Canonical services list required by the user
+  const canonicalServices = [
     {
-      title: "SOCIAL MEDIA\nMARKETING",
-      subtitle: "Service 01",
-      description: "Build your brand presence and engage with your audience across all major social media platforms. We create compelling content strategies that drive engagement, increase followers, and convert social interactions into business results.",
-      bgColor: "bg-black",
-      link: "/services/social-media"
+      key: 'web-development',
+      title: 'WEB DEVELOPMENT',
+      name: 'Web Development',
+      description:
+        'Custom, high-performance websites and web apps built for speed, accessibility and conversions. Includes integrations, CMS and ongoing maintenance.',
+      link: '/services/web-development'
     },
     {
-      title: "SEARCH ENGINE\nOPTIMIZATION",
-      subtitle: "Service 02",
-      description: "Improve your website's visibility and organic search rankings with our comprehensive SEO strategies. From keyword research to technical optimization, we ensure your business appears at the top of search results when it matters most.",
-      bgColor: "bg-[#FF7A00]",
-      link: "/services/seo"
+      key: 'seo-services',
+      title: 'SEO SERVICES',
+      name: 'SEO Services',
+      description:
+        'Technical SEO, on-page optimization, content strategy and link building to improve organic visibility and drive qualified traffic.',
+      link: '/services/seo'
     },
     {
-      title: "WEB DESIGN &\nDEVELOPMENT",
-      subtitle: "Service 03",
-      description: "Create a stunning, user-friendly website that converts visitors into customers. Our team designs and develops responsive websites optimized for performance, SEO, and user experience across all devices.",
-      bgColor: "bg-gray-300",
-      link: "/services/web-development"
+      key: 'paid-advertising',
+      title: 'PAID ADVERTISING',
+      name: 'Paid Advertising',
+      description:
+        'Data-driven PPC and paid social campaigns focused on measurable ROI, audience targeting, and creative testing across channels.',
+      link: '/services/paid-ads'
     },
     {
-      title: "PAY-PER-CLICK\nADVERTISING",
-      subtitle: "Service 04",
-      description: "Maximize your ROI with targeted PPC campaigns across Google Ads, social media platforms, and display networks. We create data-driven campaigns that reach your ideal customers at the right time with the right message.",
-      bgColor: "bg-black",
-      link: "/services/paid-ads"
+      key: 'social-media',
+      title: 'SOCIAL MEDIA MARKETING',
+      name: 'Social Media Marketing',
+      description:
+        'Organic and paid social strategies, content production, community management and growth campaigns to build brand presence.',
+      link: '/services/social-media'
     },
     {
-      title: "ECOMMERCE\nSOLUTIONS",
-      subtitle: "Service 05",
-      description: "Build powerful online stores that drive sales and provide exceptional shopping experiences. From product catalogs to secure checkout, we create eCommerce solutions that help you sell successfully online.",
-      bgColor: "bg-[#FF7A00]",
-      link: "/services/ecommerce"
+      key: 'ecommerce',
+      title: 'E-COMMERCE SOLUTIONS',
+      name: 'E-Commerce Solutions',
+      description:
+        'Full e-commerce builds, platform selection (Shopify, BigCommerce), conversion optimization, and merchandising strategies to scale sales.',
+      link: '/services/ecommerce'
     },
     {
-      title: "BRANDING &\nIDENTITY",
-      subtitle: "Service 06",
-      description: "Create a distinctive brand identity that stands out and resonates with your audience. From logo design to complete brand systems, we craft visual identities that tell your story and build lasting connections.",
-      bgColor: "bg-gray-300",
-      link: "/services/branding"
+      key: 'branding',
+      title: 'BRAND IDENTITY & DESIGN',
+      name: 'Brand Identity & Design',
+      description:
+        'Brand strategy, identity systems, visual language and creative direction to help your brand stand out and connect with customers.',
+      link: '/services/branding'
     }
   ];
+
+  // Build services by taking JSON overrides if present, otherwise use canonical data.
+  const services = canonicalServices.map((canon, idx) => {
+    const override = data?.items?.find((it: any) => {
+      if (!it) return false;
+      const name = (it.name || it.title || '').toString().toLowerCase();
+      return name.includes(canon.key.replace('-', '')) || name.includes(canon.name.toLowerCase());
+    });
+
+    return {
+      title: (override?.title || canon.title).toString().toUpperCase(),
+      subtitle: override?.name || canon.name,
+      description: override?.description || canon.description,
+      bgColor: override?.bgColor || defaultBgColors[idx % defaultBgColors.length],
+      link: override?.link || canon.link
+    };
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -125,7 +151,7 @@ const ServicesSection = () => {
             className="mb-6 xs:mb-8 sm:mb-10 md:mb-12 text-2xl font-bold text-[#FF7A00] xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl"
             style={{ fontFamily: 'var(--font-syne), sans-serif' }}
           >
-            How Can We Help You?
+            {data?.title || 'How Can We Help You?'}
           </h2>
 
           {/* Cards Stack - One by One on Scroll */}
@@ -207,9 +233,9 @@ const ServicesSection = () => {
                             {service.title.replace('\n', ' ')}
                           </h3>
                           <p 
-                            className={`text-xs xs:text-sm sm:text-base md:text-base lg:text-lg leading-relaxed ${
+                            className={`text-sm sm:text-base md:text-lg lg:text-lg leading-relaxed ${
                               service.bgColor === 'bg-gray-300' ? 'text-gray-700' : 'text-gray-300'
-                            }`}
+                            } min-h-[4.5rem] md:min-h-[6rem]`}
                           >
                             {service.description}
                           </p>

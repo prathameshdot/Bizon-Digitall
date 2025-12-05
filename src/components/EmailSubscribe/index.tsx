@@ -2,8 +2,11 @@
 
 import { useState } from "react";
 
-const EmailSubscribe = () => {
+const EmailSubscribe = ({ data }: { data?: { title?: string; subtitle?: string; placeholder?: string; buttonText?: string } }) => {
   const [email, setEmail] = useState("");
+  const stripHtml = (s?: string) => (s ? s.replace(/<[^>]*>/g, '') : '');
+  const safeTitle = stripHtml(data?.title) || 'Have an Awsome Project Idea?';
+  const safeSubtitle = stripHtml(data?.subtitle) || "Let's Discuss";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -17,9 +20,9 @@ const EmailSubscribe = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto text-center">
           {/* Heading */}
-          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold text-gray-900 mb-8 sm:mb-10 md:mb-12">
-            Have an Awsome Project Idea?{" "}
-            <span className="text-[#FF7A00]">Let&apos;s Discuss</span>
+          <h2 className="text-3xl xs:text-4xl sm:text-4xl md:text-5xl lg:text-5xl font-bold text-gray-900 mb-6 sm:mb-8 md:mb-10">
+            {safeTitle} {" "}
+            <span className="text-[#FF7A00]">{safeSubtitle}</span>
           </h2>
 
           {/* Email Input Form */}
@@ -48,7 +51,7 @@ const EmailSubscribe = () => {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter Email Address"
+                  placeholder={data?.placeholder || 'Enter Email Address'}
                   required
                   className="flex-1 min-w-0 px-2 sm:px-4 md:px-6 py-2 text-xs sm:text-sm md:text-base text-gray-900 placeholder-gray-500 bg-transparent focus:outline-none"
                 />
@@ -58,7 +61,7 @@ const EmailSubscribe = () => {
                   type="submit"
                   className="flex-shrink-0 bg-[#FF7A00] hover:bg-[#E66D00] text-white font-semibold px-3 sm:px-6 md:px-8 lg:px-10 py-2 sm:py-2.5 md:py-3 lg:py-3.5 rounded-full transition-colors duration-300 text-xs sm:text-sm md:text-base"
                 >
-                  Send
+                    {data?.buttonText || 'Send'}
                 </button>
               </div>
             </div>

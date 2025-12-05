@@ -19,6 +19,7 @@ import ScrollUp from "@/components/Common/ScrollUp";
 import Contact from "@/components/Contact";
 import Features from "@/components/Features";
 import Hero from "@/components/Hero";
+import homePageData from '@/data/homePageData.json';
 import Pricing from "@/components/Pricing";
 import Testimonials from "@/components/Testimonials";
 import Video from "@/components/Video";
@@ -34,9 +35,9 @@ export default function Home() {
   return (
     <>
       <ScrollUp />
-      <Hero />
+      <Hero data={homePageData.hero} />
       <AboutSection />
-      <ServicesSection />
+      <ServicesSection data={homePageData.services} />
       <ClientReviews />
       <MarketingScroll />
       <SocialMediaSection />
@@ -45,8 +46,8 @@ export default function Home() {
       <Leadership />
       <CTA />
       <WorkingProcess />
-      <EmailSubscribe />
-      <CTABanner />
+      <EmailSubscribe data={homePageData.newsletter} />
+      <CTABanner data={homePageData.ctaBanner} />
       <FAQ />
       {/* <Features />
       <Video />

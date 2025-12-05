@@ -69,10 +69,10 @@ const FAQ = () => {
         <div className="max-w-4xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-10 sm:mb-12 md:mb-16">
-            <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-black mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-black mb-4">
               Frequently Asked Questions
             </h2>
-            <p className="text-base sm:text-lg text-[#FF7A00] max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base text-[#FF7A00] max-w-2xl mx-auto">
               Find questions and answers related to the design system, purchase, updates, and support.
             </p>
           </div>
@@ -134,7 +134,7 @@ const FAQ = () => {
                 {openIndex === index && (
                   <div className="px-5 sm:px-6 pb-5 sm:pb-6">
                     <div className="pl-9 sm:pl-10">
-                      <p className="text-sm sm:text-base text-gray-700 leading-relaxed whitespace-pre-line">
+                      <p className="text-sm sm:text-base md:text-base text-gray-700 leading-relaxed whitespace-pre-line">
                         {faq.answer}
                       </p>
                     </div>

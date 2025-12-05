@@ -46,14 +46,18 @@ const Header = () => {
   useEffect(() => {
     const updateSlider = () => {
       if (!navRef.current || !logoRef.current) return;
-      
       // Check if current path is a service subpage (starts with /services/)
       const isServiceSubpage = usePathName.startsWith('/services/');
-      
+      // Treat blog-details and any /blog* paths as Blog page
+      const isBlogPage = usePathName.startsWith('/blog') || usePathName.startsWith('/blog-details');
+
       let activeIndex;
       if (isServiceSubpage) {
         // Find the Services menu item index (the one without a path but has submenu)
         activeIndex = menuData.findIndex(item => !item.path && item.submenu?.some(sub => sub.path.startsWith('/services/')));
+      } else if (isBlogPage) {
+        // Find the Blogs menu item index
+        activeIndex = menuData.findIndex(item => item.path === '/blog');
       } else {
         activeIndex = menuData.findIndex(item => item.path === usePathName);
       }
@@ -119,31 +123,41 @@ const Header = () => {
   const getMenuItemColor = (menuPath: string, isServicesMenu: boolean = false) => {
     // Check if current path is a service subpage
     const isServiceSubpage = usePathName.startsWith('/services/');
-    
+    // Treat blog details and /blog* as blog page
+    const isBlogPage = usePathName.startsWith('/blog') || usePathName.startsWith('/blog-details');
+
     // If we're on a service subpage and this is the Services menu, make it black
     if (isServiceSubpage && isServicesMenu) {
       return "text-black";
     }
-    
+
+    // If we're on a blog page and this is the Blog menu, make it black
+    if (isBlogPage && menuPath === '/blog') {
+      return "text-black";
+    }
+
     const currentIndex = menuData.findIndex(item => {
       if (isServiceSubpage) {
         return !item.path && item.submenu?.some(sub => sub.path.startsWith('/services/'));
       }
+      if (isBlogPage) {
+        return item.path === '/blog';
+      }
       return item.path === usePathName;
     });
-    
+
     const itemIndex = menuData.findIndex(item => item.path === menuPath);
-    
+
     // If on home page and this is home, make it black
     if (usePathName === "/" && menuPath === "/") {
       return "text-black";
     }
-    
+
     // If item is at or before the selected item, make it black
     if (currentIndex !== -1 && itemIndex <= currentIndex) {
       return "text-black";
     }
-    
+
     // Otherwise, keep it white
     return "text-white/70 hover:text-white";
   };
@@ -151,10 +165,10 @@ const Header = () => {
   return (
     <>
       <header
-        className="header fixed top-0 left-0 z-40 w-full pt-2 px-3 sm:pt-4 sm:px-4 md:px-6 lg:pt-6 lg:px-8"
+        className="header fixed top-0 left-0 z-50 w-full pt-2 px-3 sm:pt-4 sm:px-4 md:px-6 lg:pt-6 lg:px-8"
       >
         <div className="container mx-auto">
-          <div className="relative bg-black rounded-full px-3 py-3 sm:px-5 sm:py-6 lg:px-6" ref={navRef}>
+          <div className="relative bg-black/95 backdrop-blur-sm rounded-full px-3 py-3 sm:px-5 sm:py-6 lg:px-6" ref={navRef}>
             {/* Animated White Slider with padding - Tablet & Desktop */}
             <div 
               className="absolute bg-white rounded-full transition-all duration-500 ease-in-out hidden md:block"
@@ -222,9 +236,16 @@ const Header = () => {
                       // Check if current path matches any submenu item OR if it's a service subpage
                       const isServiceSubpage = usePathName.startsWith('/services/');
                       const isServicesMenu = !menuItem.path && menuItem.submenu?.some(sub => sub.path.startsWith('/services/'));
+                      const isBlogPage = usePathName.startsWith('/blog') || usePathName.startsWith('/blog-details');
                       const isSubmenuActive = menuItem.submenu?.some(
                         (subItem) => usePathName === subItem.path
                       ) || (isServiceSubpage && isServicesMenu);
+
+                      const menuIsActive = (() => {
+                        if (isServiceSubpage && isServicesMenu) return true;
+                        if (menuItem.path === '/blog' && isBlogPage) return true;
+                        return menuItem.path === usePathName;
+                      })();
                       
                       return (
                       <li key={index} className="group relative">
@@ -234,7 +255,7 @@ const Header = () => {
                             data-index={index}
                             onClick={() => setNavbarOpen(false)}
                             className={`relative flex py-3 px-4 text-base font-medium rounded-lg transition-colors duration-300 md:px-2 md:py-3 md:rounded-none md:transition-colors md:duration-500 lg:px-2 xl:px-4 whitespace-nowrap ${
-                              usePathName === menuItem.path
+                              menuIsActive
                                 ? "bg-white text-black md:bg-transparent md:text-black"
                                 : `text-white hover:bg-white/10 md:hover:bg-transparent md:${getMenuItemColor(menuItem.path)}`
                             }`}
@@ -292,23 +313,27 @@ const Header = () => {
                   
                   {/* Mobile Get Quotes Button */}
                   <div className="mt-4 md:hidden">
-                    <Link
-                      href="/contact"
-                      onClick={() => setNavbarOpen(false)}
-                      className="block text-center rounded-full bg-[#FF7A00] hover:bg-[#e66d00] px-8 py-3 text-base font-semibold text-white transition-all duration-300 shadow-lg"
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setNavbarOpen(false);
+                        window.dispatchEvent(new CustomEvent('openGetQuote'));
+                      }}
+                      className="block w-full text-center rounded-full bg-[#FF7A00] hover:bg-[#e66d00] px-8 py-3 text-base font-semibold text-white transition-all duration-300 shadow-lg"
                     >
                       Get Quotes
-                    </Link>
+                    </button>
                   </div>
                 </nav>
                 
                 {/* Tablet & Desktop Get Quotes Button */}
-                <Link
-                  href="/contact"
-                  className="hidden md:block rounded-full bg-[#FF7A00] hover:bg-[#e66d00] px-3 py-2 md:px-4 md:py-2.5 lg:px-4 lg:py-2.5 xl:px-8 xl:py-3 text-xs md:text-sm xl:text-base font-semibold text-white transition-all duration-300 shadow-lg hover:shadow-xl z-10 relative whitespace-nowrap"
+                <button
+                  type="button"
+                  onClick={() => window.dispatchEvent(new CustomEvent('openGetQuote'))}
+                  className="hidden md:inline-block rounded-full bg-[#FF7A00] hover:bg-[#e66d00] px-3 py-2 md:px-4 md:py-2.5 lg:px-4 lg:py-2.5 xl:px-8 xl:py-3 text-xs md:text-sm xl:text-base font-semibold text-white transition-all duration-300 shadow-lg hover:shadow-xl z-10 relative whitespace-nowrap"
                 >
                   Get Quotes
-                </Link>
+                </button>
               </div>
             </div>
           </div>
