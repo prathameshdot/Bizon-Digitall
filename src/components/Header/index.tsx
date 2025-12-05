@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useLayoutEffect, useState, useRef } from "react";
 import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
 
@@ -49,7 +49,9 @@ const Header = () => {
   // Animated slider
   const [sliderStyle, setSliderStyle] = useState<{ left: number; width: number }>({ left: 0, width: 0 });
   const [isMounted, setIsMounted] = useState(false);
+  const [disableSliderTransition, setDisableSliderTransition] = useState<boolean>(true);
   const navRef = useRef<HTMLDivElement>(null);
+  const getQuoteRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     setIsMounted(true);
@@ -64,97 +66,99 @@ const Header = () => {
     zIndex: 1,
   });
 
-  useEffect(() => {
-    if (!isMounted) return;
-    
-    const updateSlider = () => {
-      if (!navRef.current) return;
-      
-      // Wait for DOM to be fully rendered
-      requestAnimationFrame(() => {
-        if (!navRef.current) return;
-        
-        // Check if current path is a service subpage (starts with /services/)
-        const isServiceSubpage = usePathName.startsWith('/services/');
-        // Treat blog-details and any /blog* paths as Blog page
-        const isBlogPage = usePathName.startsWith('/blog') || usePathName.startsWith('/blog-details');
+  useLayoutEffect(() => {
+    if (!isMounted || !navRef.current) return;
 
-        let activeIndex;
-        if (isServiceSubpage) {
-          // Find the Services menu item index (the one without a path but has submenu)
-          activeIndex = menuData.findIndex(item => !item.path && item.submenu?.some(sub => sub.path?.startsWith('/services/')));
-        } else if (isBlogPage) {
-          // Find the Blogs menu item index
-          activeIndex = menuData.findIndex(item => item.path === '/blog');
-        } else {
-          activeIndex = menuData.findIndex(item => item.path === usePathName);
+    const compute = () => {
+      const navEl = navRef.current!;
+      const navRect = navEl.getBoundingClientRect();
+      const padding = 24; // 6 * 4px
+      const homeIndex = 0;
+
+      const getLinkRect = (index: number) => {
+        const el = navEl.querySelector(`[data-index="${index}"]`) as HTMLElement | null;
+        return el ? el.getBoundingClientRect() : null;
+      };
+
+      // compute home end
+      const homeLinkRect = getLinkRect(homeIndex) || { right: navRect.left + padding + 120 } as DOMRect;
+      const startX = padding;
+      const homeEndX = homeLinkRect.right - navRect.left;
+      let homeWidth = Math.max(0, homeEndX - startX);
+
+      // compute active target
+      const isServiceSubpage = usePathName.startsWith('/services/');
+      const isBlogPage = usePathName.startsWith('/blog') || usePathName.startsWith('/blog-details');
+      let activeIndex = -1;
+      if (isServiceSubpage) {
+        activeIndex = menuData.findIndex(item => !item.path && item.submenu?.some(sub => sub.path?.startsWith('/services/')));
+      } else if (isBlogPage) {
+        activeIndex = menuData.findIndex(item => item.path === '/blog');
+      } else {
+        activeIndex = menuData.findIndex(item => item.path === usePathName);
+      }
+
+      const targetIndex = (usePathName === '/' || activeIndex === -1) ? homeIndex : activeIndex;
+      const activeLinkRect = getLinkRect(targetIndex);
+      let endX = activeLinkRect ? activeLinkRect.right - navRect.left : homeEndX;
+
+      // if next exists, extend halfway
+      const nextIndex = targetIndex + 1;
+      if (nextIndex < menuData.length) {
+        const nextRect = getLinkRect(nextIndex);
+        if (nextRect) {
+          const nextLeft = nextRect.left - navRect.left;
+          const halfway = endX + ((nextLeft - endX) / 2);
+          endX = halfway;
         }
-        
-        const navRect = navRef.current.getBoundingClientRect();
-        
-        // Calculate padding offset (24px = 6 * 4px in Tailwind)
-        const padding = 24;
-        
-        // For home page or when no match, cover logo + Home menu item
-        const homeIndex = 0; // Home is always first in menuData
-        const targetIndex = (usePathName === "/" || activeIndex === -1) ? homeIndex : activeIndex;
-        
-        const activeLink = navRef.current.querySelector(`[data-index="${targetIndex}"]`);
-        if (activeLink) {
-          const linkRect = activeLink.getBoundingClientRect();
-          
-          // Start from padding (left edge)
-          const startX = padding;
-          // End at the right edge of the active menu item
-          let endX = linkRect.right - navRect.left;
-          
-          // If there's a next menu item, extend halfway to it
-          const nextIndex = targetIndex + 1;
-          if (nextIndex < menuData.length) {
-            const nextLink = navRef.current.querySelector(`[data-index="${nextIndex}"]`);
-            if (nextLink) {
-              const nextLinkRect = nextLink.getBoundingClientRect();
-              const nextLinkLeft = nextLinkRect.left - navRect.left;
-              
-              // Calculate halfway distance between current right and next left
-              const halfwayPoint = endX + ((nextLinkLeft - endX) / 2);
-              endX = halfwayPoint;
-            }
-          } else {
-            // If it's the last item, just add padding
-            endX += padding;
-          }
-          
-          setSliderStyle({
-            left: startX,
-            width: endX - startX,
-          });
+      } else {
+        endX += padding;
+      }
+
+      // Prevent overlapping get quote
+      try {
+        const gq = getQuoteRef.current;
+        if (gq) {
+          const gqRect = gq.getBoundingClientRect();
+          const gqLeft = gqRect.left - navRect.left;
+          endX = Math.min(endX, gqLeft - 12);
         }
-      });
+      } catch (e) {}
+
+      const maxAvailable = navRect.width - startX - 8;
+      const activeWidth = Math.min(Math.max(0, endX - startX), maxAvailable);
+
+      // Set slider to home width immediately (no transition)
+      setDisableSliderTransition(true);
+      setSliderStyle({ left: startX, width: Math.max(0, Math.min(homeWidth, maxAvailable)) });
+
+      // If active requires larger width than home, animate to it
+      if (activeWidth > homeWidth + 4) {
+        // allow layout to flush
+        requestAnimationFrame(() => {
+          // enable transition and set to active
+          setDisableSliderTransition(false);
+          setSliderStyle({ left: startX, width: activeWidth });
+        });
+      }
     };
 
-    // Update on mount and path change
-    updateSlider();
-    
-    // Update on resize
-    const handleResize = () => {
-      requestAnimationFrame(updateSlider);
-    };
-    
-    window.addEventListener('resize', handleResize);
-    
-    // Multiple timeouts to ensure proper positioning after page load
-    const timeouts = [
-      setTimeout(updateSlider, 50),
-      setTimeout(updateSlider, 150),
-      setTimeout(updateSlider, 300)
-    ];
-    
+    compute();
+
+    const onResize = () => compute();
+    window.addEventListener('resize', onResize);
+    const timers = [setTimeout(compute, 60), setTimeout(compute, 180)];
     return () => {
-      window.removeEventListener('resize', handleResize);
-      timeouts.forEach(timeout => clearTimeout(timeout));
+      window.removeEventListener('resize', onResize);
+      timers.forEach(t => clearTimeout(t));
     };
   }, [usePathName, isMounted]);
+
+  // Control whether slider should animate: respect `prefers-reduced-motion` or a persisted flag
+  // Keep slider transition disabled to avoid repeated animations on refresh
+  useEffect(() => {
+    setDisableSliderTransition(true);
+  }, []);
    
   // Determine if a menu item should be black (inside white slider)
   const getMenuItemColor = (menuPath: string, isServicesMenu: boolean = false) => {
@@ -205,16 +209,16 @@ const Header = () => {
         className="header fixed top-0 left-0 z-50 w-full pt-2 px-2 xs:px-3 sm:pt-4 sm:px-4 md:px-6 lg:pt-6 lg:px-8"
       >
         <div className="container mx-auto">
-          <div className="relative bg-black/95 backdrop-blur-sm rounded-full px-2 py-2 xs:px-3 xs:py-3 sm:px-5 sm:py-4 md:py-6 lg:px-6" ref={navRef}>
+          <div className="relative bg-black/95 backdrop-blur-sm rounded-full px-2 py-2 xs:px-3 xs:py-3 sm:px-5 sm:py-4 md:py-4 lg:px-6 overflow-hidden md:overflow-visible" ref={navRef}>
             {/* Animated White Slider with padding - Tablet & Desktop */}
             {isMounted && (
               <div 
-                className="absolute bg-white rounded-full transition-all duration-500 ease-in-out hidden md:block"
+                className={`absolute bg-white rounded-full ${disableSliderTransition ? 'transition-none' : 'transition-all duration-500 ease-in-out'} hidden md:block pointer-events-none`}
                 style={{
                   left: `${sliderStyle.left}px`,
                   width: `${sliderStyle.width}px`,
-                  top: '21px',
-                  bottom: '20px',
+                  top: '12px',
+                  bottom: '12px',
                   zIndex: 1,
                 }}
               />
@@ -327,7 +331,7 @@ const Header = () => {
                               </span>
                             </p>
                             <div
-                              className={`submenu mt-2 rounded-lg bg-[#1a1a1a] p-2 md:mt-0 md:absolute md:top-full md:left-0 md:rounded-2xl md:bg-black md:border-2 md:border-white md:transition-all md:duration-300 md:group-hover:opacity-100 md:invisible md:top-[110%] md:block md:w-[250px] md:p-4 md:opacity-0 md:shadow-2xl md:group-hover:visible md:group-hover:top-full lg:w-[280px] md:z-50 ${
+                              className={`submenu mt-2 rounded-lg bg-[#1a1a1a] p-2 md:mt-0 md:absolute md:top-full md:left-0 md:rounded-2xl md:bg-black md:border-2 md:border-white md:transition-all md:duration-300 md:group-hover:opacity-100 md:invisible md:top-[110%] md:block md:w-[250px] md:p-4 md:opacity-0 md:shadow-2xl md:group-hover:visible md:group-hover:top-full lg:w-[280px] md:z-[9999] ${
                                 openIndex === index ? "block" : "hidden"
                               }`}
                             >
@@ -369,6 +373,7 @@ const Header = () => {
                 
                 {/* Tablet & Desktop Get Quotes Button */}
                 <button
+                  ref={getQuoteRef}
                   type="button"
                   onClick={() => window.dispatchEvent(new CustomEvent('openGetQuote'))}
                   className="hidden md:inline-block rounded-full bg-[#FF7A00] hover:bg-[#e66d00] px-2 py-1.5 md:px-4 md:py-2.5 lg:px-4 lg:py-2.5 xl:px-8 xl:py-3 text-xs md:text-sm xl:text-base font-semibold text-white transition-all duration-300 shadow-lg hover:shadow-xl z-10 relative whitespace-nowrap"

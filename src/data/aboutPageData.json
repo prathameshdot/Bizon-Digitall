@@ -2,7 +2,7 @@
   "hero": {
     "title": "ABOUT US",
     "subtitle": "Welcome to The BizOn Digital",
-    "description": "At Bizon Digital, we provide a 360-degree digital marketing solution to boost your online presence and drive growth. From web development and SEO to social media marketing and paid campaigns, we create customized strategies that deliver real results. Let's bring your vision to life!",
+    "description": "Bizon Digital is a leading digital marketing agency dedicated to transforming businesses through innovative strategies and data-driven solutions that deliver measurable results and accelerate growth in the digital landscape.",
     "image": "/images/about/Frame 1357.png"
   },
   "globalReach": {
@@ -142,24 +142,25 @@
     "description": "Meet the experts who drive your digital success",
     "members": [
       {
-        "name": "Sarah Johnson",
+        "name": "Sagar D",
         "role": "Chief Executive Officer",
-        "image": "/images/testimonials/auth-01.png"
+        "image": "/images/logo/3.png"
       },
       {
-        "name": "Michael Chen",
+        "name": "Akash K",
         "role": "Head of Strategy",
-        "image": "/images/testimonials/auth-02.png"
+        "image": "/images/logo/1.png"
       },
+
       {
-        "name": "Emily Rodriguez",
-        "role": "Creative Director",
-        "image": "/images/testimonials/auth-03.png"
-      },
-      {
-        "name": "David Thompson",
+        "name": "Prathamesh R",
         "role": "Technical Lead",
-        "image": "/images/testimonials/auth-01.png"
+        "image": "/images/logo/4.png"
+      },
+      {
+        "name": "Akash D",
+        "role": "Creative Director",
+        "image": "/images/logo/2.png"
       }
     ]
   },

@@ -24,20 +24,21 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" className="bg-white py-8 md:py-12 lg:py-16">
+    <section id="about" className="bg-white pt-24 py-8 md:py-12 lg:py-16 scroll-mt-24">
       <div className="container">
         <div className="flex flex-col items-center">
           <div className="mb-12 flex w-full flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
             {/* Left Side - About Us Title */}
             <div>
-              <h2 className="whitespace-nowrap text-4xl font-bold text-[#FF7A00] xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl 2xl:text-9xl" style={{ fontFamily: 'var(--font-syne), sans-serif' }}>
-                ABOUT US
+              <h2 className="whitespace-nowrap text-4xl font-bold xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl 2xl:text-9xl" style={{ fontFamily: 'var(--font-syne), sans-serif' }}>
+                <span className="text-[#FF7A00] mr-2">ABOUT</span>
+                <span className="text-black">US</span>
               </h2>
             </div>
 
             {/* Right Side - Description */}
             <div className="w-full lg:w-1/2">
-              <p className="text-sm leading-relaxed text-[#FF7A00] xs:text-sm md:text-base lg:text-lg 2xl:text-xl text-left lg:text-right max-w-lg lg:ml-auto">
+              <p className="mx-auto lg:mx-0 text-base leading-relaxed text-black xs:text-base md:text-lg lg:text-xl 2xl:text-2xl text-center lg:text-left max-w-2xl">
                 Bizon Digital is a leading digital marketing agency dedicated to transforming businesses through innovative strategies and data-driven solutions that deliver measurable results and accelerate growth in the digital landscape.
               </p>
             </div>
@@ -49,16 +50,17 @@ const AboutSection = () => {
               {cards.map((card, index) => (
                 <div
                   key={index}
-                  className={`group flex h-[200px] flex-col justify-between rounded-3xl bg-black p-6 pb-0 transition-all duration-300 hover:scale-[1.02] ${
+                  className={`group relative flex h-[200px] flex-col justify-between rounded-3xl bg-black p-6 pb-0 transition-all duration-300 transform will-change-transform hover:scale-[1.02] ${
                     index % 2 === 0 ? 'md:mt-0' : 'md:mt-12'
                   }`}
                   style={{
-                    boxShadow: 'inset 0 10px 20px -10px rgba(0, 0, 0, 0.5)'
+                    // Outer soft shadow for better separation from the background/CTA
+                    boxShadow: '0 16px 40px -12px rgba(0,0,0,0.6)'
                   }}
                 >
                   {/* Title - Takes more space */}
                   <div className="min-h-[60px] flex items-start">
-                    <h3 className="text-xs font-semibold tracking-wide text-white leading-relaxed">
+                    <h3 className="text-xs font-semibold tracking-wide text-white leading-relaxed drop-shadow-[0_6px_18px_rgba(0,0,0,0.6)]">
                       {card.title}
                     </h3>
                   </div>

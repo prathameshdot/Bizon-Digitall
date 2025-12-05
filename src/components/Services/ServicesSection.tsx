@@ -26,7 +26,7 @@ const ServicesSection = ({ data }: { data?: { title?: string; items?: any[] } })
       title: 'WEB DEVELOPMENT',
       name: 'Web Development',
       description:
-        'Custom, high-performance websites and web apps built for speed, accessibility and conversions. Includes integrations, CMS and ongoing maintenance.',
+        'Custom web and application development delivering fast, accessible, conversion-focused experiences. Includes integrations, headless CMS, performance tuning, responsive UI, and optional paid-service integrations and brand advertising hooks.',
       link: '/services/web-development'
     },
     {
@@ -34,7 +34,7 @@ const ServicesSection = ({ data }: { data?: { title?: string; items?: any[] } })
       title: 'SEO SERVICES',
       name: 'SEO Services',
       description:
-        'Technical SEO, on-page optimization, content strategy and link building to improve organic visibility and drive qualified traffic.',
+        'Full SEO programs: technical audits, on-page optimization, schema, content strategy and targeted link building. We improve crawlability, prioritize buyer-intent keywords and build content frameworks that drive qualified traffic and sustainable organic growth.',
       link: '/services/seo'
     },
     {
@@ -42,7 +42,7 @@ const ServicesSection = ({ data }: { data?: { title?: string; items?: any[] } })
       title: 'PAID ADVERTISING',
       name: 'Paid Advertising',
       description:
-        'Data-driven PPC and paid social campaigns focused on measurable ROI, audience targeting, and creative testing across channels.',
+        'Data-driven paid media: search, display, social and shopping campaigns with audience segmentation, conversion tracking and creative testing. We optimize bids, landing pages and attribution to maximize ROI and scale acquisition across channels.',
       link: '/services/paid-ads'
     },
     {
@@ -50,7 +50,7 @@ const ServicesSection = ({ data }: { data?: { title?: string; items?: any[] } })
       title: 'SOCIAL MEDIA MARKETING',
       name: 'Social Media Marketing',
       description:
-        'Organic and paid social strategies, content production, community management and growth campaigns to build brand presence.',
+        'Integrated social strategies: organic community building, paid amplification and creative content. We create audience-first calendars, engage communities, run conversion-focused ads and measure lift to grow reach, loyalty and business outcomes.',
       link: '/services/social-media'
     },
     {
@@ -58,7 +58,7 @@ const ServicesSection = ({ data }: { data?: { title?: string; items?: any[] } })
       title: 'E-COMMERCE SOLUTIONS',
       name: 'E-Commerce Solutions',
       description:
-        'Full e-commerce builds, platform selection (Shopify, BigCommerce), conversion optimization, and merchandising strategies to scale sales.',
+        'End-to-end e-commerce services: platform selection (Shopify, BigCommerce, headless), storefront builds, payments, fulfillment integration, CRO and catalog strategy. We design scalable stores and growth programs to boost AOV, reduce friction and increase repeat purchases.',
       link: '/services/ecommerce'
     },
     {
@@ -66,7 +66,7 @@ const ServicesSection = ({ data }: { data?: { title?: string; items?: any[] } })
       title: 'BRAND IDENTITY & DESIGN',
       name: 'Brand Identity & Design',
       description:
-        'Brand strategy, identity systems, visual language and creative direction to help your brand stand out and connect with customers.',
+        'Brand strategy and identity: frameworks, logo systems, visual language, typography and guidelines that ensure consistent experiences across channels. We help brands define voice and visuals to elevate perception and connect with target customers.',
       link: '/services/branding'
     }
   ];
@@ -134,15 +134,20 @@ const ServicesSection = ({ data }: { data?: { title?: string; items?: any[] } })
   return (
     <section 
       ref={sectionRef}
-      className="relative bg-white py-8 md:py-12 lg:py-16"
-      style={{ minHeight: `${services.length * 100}vh` }}
+      className="relative bg-white py-6 md:py-10 lg:py-12 pb-12 md:pb-16"
+      style={{
+        // Tighter mobile minHeight: base card height + offsets between cards
+        // totalHeight = cardHeight + (n - 1) * offset
+        minHeight: isMobile ? `${420 + (services.length - 1) * 100}px` : `${services.length * 100}vh`
+      }}
     >
       <div 
-        className="sticky flex items-center py-8 xs:py-10 sm:py-12 md:py-16 transition-all duration-700 ease-out"
+        className="sticky flex items-center py-2 xs:py-3 sm:py-4 md:py-6 transition-all duration-700 ease-out z-30"
         style={{
-          top: getStickyTop(),
-          minHeight: isMobile ? '100vh' : 'auto',
-          height: isMobile ? 'auto' : '100vh'
+          // Keep the sticky container positioned below the header but allow
+          // it to size naturally so it doesn't reserve a full viewport height
+          // (which caused the large blank area above the title).
+          top: isMobile ? getStickyTop() : '72px'
         }}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -156,8 +161,9 @@ const ServicesSection = ({ data }: { data?: { title?: string; items?: any[] } })
 
           {/* Cards Stack - One by One on Scroll */}
           <div className="relative w-full mx-auto" style={{
-            height: isMobile ? 'auto' : '450px',
-            minHeight: isMobile ? '500px' : 'auto'
+            // Reserve only the required vertical space for stacked cards on mobile
+            height: isMobile ? `${420 + (services.length - 1) * 100}px` : '450px',
+            minHeight: isMobile ? `${420 + (services.length - 1) * 100}px` : 'auto'
           }}>
             <div className="relative w-full h-full">
               {services.map((service, index) => {

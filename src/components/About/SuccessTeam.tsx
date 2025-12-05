@@ -1,5 +1,12 @@
 import Image from "next/image";
 import aboutData from "@/data/aboutPageData.json";
+import { Montserrat } from 'next/font/google';
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['500','600','700'],
+  display: 'swap'
+});
 
 const SuccessTeam = () => {
   const { team } = aboutData;
@@ -29,7 +36,7 @@ const SuccessTeam = () => {
                 </div>
                 
                 {/* Team Member Name */}
-                <h3 className="text-sm sm:text-lg md:text-xl lg:text-2xl font-bold text-black text-center">
+                <h3 className={`${montserrat.className} text-sm sm:text-lg md:text-xl lg:text-2xl font-semibold text-black text-center`}>
                   {member.name}
                 </h3>
               </div>

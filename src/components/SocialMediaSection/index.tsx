@@ -4,9 +4,9 @@ import Image from "next/image";
 
 const SocialMediaSection = () => {
   return (
-    <section className="relative py-12 sm:py-16 md:py-20 lg:py-24 pb-16 sm:pb-20 md:pb-24 lg:pb-28 overflow-hidden bg-white">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0 pb-8 sm:pb-12 md:pb-16 lg:pb-20">
+    <section className="relative pt-6 pb-0 sm:pt-8 sm:pb-0 md:pt-10 md:pb-0 lg:pt-12 lg:pb-0 overflow-hidden bg-white">
+      {/* Background Image - smaller, centered and subtle */}
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 z-0 w-full max-w-[1100px] h-[180px] sm:h-[220px] md:h-[280px] opacity-30 pointer-events-none">
         <Image
           src="/images/hero/Group 9257.png"
           alt="Background"
@@ -17,65 +17,43 @@ const SocialMediaSection = () => {
       
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Content */}
-        <div className="relative max-w-6xl mx-auto">
-          <div className="flex flex-col items-center justify-center gap-16 sm:gap-20 md:gap-24 lg:gap-28 py-8">
-            {/* Row 1: Facebook, LinkedIn, Twitter */}
-            <div className="flex items-center justify-center gap-16 sm:gap-24 md:gap-32 lg:gap-40 xl:gap-48">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 relative hover:scale-110 transition-transform">
-                <Image
-                  src="/images/hero/Facebook.png"
-                  alt="Facebook"
-                  fill
-                  className="object-contain"
-                />
+        <div className="relative max-w-4xl mx-auto">
+          <div className="flex flex-col items-center justify-center gap-8 pt-6 pb-0">
+            {/* Icons Row (smaller, animated) */}
+            <div className="flex items-center justify-center gap-8">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 relative transform transition-transform hover:scale-110 animate-bounce" style={{animationDuration: '1.8s', animationIterationCount: 'infinite'}}>
+                <Image src="/images/hero/Facebook.png" alt="Facebook" fill className="object-contain" />
               </div>
-              <div className="w-12 h-12 xs:w-16 xs:h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 2xl:w-36 2xl:h-36 relative hover:scale-110 transition-transform">
-                <Image
-                  src="/images/hero/LinkedIn.png"
-                  alt="LinkedIn"
-                  fill
-                  className="object-contain"
-                />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 relative transform transition-transform hover:scale-110 animate-bounce" style={{animationDuration: '1.9s', animationIterationCount: 'infinite', animationDelay: '0.15s'}}>
+                <Image src="/images/hero/LinkedIn.png" alt="LinkedIn" fill className="object-contain" />
               </div>
-              <div className="w-12 h-12 xs:w-16 xs:h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 2xl:w-36 2xl:h-36 relative hover:scale-110 transition-transform">
-                <Image
-                  src="/images/hero/Twitter.png"
-                  alt="Twitter"
-                  fill
-                  className="object-contain"
-                />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 relative transform transition-transform hover:scale-110 animate-bounce" style={{animationDuration: '2s', animationIterationCount: 'infinite', animationDelay: '0.3s'}}>
+                <Image src="/images/hero/Twitter.png" alt="Twitter" fill className="object-contain" />
+              </div>
+              <div className="w-12 h-12 sm:w-14 sm:h-14 relative transform transition-transform hover:scale-110 animate-bounce" style={{animationDuration: '2.1s', animationIterationCount: 'infinite', animationDelay: '0.45s'}}>
+                <Image src="/images/hero/Instagram.png" alt="Instagram" fill className="object-contain" />
+              </div>
+              <div className="w-12 h-12 sm:w-14 sm:h-14 relative transform transition-transform hover:scale-110 animate-bounce" style={{animationDuration: '2.2s', animationIterationCount: 'infinite', animationDelay: '0.6s'}}>
+                <Image src="/images/hero/Messenger.png" alt="Messenger" fill className="object-contain" />
               </div>
             </div>
 
-            {/* Row 2: Instagram, Messenger */}
-            <div className="flex items-center justify-center gap-12 xs:gap-16 sm:gap-24 md:gap-32 lg:gap-40 xl:gap-48 2xl:gap-56">
-              <div className="w-12 h-12 xs:w-16 xs:h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 2xl:w-36 2xl:h-36 relative hover:scale-110 transition-transform">
-                <Image
-                  src="/images/hero/Instagram.png"
-                  alt="Instagram"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-              <div className="w-12 h-12 xs:w-16 xs:h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 2xl:w-36 2xl:h-36 relative hover:scale-110 transition-transform">
-                <Image
-                  src="/images/hero/Messenger.png"
-                  alt="Messenger"
-                  fill
-                  className="object-contain"
-                />
-              </div>
+            {/* Tagline */}
+            <div className="mt-2">
+              <p className="text-lg sm:text-xl font-semibold text-gray-900">Connect & Collaborate</p>
             </div>
 
-            {/* Watch Video Button - Bottom Right */}
-            <div className="absolute bottom-0 right-0 sm:bottom-4 sm:right-4 md:bottom-8 md:right-8 lg:bottom-12 lg:right-12">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 relative">
-                <Image
-                  src="/images/hero/watch video.png"
-                  alt="Watch Video"
-                  fill
-                  className="object-contain cursor-pointer hover:scale-110 transition-transform"
-                />
+            {/* Watch Video Button - centered below icons, rotating around center */}
+            <div className="mt-4 flex justify-center">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 relative">
+                <div className="w-full h-full transform transition-transform hover:scale-110 animate-spin" style={{ animationDuration: '3s', willChange: 'transform' }}>
+                  <Image
+                    src="/images/hero/watch video.png"
+                    alt="Watch Video"
+                    fill
+                    className="object-contain cursor-pointer"
+                  />
+                </div>
               </div>
             </div>
           </div>

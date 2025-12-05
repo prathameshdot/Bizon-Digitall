@@ -55,14 +55,46 @@
     "title": "Our Services",
     "subtitle": "Choose the services you need",
     "items": [
-      { "name": "Web Development", "icon": "/images/services/web-dev.svg", "description": "Responsive sites, PWAs and custom integrations" },
-      { "name": "E‑Commerce", "icon": "/images/services/ecommerce.svg", "description": "Shopify, BigCommerce, or custom storefronts" },
-      { "name": "SEO", "icon": "/images/services/seo.svg", "description": "Technical SEO, content strategy and link building" },
-      { "name": "Paid Advertising", "icon": "/images/services/paid-ads.svg", "description": "Google, Meta, and programmatic campaigns" },
-      { "name": "Social Media", "icon": "/images/services/social.svg", "description": "Organic and paid social strategies that grow communities" },
-      { "name": "Branding", "icon": "/images/services/branding.svg", "description": "Identity, messaging and visual systems" },
-      { "name": "Email Marketing", "icon": "/images/services/email.svg", "description": "Lifecycle and promotional campaigns with measurement" },
-      { "name": "Analytics & CRO", "icon": "/images/services/analytics.svg", "description": "Measurement plans, dashboards and conversion optimization" }
+      {
+        "name": "Web Development",
+        "icon": "/images/services/web-dev.svg",
+        "description": "Custom web and application development delivering high-performance, accessible and conversion-focused experiences. Includes headless CMS, API integrations, PWAs, responsive UI/UX, accessibility audits and ongoing performance maintenance to scale."
+      },
+      {
+        "name": "E‑Commerce",
+        "icon": "/images/services/ecommerce.svg",
+        "description": "End-to-end e-commerce solutions: platform selection, storefront builds, payment and fulfillment integrations, conversion rate optimization and catalog merchandising. We design scalable stores and growth programs that increase average order value and repeat purchases."
+      },
+      {
+        "name": "SEO",
+        "icon": "/images/services/seo.svg",
+        "description": "Comprehensive SEO programs combining technical audits, on-page optimization, structured data, content strategy and targeted link building to improve visibility. We focus on buyer-intent keywords and content frameworks that drive qualified organic traffic and long-term growth."
+      },
+      {
+        "name": "Paid Advertising",
+        "icon": "/images/services/paid-ads.svg",
+        "description": "Full-service paid media across search, social, display and programmatic channels. We deliver campaign strategy, creative testing, tracking and iterative optimization focused on revenue and ROI, with landing page experiments and cross-channel attribution."
+      },
+      {
+        "name": "Social Media",
+        "icon": "/images/services/social.svg",
+        "description": "Integrated social strategies that combine organic community building, paid amplification and creative content. We produce audience-first programs, manage communities, run conversion-focused ad campaigns and measure brand lift and performance over time."
+      },
+      {
+        "name": "Branding",
+        "icon": "/images/services/branding.svg",
+        "description": "Strategic brand identity and design: naming, messaging, visual language, logo systems, typography and guidelines. We build cohesive brand frameworks that scale across channels and create memorable, differentiated customer experiences."
+      },
+      {
+        "name": "Email Marketing",
+        "icon": "/images/services/email.svg",
+        "description": "Lifecycle and promotional email programs including segmentation, automation, creative and measurement. We build flows that nurture leads, re-engage customers and drive repeat purchases while optimizing deliverability and performance."
+      },
+      {
+        "name": "Analytics & CRO",
+        "icon": "/images/services/analytics.svg",
+        "description": "Measurement and conversion-rate optimization services: analytics setup, dashboards, experiments and UX changes that increase conversion rates. We prioritize hypothesis-driven tests and actionable insights to improve funnel performance."
+      }
     ]
   },
 

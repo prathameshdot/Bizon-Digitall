@@ -38,13 +38,13 @@ export default function Home() {
       <Hero data={homePageData.hero} />
       <AboutSection />
       <ServicesSection data={homePageData.services} />
-      <ClientReviews />
+      <CTA />
       <MarketingScroll />
       <SocialMediaSection />
       <CountryReachout />
       <DigitalMarketingServices />
       <Leadership />
-      <CTA />
+      <ClientReviews />
       <WorkingProcess />
       <EmailSubscribe data={homePageData.newsletter} />
       <CTABanner data={homePageData.ctaBanner} />

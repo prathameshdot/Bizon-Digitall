@@ -1,5 +1,12 @@
 import Image from "next/image";
 import aboutData from "@/data/aboutPageData.json";
+import { Montserrat } from 'next/font/google';
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['600','700','800'],
+  display: 'swap'
+});
 
 const AboutHero = () => {
   const { hero } = aboutData;
@@ -9,13 +16,13 @@ const AboutHero = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex flex-col items-center">
           {/* About Us Title */}
-          <div className="mb-8 sm:mb-10 md:mb-12 text-center">
-            <h1 
-              className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-black"
-              style={{ fontFamily: 'var(--font-syne), sans-serif' }}
-            >
-              {hero.title}
-            </h1>
+          <div className="mb-8 sm:mb-10 md:mb-12 text-center lg:text-left">
+                <h1 
+                  className={`${montserrat.className} text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold leading-tight`}
+                >
+                  <span className="text-[#FF7A00] mr-3">ABOUT</span>
+                  <span className="text-black">US</span>
+                </h1>
             {/* Underline */}
             <div className="mt-4 sm:mt-6 mx-auto">
               <div className="h-1 w-32 sm:w-48 md:w-64 bg-gray-300 mx-auto rounded-full"></div>

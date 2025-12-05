@@ -5,10 +5,27 @@ import Link from "next/link";
 
 const CTA = () => {
   return (
-    <section className="relative py-8 sm:py-10 md:py-12 bg-white overflow-hidden">
+    <section className="relative pt-8 pb-12 sm:pt-10 sm:pb-14 md:pt-12 md:pb-16 bg-white overflow-hidden">
       {/* Checkered Pattern Background with borders and spacing */}
-      <div className="absolute inset-0">
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      {/* Responsive background patterns: smaller pattern for mobile, denser for sm+ */}
+      <div className="absolute inset-0 block sm:hidden" aria-hidden>
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <defs>
+            <pattern id="checkerboard-sm" x="0" y="0" width="120" height="80" patternUnits="userSpaceOnUse">
+              <rect x="0" y="0" width="36" height="36" fill="white" stroke="#d1d5db" strokeWidth="1" rx="6" ry="6" />
+              <rect x="0" y="44" width="36" height="36" fill="#FFB380" stroke="#d1d5db" strokeWidth="1" rx="6" ry="6" />
+              <rect x="44" y="0" width="36" height="36" fill="white" stroke="#d1d5db" strokeWidth="1" rx="6" ry="6" />
+              <rect x="44" y="44" width="36" height="36" fill="white" stroke="#d1d5db" strokeWidth="1" rx="6" ry="6" />
+              <rect x="88" y="0" width="36" height="36" fill="#FFB380" stroke="#d1d5db" strokeWidth="1" rx="6" ry="6" />
+              <rect x="88" y="44" width="36" height="36" fill="white" stroke="#d1d5db" strokeWidth="1" rx="6" ry="6" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#checkerboard-sm)" />
+        </svg>
+      </div>
+
+      <div className="absolute inset-0 hidden sm:block" aria-hidden>
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
           <defs>
             <pattern id="checkerboard" x="0" y="0" width="220" height="120" patternUnits="userSpaceOnUse">
               {/* First column - two boxes with rounded corners */}
@@ -27,6 +44,8 @@ const CTA = () => {
           <rect width="100%" height="100%" fill="url(#checkerboard)" />
         </svg>
       </div>
+      {/* White bottom bar inside CTA so the bottom spacing is fully white */}
+      <div className="absolute left-0 right-0 bottom-0 h-6 sm:h-8 md:h-10 bg-white" aria-hidden />
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">

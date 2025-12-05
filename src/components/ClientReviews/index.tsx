@@ -1,10 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const ClientReviews = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const pauseRef = useRef(false);
+  const resumeTimeoutRef = useRef<number | null>(null);
+  const [isPaused, setIsPaused] = useState(false);
 
   const reviews = [
     {
@@ -72,31 +75,89 @@ const ClientReviews = () => {
 
     let animationFrameId: number;
     let scrollPosition = 0;
-    const scrollSpeed = 0.5; // Pixels per frame
+    const scrollSpeed = 0.6; // Pixels per frame
 
     const animate = () => {
-      scrollPosition += scrollSpeed;
-      
-      // Get the width of one set of reviews
-      const reviewWidth = scrollContainer.scrollWidth / 3;
-      
-      // Reset position when we've scrolled through one full set
-      if (scrollPosition >= reviewWidth) {
-        scrollPosition = 0;
+      if (!pauseRef.current) {
+        scrollPosition += scrollSpeed;
+        // width of one set of reviews
+        const reviewWidth = scrollContainer.scrollWidth / 3;
+        if (scrollPosition >= reviewWidth) {
+          scrollPosition = 0;
+        }
+        scrollContainer.scrollLeft = scrollPosition;
       }
-      
-      scrollContainer.scrollLeft = scrollPosition;
       animationFrameId = requestAnimationFrame(animate);
     };
 
     animationFrameId = requestAnimationFrame(animate);
 
+    // Pause on interaction handlers
+    const handleEnter = () => {
+      pauseRef.current = true;
+      setIsPaused(true);
+    };
+    const handleLeave = () => {
+      // resume after short delay
+      if (resumeTimeoutRef.current) window.clearTimeout(resumeTimeoutRef.current);
+      resumeTimeoutRef.current = window.setTimeout(() => {
+        pauseRef.current = false;
+        setIsPaused(false);
+      }, 2200) as unknown as number;
+    };
+    const handleMove = () => {
+      // resume immediately when the user moves the mouse inside the container
+      if (resumeTimeoutRef.current) window.clearTimeout(resumeTimeoutRef.current);
+      pauseRef.current = false;
+      setIsPaused(false);
+    };
+    const handleWheel = () => {
+      pauseRef.current = true;
+      setIsPaused(true);
+      if (resumeTimeoutRef.current) window.clearTimeout(resumeTimeoutRef.current);
+      resumeTimeoutRef.current = window.setTimeout(() => {
+        pauseRef.current = false;
+        setIsPaused(false);
+      }, 2200) as unknown as number;
+    };
+
+    scrollContainer.addEventListener('mouseenter', handleEnter);
+    scrollContainer.addEventListener('mouseleave', handleLeave);
+    scrollContainer.addEventListener('mousemove', handleMove, { passive: true });
+    scrollContainer.addEventListener('wheel', handleWheel, { passive: true });
+    scrollContainer.addEventListener('touchstart', handleEnter, { passive: true });
+    scrollContainer.addEventListener('touchend', handleLeave, { passive: true });
+
     return () => {
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-      }
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+      scrollContainer.removeEventListener('mouseenter', handleEnter);
+      scrollContainer.removeEventListener('mouseleave', handleLeave);
+      scrollContainer.removeEventListener('mousemove', handleMove);
+      scrollContainer.removeEventListener('wheel', handleWheel);
+      scrollContainer.removeEventListener('touchstart', handleEnter);
+      scrollContainer.removeEventListener('touchend', handleLeave);
+      if (resumeTimeoutRef.current) window.clearTimeout(resumeTimeoutRef.current);
     };
   }, []);
+
+  // Arrow navigation
+  const scrollByCard = (direction: 'left' | 'right') => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const firstChild = el.children[0] as HTMLElement | undefined;
+    if (!firstChild) return;
+    const gap = parseInt(getComputedStyle(el).gap || '16', 10) || 16;
+    const cardWidth = firstChild.getBoundingClientRect().width + gap;
+    const delta = direction === 'left' ? -cardWidth : cardWidth;
+    pauseRef.current = true;
+    setIsPaused(true);
+    el.scrollBy({ left: delta, behavior: 'smooth' });
+    if (resumeTimeoutRef.current) window.clearTimeout(resumeTimeoutRef.current);
+    resumeTimeoutRef.current = window.setTimeout(() => {
+      pauseRef.current = false;
+      setIsPaused(false);
+    }, 2200) as unknown as number;
+  };
 
   const renderStars = (rating: number) => {
     return (
@@ -118,8 +179,8 @@ const ClientReviews = () => {
   };
 
   return (
-    <section className="relative bg-white py-6 xs:py-8 sm:py-10 md:py-14 lg:py-16 overflow-hidden">
-      <div className="container mx-auto px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8">
+    <section className="relative bg-white pt-6 pb-0 overflow-hidden">
+      <div className="w-full mx-0 px-0">
         {/* Section Title */}
         <h2 
           className="mb-3 xs:mb-4 sm:mb-5 md:mb-6 text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#FF7A00] text-center px-2"
@@ -129,10 +190,14 @@ const ClientReviews = () => {
         </h2>
 
         {/* Scrolling Reviews Container */}
-        <div className="relative pt-2 xs:pt-3 pb-2 xs:pb-3">
+        <div className="relative">
+          {/* left/right soft gradients */}
+          <div className="absolute left-0 top-0 bottom-0 w-24 pointer-events-none z-20" style={{ background: 'linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0))' }} />
+          <div className="absolute right-0 top-0 bottom-0 w-24 pointer-events-none z-20" style={{ background: 'linear-gradient(to left, rgba(255,255,255,1), rgba(255,255,255,0))' }} />
+
           <div
             ref={scrollRef}
-            className="flex gap-4 xs:gap-5 sm:gap-6 md:gap-8 lg:gap-10 overflow-x-hidden py-4 xs:py-5 sm:py-6 md:py-7 lg:py-8"
+            className="flex gap-4 xs:gap-5 sm:gap-6 md:gap-8 lg:gap-10 overflow-x-auto no-scrollbar py-4 xs:py-4 sm:py-4 md:py-4 lg:py-4"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {duplicatedReviews.map((review, index) => (
@@ -199,6 +264,18 @@ const ClientReviews = () => {
               </div>
             ))}
           </div>
+
+          {/* Left / Right Arrows (swapped actions, no circle background, larger chevrons) */}
+          <button aria-label="Previous review" onClick={() => scrollByCard('right')} className="absolute left-3 top-1/2 transform -translate-y-1/2 z-30 p-1 text-gray-800">
+            <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+          <button aria-label="Next review" onClick={() => scrollByCard('left')} className="absolute right-3 top-1/2 transform -translate-y-1/2 z-30 p-1 text-gray-800">
+            <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M9 6l6 6-6 6" />
+            </svg>
+          </button>
         </div>
       </div>
 
