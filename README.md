@@ -1,51 +1,165 @@
-# Startup - Free Next.js Startup Website Template
+# Bizon Digital - Next.js Blog & Marketing Website
 
-Startup is a free, open-source, and premium-quality [**Next.js startup website template**](https://nextjstemplates.com/templates/startup) that comes with everything you need to launch a startup, business, or SaaS website, including all essential sections, components, and pages.
+A modern, full-featured blog and marketing website built with Next.js 15, TypeScript, Tailwind CSS, and PostgreSQL.
 
-If you&apos;re looking for a high-quality and visually appealing, feature-rich Next.js Template for your next startup, SaaS, or business website, this is the perfect choice and starting point for you!
+## ✨ Features
 
-### ✨ Key Features
-- Crafted for Startup and SaaS Business
-- Next.js and Tailwind CSS
-- All Essential Business Sections and Pages
-- High-quality and Clean Design
-- Dark and Light Version
-- TypeScript Support
-and Much More ...
+- 🚀 **Next.js 15** with React 19 and TypeScript
+- 🎨 **Tailwind CSS 4** with custom orange (#FF7A00) theme
+- 📝 **Blog System** with rich text editor and full SEO support
+- 🔐 **Authentication** with JWT and bcrypt
+- 💾 **PostgreSQL Database** with Prisma ORM
+- 📱 **Responsive Design** optimized for all devices
+- 🌙 **Dark/Light Mode** support
+- 🔍 **SEO Optimized** with Open Graph and JSON-LD schemas
+- 📊 **Admin Panel** for blog management
 
-### 🙌 Detailed comparison between the Free and Pro versions of Startup
+## 🚀 Quick Start
 
-| Feature             | Free | Pro |
-|---------------------|------------|----------|
-| Next.js Landing Page             | ✅ Yes      | ✅ Yes      |
-| All The Integrations - Auth, DB, Payments, Blog and many more ...             | ❌ No      | ✅ Yes |
-| Homepage Variations             | 1      | 2 |
-| Additional SaaS Pages and Components             | ❌ No      | ✅ Yes |
-| Functional Blog with Sanity       | ❌ No      | ✅ Yes |
-| Use with Commercial Projects            | ✅ Yes      | ✅ Yes      |
-| Lifetime Free Updates             | ✅ Yes      | ✅ Yes |
-| Email Support       | ❌ No         | ✅ Yes       |
-| Community Support         | ✅ Yes         | ✅ Yes       |
+### Prerequisites
 
+- Node.js 18+ and npm
+- PostgreSQL 14+ (local or cloud-hosted)
 
-### [🔥 Get Startup Pro](https://nextjstemplates.com/templates/saas-starter-startup)
+### Installation
 
-[![Startup Pro](https://raw.githubusercontent.com/NextJSTemplates/startup-nextjs/main/startup-pro.webp)](https://nextjstemplates.com/templates/saas-starter-startup)
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/bizondigital.git
+   cd bizondigital
+   ```
 
-Startup Pro - Expertly crafted for fully-functional, high-performing SaaS startup websites. Comes with with Authentication, Database, Blog, and all the essential integrations necessary for SaaS business sites.
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
+3. **Set up environment variables**
+   ```bash
+   cp .env.example .env
+   ```
+   Edit `.env` and add your database credentials:
+   ```env
+   DATABASE_URL="postgresql://user:password@localhost:5432/bizondigital?schema=public"
+   JWT_SECRET="your-32-character-secret-key"
+   ```
 
-- [🚀 View Free Demo](https://startup.nextjstemplates.com/)
+4. **Run database migrations**
+   ```bash
+   npm run prisma:migrate
+   ```
 
-- [🚀 View Pro Demo](https://startup-pro.nextjstemplates.com/)
+5. **Create admin user**
+   ```bash
+   node scripts/create-user.js
+   ```
+   Enter your admin credentials when prompted.
 
-- [📦 Download](https://nextjstemplates.com/templates/startup)
+6. **Start development server**
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000)
 
-- [🔥 Get Pro](https://nextjstemplates.com/templates/saas-starter-startup)
+## 📦 Deployment
 
-- [🔌 Documentation](https://nextjstemplates.com/docs)
+**Important:** The database must be deployed separately from the application.
 
-### ⚡ Deploy Now
+### Quick Deploy to Vercel
+
+1. **Set up PostgreSQL database** (choose one):
+   - [Supabase](https://supabase.com) (Free tier available)
+   - [Neon](https://neon.tech) (Serverless PostgreSQL)
+   - [Railway](https://railway.app)
+   - [Vercel Postgres](https://vercel.com/storage/postgres)
+
+2. **Deploy to Vercel**
+   ```bash
+   npm i -g vercel
+   vercel
+   ```
+   Or use the Vercel dashboard to import from GitHub.
+
+3. **Set environment variables** in Vercel dashboard:
+   - `DATABASE_URL` = Your PostgreSQL connection string
+   - `JWT_SECRET` = Secure random string (32+ chars)
+
+4. **Run production setup**
+   ```bash
+   DATABASE_URL="your-production-url" node scripts/production-setup.js
+   ```
+
+📖 **[Full Deployment Guide](./DEPLOYMENT.md)** - Detailed instructions for all platforms
+
+## 🛠️ Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm start` - Start production server
+- `npm run prisma:generate` - Generate Prisma client
+- `npm run prisma:migrate` - Run database migrations
+- `npm run prisma:deploy` - Deploy migrations to production
+- `npm run prisma:studio` - Open Prisma Studio
+- `node scripts/create-user.js` - Create new user interactively
+
+## 📁 Project Structure
+
+```
+bizondigital/
+├── prisma/
+│   ├── schema.prisma          # Database schema
+│   └── migrations/            # Database migrations
+├── public/
+│   └── images/                # Static images
+├── src/
+│   ├── app/                   # Next.js app directory
+│   │   ├── api/              # API routes
+│   │   ├── blog/             # Blog listing page
+│   │   ├── blog-details/[slug]/  # Dynamic blog pages
+│   │   ├── signin/           # Authentication
+│   │   └── adminBlog/        # Admin panel
+│   ├── components/           # React components
+│   │   └── Blog/
+│   │       ├── Admin/        # Blog admin interface
+│   │       ├── BlogSlider.tsx
+│   │       └── ForYou.tsx
+│   ├── types/                # TypeScript types
+│   └── utils/                # Utility functions
+├── lib/
+│   ├── prisma.js             # Prisma client
+│   └── auth.ts               # JWT authentication
+└── scripts/
+    ├── create-user.js        # Interactive user creation
+    └── production-setup.js   # Production deployment script
+```
+
+## 🔒 Security
+
+- Passwords hashed with bcryptjs (10 rounds)
+- JWT tokens with httpOnly cookies
+- Protected admin routes with middleware
+- Environment variables for sensitive data
+- SQL injection protection via Prisma
+
+## 🎨 Customization
+
+The application uses a custom orange theme (#FF7A00). To change colors:
+
+1. Update Tailwind config in `tailwind.config.js`
+2. Search and replace color codes in components
+3. Update CSS variables in `src/styles/index.css`
+
+## 📝 License
+
+This project is licensed under the MIT License - see LICENSE file
+
+## 🙌 Support
+
+For issues or questions:
+- Check [DEPLOYMENT.md](./DEPLOYMENT.md) for deployment help
+- Review [GitHub Issues](https://github.com/yourusername/bizondigital/issues)
+
+## ⚡ Deploy Now
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FNextJSTemplates%2Fstartup-nextjs)
 

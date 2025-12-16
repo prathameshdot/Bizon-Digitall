@@ -1,0 +1,53 @@
+generator client {
+  provider      = "prisma-client-js"
+  output        = "../generated/prisma"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x", "debian-openssl-1.1.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Blog {
+  id                     Int      @id @default(autoincrement())
+  title                  String
+  description            String?
+  subtitle               String?
+  category               String?
+  comment                String?
+  views                  Int      @default(0)
+  tags                   String?
+  images                 String?
+  highlightPoints        String?
+  notes                  String?
+  content                String?
+  authorName             String?
+  authorImage            String?
+  authorDesignation      String?
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+  articleSchemaJson      String?
+  blogContent            String?
+  featuredImage          String?
+  keywords               String?
+  metaDescription        String?
+  metaTitle              String?
+  ogDescription          String?
+  ogImage                String?
+  ogTitle                String?
+  ogType                 String?  @default("article")
+  ogUrl                  String?
+  organizationSchemaJson String?
+  slug                   String?  @unique
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  name      String?
+  role      String   @default("user")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

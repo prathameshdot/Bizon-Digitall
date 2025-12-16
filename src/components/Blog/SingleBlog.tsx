@@ -3,12 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 
 const SingleBlog = ({ blog }: { blog: Blog }) => {
-  const { title, image, paragraph, author, tags, publishDate } = blog;
+  const { title, image, paragraph, author, tags, publishDate, slug } = blog;
+  const blogUrl = slug ? `/blog-details/${slug}` : "/blog-details";
+  
   return (
     <>
       <div className="group relative overflow-hidden rounded-2xl bg-white dark:bg-dark shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_20px_60px_rgba(255,122,0,0.25)] duration-300 border border-gray-100 dark:border-gray-800 hover:border-[#FF7A00]/30 h-full flex flex-col">
         <Link
-          href="/blog-details"
+          href={blogUrl}
           className="relative block aspect-[16/10] w-full overflow-hidden"
         >
           <span className="bg-[#FF7A00] absolute top-4 right-4 z-20 inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold text-white capitalize shadow-lg">
@@ -20,7 +22,7 @@ const SingleBlog = ({ blog }: { blog: Blog }) => {
         <div className="p-6 sm:p-8 flex flex-col flex-grow">
           <h3 className="flex-grow">
             <Link
-              href="/blog-details"
+              href={blogUrl}
               className="hover:text-[#FF7A00] dark:hover:text-[#FF7A00] mb-4 block text-xl font-bold text-black sm:text-2xl dark:text-white transition-colors duration-300"
             >
               {title}
