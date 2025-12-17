@@ -121,6 +121,7 @@ const GetQuoteModal = () => {
         </div>
 
         {/* Trust bar: short credibility items to build trust */}
+        {/* <div className="px-4 pt-4"> */}
         <div className="px-4 pt-4">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-3">
@@ -221,6 +222,7 @@ const GetQuoteModal = () => {
               </button>
 
               {budgetOpen && (
+              // {budgetOpen && (
                 <ul className="absolute left-0 right-0 z-50 mt-1 max-h-48 w-full overflow-auto rounded-md bg-black border border-gray-700/40 py-1">
                   {['<1k', '1k-5k', '>5k'].map((opt) => (
                     <li
