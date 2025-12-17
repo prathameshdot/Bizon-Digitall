@@ -64,8 +64,8 @@ export default function RefundPage() {
             <h2 className="text-2xl sm:text-3xl font-bold text-black mb-4">7. Refund Request Process</h2>
             <p className="text-base text-gray-700 leading-relaxed mb-4">
               To request a refund, email{" "}
-              <a href="mailto:billing@bizondigital.com" className="text-[#FF7A00] hover:underline">
-                billing@bizondigital.com
+              <a href="mailto:connect@bizondigital.com" className="text-[#FF7A00] hover:underline">
+                connect@bizondigital.com
               </a>{" "}
               with your invoice number, service details, and reason for the request. Approved refunds are processed within 10-15 business days.
             </p>
@@ -89,24 +89,13 @@ export default function RefundPage() {
             <h2 className="text-2xl sm:text-3xl font-bold text-black mb-4">10. Questions About Refunds</h2>
             <p className="text-base text-gray-700 leading-relaxed mb-4">
               For refund policy clarifications, contact our support team at{" "}
-              <a href="mailto:support@bizondigital.com" className="text-[#FF7A00] hover:underline">
-                support@bizondigital.com
+              <a href="mailto:connect@bizondigital.com" className="text-[#FF7A00] hover:underline">
+                connect@bizondigital.com
               </a>
             </p>
           </section>
         </div>
 
-        <div className="mt-12">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 bg-[#FF7A00] text-white px-6 py-3 rounded-lg hover:bg-[#e66d00] transition-colors font-semibold"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-            </svg>
-            Back to Home
-          </Link>
-        </div>
       </div>
     </div>
   );

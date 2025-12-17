@@ -15,6 +15,7 @@ import CTABanner from "@/components/CTABanner";
 import FAQ from "@/components/FAQ";
 import Blog from "@/components/Blog";
 import Brands from "@/components/Brands";
+import Clients from "@/components/Clients";
 import ScrollUp from "@/components/Common/ScrollUp";
 import Contact from "@/components/Contact";
 import Features from "@/components/Features";
@@ -26,9 +27,13 @@ import Video from "@/components/Video";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Free Next.js Template for Startup and SaaS",
-  description: "This is Home for Startup Nextjs Template",
-  // other metadata
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://bizondigital.com'),
+  title: "BizOn Digital - The Best Digital Marketing Agency",
+  description: "BizOn Digital is a leading digital marketing agency offering SEO, social media marketing, paid advertising, web development, and branding services to help your business grow.",
+  icons: {
+    icon: '/images/logo/logo.png',
+    apple: '/images/logo/logo.png',
+  },
 };
 
 export default function Home() {
@@ -36,6 +41,7 @@ export default function Home() {
     <>
       <ScrollUp />
       <Hero data={homePageData.hero} />
+      <Clients />
       <AboutSection />
       <ServicesSection data={homePageData.services} />
       <CTA />

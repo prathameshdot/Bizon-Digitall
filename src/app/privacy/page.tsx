@@ -56,7 +56,7 @@ export default function PrivacyPage() {
           <section className="mb-8">
             <h2 className="text-2xl sm:text-3xl font-bold text-black mb-4">6. Your Rights and Choices</h2>
             <p className="text-base text-gray-700 leading-relaxed mb-4">
-              You have the right to access, correct, or delete your personal data. You can unsubscribe from marketing emails anytime. For GDPR or CCPA requests, contact us at info@bizondigital.com.
+              You have the right to access, correct, or delete your personal data. You can unsubscribe from marketing emails anytime. For GDPR or CCPA requests, contact us at connect@bizondigital.com.
             </p>
           </section>
 
@@ -85,24 +85,13 @@ export default function PrivacyPage() {
             <h2 className="text-2xl sm:text-3xl font-bold text-black mb-4">10. Contact Us</h2>
             <p className="text-base text-gray-700 leading-relaxed mb-4">
               For privacy-related questions or concerns, email us at{" "}
-              <a href="mailto:privacy@bizondigital.com" className="text-[#FF7A00] hover:underline">
-                privacy@bizondigital.com
+              <a href="mailto:connect@bizondigital.com" className="text-[#FF7A00] hover:underline">
+                connect@bizondigital.com
               </a>
             </p>
           </section>
         </div>
 
-        <div className="mt-12">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 bg-[#FF7A00] text-white px-6 py-3 rounded-lg hover:bg-[#e66d00] transition-colors font-semibold"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-            </svg>
-            Back to Home
-          </Link>
-        </div>
       </div>
     </div>
   );

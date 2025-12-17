@@ -70,7 +70,7 @@ const CTA = () => {
 
               {/* Right Illustration */}
               <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
-                <div className="relative w-full max-w-[250px] sm:max-w-[300px] md:max-w-[350px] aspect-square">
+                <div className="relative w-full max-w-[200px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-[300px] aspect-square">
                   <Image
                     src="/images/about/Illustration.png"
                     alt="Illustration"

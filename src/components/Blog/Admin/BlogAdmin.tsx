@@ -29,6 +29,8 @@ type Blog = {
   subtitle?: string;
   comment?: string;
   views?: string;
+  likes?: number;
+  shares?: number;
   images?: string;
   highlightPoints?: string;
   notes?: string;
@@ -66,6 +68,8 @@ export default function BlogAdmin() {
   const [subtitle, setSubtitle] = useState("");
   const [comment, setComment] = useState("");
   const [views, setViews] = useState("");
+  const [likes, setLikes] = useState("");
+  const [shares, setShares] = useState("");
   const [images, setImages] = useState("");
   const [highlightPoints, setHighlightPoints] = useState("");
   const [notes, setNotes] = useState("");
@@ -172,6 +176,8 @@ export default function BlogAdmin() {
         subtitle,
         comment,
         views: views ? parseInt(views) : 0,
+        likes: likes ? parseInt(likes) : 0,
+        shares: shares ? parseInt(shares) : 0,
         images,
         highlightPoints,
         notes,
@@ -227,6 +233,8 @@ export default function BlogAdmin() {
       setSubtitle("");
       setComment("");
       setViews("");
+      setLikes("0");
+      setShares("0");
       setImages("");
       setHighlightPoints("");
       setNotes("");
@@ -264,6 +272,8 @@ export default function BlogAdmin() {
     setSubtitle(blog.subtitle || "");
     setComment(blog.comment || "");
     setViews(blog.views || "");
+    setLikes(String(blog.likes || 0));
+    setShares(String(blog.shares || 0));
     setImages(blog.images || "");
     setHighlightPoints(blog.highlightPoints || "");
     setNotes(blog.notes || "");
@@ -343,6 +353,34 @@ export default function BlogAdmin() {
             className="w-full rounded-md border border-gray-300 p-3 text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF7A00]" 
             autoComplete="off" 
           />
+        </div>
+
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="block mb-2 font-semibold text-black">👍 Likes</label>
+            <input 
+              type="number" 
+              placeholder="0" 
+              value={likes} 
+              onChange={(e) => setLikes(e.target.value)} 
+              className="w-full rounded-md border border-gray-300 p-3 text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF7A00]" 
+              min="0"
+              autoComplete="off" 
+            />
+          </div>
+
+          <div>
+            <label className="block mb-2 font-semibold text-black">🔗 Shares</label>
+            <input 
+              type="number" 
+              placeholder="0" 
+              value={shares} 
+              onChange={(e) => setShares(e.target.value)} 
+              className="w-full rounded-md border border-gray-300 p-3 text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF7A00]" 
+              min="0"
+              autoComplete="off" 
+            />
+          </div>
         </div>
 
         <div>
@@ -627,6 +665,8 @@ export default function BlogAdmin() {
               <th className="border border-gray-300 p-2">Content Preview</th>
               <th className="border border-gray-300 p-2">Featured Image</th>
               <th className="border border-gray-300 p-2">Category</th>
+              <th className="border border-gray-300 p-2">👍 Likes</th>
+              <th className="border border-gray-300 p-2">🔗 Shares</th>
               <th className="border border-gray-300 p-2">Meta Title</th>
               <th className="border border-gray-300 p-2">Keywords</th>
               <th className="border border-gray-300 p-2">Tags</th>
@@ -667,6 +707,8 @@ export default function BlogAdmin() {
                   ) : '-'}
                 </td>
                 <td className="border border-gray-300 p-2">{blog.category || '-'}</td>
+                <td className="border border-gray-300 p-2 text-center">{blog.likes || '0'}</td>
+                <td className="border border-gray-300 p-2 text-center">{blog.shares || '0'}</td>
                 <td className="border border-gray-300 p-2 max-w-xs truncate">{blog.metaTitle || '-'}</td>
                 <td className="border border-gray-300 p-2 max-w-xs truncate">{blog.keywords || '-'}</td>
                 <td className="border border-gray-300 p-2 max-w-xs truncate">{blog.tags || '-'}</td>
@@ -690,7 +732,7 @@ export default function BlogAdmin() {
             ))}
             {blogs.length === 0 && (
               <tr>
-                <td colSpan={11} className="p-4 text-center text-gray-500">No blogs added yet.</td>
+                <td colSpan={13} className="p-4 text-center text-gray-500">No blogs added yet.</td>
               </tr>
             )}
           </tbody>

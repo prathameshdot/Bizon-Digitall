@@ -225,10 +225,6 @@ const Blog = () => {
                   <span className="text-[#FF7A00] font-semibold">Publication Date</span>
                   <p className="text-white">{formatDate(featuredBlog.createdAt)}</p>
                 </div>
-                <div>
-                  <span className="text-[#FF7A00] font-semibold">Author</span>
-                  <p className="text-white">{featuredBlog.authorName || "Admin"}</p>
-                </div>
               </div>
 
               <div className="flex flex-wrap items-center gap-4 pt-4">

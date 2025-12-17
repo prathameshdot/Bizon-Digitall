@@ -3,8 +3,8 @@ import nodemailer from 'nodemailer';
 
 export async function POST(request: NextRequest) {
   try {
-    const { email } = await request.json();
-    console.log('Subscribe API called with email:', email);
+    const { email, name, subject, message, isHelpDesk } = await request.json();
+    console.log('Subscribe API called with:', { email, isHelpDesk });
 
     if (!email) {
       console.log('Error: Email is required');
@@ -41,7 +41,66 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Email configuration error: ' + (verifyError as Error).message }, { status: 500 });
     }
 
-    // Email to admin (connect@bizondigital.com)
+    // Check if this is a help desk request
+    if (isHelpDesk) {
+      // Email to admin (connect@bizondigital.com) for help desk
+      const helpDeskMailOptions = {
+        from: 'connect@bizondigital.com',
+        to: 'connect@bizondigital.com',
+        subject: `Help Desk Support Request - ${subject}`,
+        html: `
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <style>
+              body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+              .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+              .header { background-color: #FF7A00; color: white; padding: 20px; text-align: center; border-radius: 5px 5px 0 0; }
+              .content { background-color: #f9f9f9; padding: 30px; border-radius: 0 0 5px 5px; }
+              .info { background-color: white; padding: 15px; margin: 15px 0; border-left: 4px solid #FF7A00; }
+              .footer { text-align: center; margin-top: 20px; font-size: 12px; color: #666; }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <div class="header">
+                <h1>Help Desk Support Request</h1>
+              </div>
+              <div class="content">
+                <h2>Request Details</h2>
+                <div class="info">
+                  <p><strong>Name:</strong> ${name}</p>
+                  <p><strong>Email:</strong> ${email}</p>
+                  <p><strong>Subject:</strong> ${subject}</p>
+                  <p><strong>Submitted at:</strong> ${new Date().toLocaleString()}</p>
+                </div>
+                <div class="info">
+                  <p><strong>Message:</strong></p>
+                  <p>${message}</p>
+                </div>
+                <p>Please respond to this support request as soon as possible.</p>
+              </div>
+              <div class="footer">
+                <p>BizOn Digital - Digital Marketing Agency</p>
+                <p>169 Madison Ave STE 2945, New York, NY 10016</p>
+              </div>
+            </div>
+          </body>
+          </html>
+        `,
+      };
+
+      console.log('Sending help desk email to connect@bizondigital.com');
+      await transporter.sendMail(helpDeskMailOptions);
+      console.log('Help desk email sent successfully');
+
+      return NextResponse.json({ 
+        success: true, 
+        message: 'Support request submitted successfully! We will respond within 24 hours.' 
+      }, { status: 200 });
+    }
+
+    // Email to admin (connect@bizondigital.com) for newsletter subscription
     const adminMailOptions = {
       from: 'connect@bizondigital.com',
       to: 'connect@bizondigital.com',

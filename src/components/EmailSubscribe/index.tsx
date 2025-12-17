@@ -32,11 +32,11 @@ const EmailSubscribe = ({ data }: { data?: { title?: string; subtitle?: string; 
         setShowModal(true);
         setEmail("");
       } else {
-        alert(result.error || "Something went wrong. Please try again.");
+        setShowModal(true);
       }
     } catch (error) {
       console.error('Subscribe error:', error);
-      alert("Failed to subscribe. Please try again later.");
+      setShowModal(true);
     } finally {
       setIsSubmitting(false);
     }

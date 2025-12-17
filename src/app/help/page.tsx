@@ -21,14 +21,15 @@ export default function HelpPage() {
 
     try {
       console.log('Sending help desk form:', formData);
-      const response = await fetch('/api/contact', {
+      const response = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: formData.name,
           email: formData.email,
-          message: `Subject: ${formData.subject}\n\n${formData.message}`,
-          subject: 'Help Desk Support Request'
+          name: formData.name,
+          subject: formData.subject,
+          message: formData.message,
+          isHelpDesk: true
         }),
       });
 
@@ -41,11 +42,11 @@ export default function HelpPage() {
       } else {
         const errorMsg = result.error || result.details || "Something went wrong. Please try again.";
         console.error('API Error:', errorMsg);
-        alert(`Error: ${errorMsg}`);
+        setShowModal(true);
       }
     } catch (error) {
       console.error('Help desk form error:', error);
-      alert(`Failed to send message: ${error instanceof Error ? error.message : 'Unknown error'}. Please try again later.`);
+      setShowModal(true);
     } finally {
       setIsSubmitting(false);
     }
@@ -67,8 +68,8 @@ export default function HelpPage() {
             <div className="space-y-4">
               <div>
                 <h3 className="font-semibold text-black mb-2">Email Support</h3>
-                <a href="mailto:support@bizondigital.com" className="text-[#FF7A00] hover:underline">
-                  support@bizondigital.com
+                <a href="mailto:connect@bizondigital.com" className="text-[#FF7A00] hover:underline">
+                  connect@bizondigital.com
                 </a>
                 <p className="text-sm text-gray-600 mt-1">Response within 24 hours</p>
               </div>
@@ -260,18 +261,6 @@ export default function HelpPage() {
               Call Us Now
             </a>
           </div>
-        </div>
-
-        <div className="mt-12">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 bg-[#FF7A00] text-white px-6 py-3 rounded-lg hover:bg-[#e66d00] transition-colors font-semibold"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-            </svg>
-            Back to Home
-          </Link>
         </div>
       </div>
 

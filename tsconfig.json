@@ -33,10 +33,16 @@
   "include": [
     "next-env.d.ts",
     ".next/types/**/*.ts",
-    "**/*.ts",
-    "**/*.tsx"
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "lib/**/*.ts",
+    "prisma/**/*.ts",
+    "scripts/**/*.js"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    ".next",
+    "out",
+    "dist"
   ]
 }

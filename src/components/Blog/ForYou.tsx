@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import BlogInteraction from "./BlogInteraction";
 
 const CATEGORIES = [
   "All",
@@ -66,6 +67,8 @@ const ForYou = () => {
             ? b.tags
             : String(b.tags || '').split(',').map((t) => t.trim()).filter(Boolean),
           publishDate: b.createdAt ? new Date(b.createdAt).toLocaleDateString() : '',
+          likes: b.likes || 0,
+          shares: b.shares || 0,
         }));
         setBlogs(mapped);
       } catch (e: any) {
@@ -230,9 +233,17 @@ const ForYou = () => {
                     {posts[0].paragraph}
                   </p>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-500">
-                      {posts[0].publishDate}
-                    </span>
+                    <div className="flex items-center gap-4">
+                      <span className="text-sm text-gray-500">
+                        {posts[0].publishDate}
+                      </span>
+                      <BlogInteraction 
+                        slug={posts[0].slug} 
+                        initialLikes={posts[0].likes}
+                        initialShares={posts[0].shares}
+                        variant="compact"
+                      />
+                    </div>
                     <ReadMoreLink slug={posts[0].slug} />
                   </div>
                 </div>
@@ -268,11 +279,19 @@ const ForYou = () => {
                     <p className="mb-3 text-sm text-gray-600 line-clamp-2">
                       {post.paragraph}
                     </p>
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between mb-3">
                       <span className="text-xs text-gray-500">
                         {post.publishDate}
                       </span>
                       <ReadMoreLink slug={post.slug} />
+                    </div>
+                    <div className="pt-3 border-t border-gray-100">
+                      <BlogInteraction 
+                        slug={post.slug} 
+                        initialLikes={post.likes}
+                        initialShares={post.shares}
+                        variant="compact"
+                      />
                     </div>
                   </div>
                 </article>

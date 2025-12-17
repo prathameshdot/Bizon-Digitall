@@ -39,11 +39,13 @@ const Contact = () => {
       } else {
         const errorMsg = result.error || result.details || "Something went wrong. Please try again.";
         console.error('API Error:', errorMsg);
-        alert(`Error: ${errorMsg}`);
+        setModalMessage(`Error: ${errorMsg}`);
+        setShowModal(true);
       }
     } catch (error) {
       console.error('Contact form error:', error);
-      alert(`Failed to send message: ${error instanceof Error ? error.message : 'Unknown error'}. Please try again later.`);
+      setModalMessage(`Failed to send message: ${error instanceof Error ? error.message : 'Unknown error'}. Please try again later.`);
+      setShowModal(true);
     } finally {
       setIsSubmitting(false);
     }

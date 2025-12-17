@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import EmailSubscribe from "@/components/EmailSubscribe";
+import BlogInteraction from "@/components/Blog/BlogInteraction";
 
 interface BlogData {
   id: number;
@@ -31,6 +32,8 @@ interface BlogData {
   organizationSchemaJson?: string;
   comment?: number;
   tags?: string[] | string;
+  likes?: number;
+  shares?: number;
 }
 
 interface PageProps {
@@ -65,6 +68,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   }
 
   return {
+    metadataBase: new URL(base),
     title: blog.metaTitle || blog.title || "Blog Post | Bizon Digital",
     description:
       blog.metaDescription || blog.description || "Read our latest blog post",
@@ -187,13 +191,6 @@ const BlogDetailsPage = async (props: PageProps) => {
                 {/* Meta Info */}
                 <div className="border-b border-gray-200 mb-6 sm:mb-8 md:mb-10 flex flex-wrap items-center gap-4 sm:gap-6 pb-4 sm:pb-6">
                   <div className="flex items-center">
-                    <div className="w-full">
-                      <span className="text-gray-600 text-sm sm:text-base font-medium">
-                        By {blog.author.name}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex items-center">
                     <p className="text-gray-600 flex items-center text-sm sm:text-base font-medium">
                       <span className="mr-2 sm:mr-3">
                         <svg
@@ -233,6 +230,14 @@ const BlogDetailsPage = async (props: PageProps) => {
                   className="prose prose-sm sm:prose-base lg:prose-lg max-w-none mb-8 sm:mb-10 md:mb-12"
                   dangerouslySetInnerHTML={{ __html: blog.blogContent }}
                 />
+
+                {/* Like and Share Buttons */}
+                <div className="mb-8 sm:mb-10 md:mb-12">
+                  <BlogInteraction 
+                    slug={blog.slug || String(blog.id)} 
+                    variant="full"
+                  />
+                </div>
 
                 {/* Back to Blog Button */}
                 <div className="mt-8 sm:mt-10 md:mt-12">

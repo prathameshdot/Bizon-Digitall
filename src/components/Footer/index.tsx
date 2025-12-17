@@ -87,6 +87,7 @@ const Footer = () => {
                 <li><Link href="/services/social-media" className="text-sm text-gray-700 hover:text-black transition-colors">Social Media</Link></li>
                 <li><Link href="/services/branding" className="text-sm text-gray-700 hover:text-black transition-colors">Branding</Link></li>
                 <li><Link href="/services/web-development" className="text-sm text-gray-700 hover:text-black transition-colors">Web Development</Link></li>
+                <li><Link href="/services/ecommerce" className="text-sm text-gray-700 hover:text-black transition-colors">E-Commerce</Link></li>
               </ul>
             </div>
 
@@ -180,6 +181,7 @@ const Footer = () => {
                   <li><Link href="/services/social-media" className="text-sm text-gray-700 block">Social Media</Link></li>
                   <li><Link href="/services/branding" className="text-sm text-gray-700 block">Branding</Link></li>
                   <li><Link href="/services/web-development" className="text-sm text-gray-700 block">Web Development</Link></li>
+                  <li><Link href="/services/ecommerce" className="text-sm text-gray-700 block">E-Commerce</Link></li>
                 </ul>
               )}
             </div>

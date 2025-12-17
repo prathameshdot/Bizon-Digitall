@@ -89,11 +89,14 @@ const Header = () => {
       // compute active target
       const isServiceSubpage = usePathName.startsWith('/services/');
       const isBlogPage = usePathName.startsWith('/blog') || usePathName.startsWith('/blog-details');
+      const isPolicyPage = ['/help', '/faq', '/terms', '/privacy', '/refund'].includes(usePathName);
       let activeIndex = -1;
       if (isServiceSubpage) {
         activeIndex = menuData.findIndex(item => !item.path && item.submenu?.some(sub => sub.path?.startsWith('/services/')));
       } else if (isBlogPage) {
         activeIndex = menuData.findIndex(item => item.path === '/blog');
+      } else if (isPolicyPage) {
+        activeIndex = homeIndex; // Treat policy pages as home
       } else {
         activeIndex = menuData.findIndex(item => item.path === usePathName);
       }
@@ -166,6 +169,13 @@ const Header = () => {
     const isServiceSubpage = usePathName.startsWith('/services/');
     // Treat blog details and /blog* as blog page
     const isBlogPage = usePathName.startsWith('/blog') || usePathName.startsWith('/blog-details');
+    // Check if on policy/info pages (these should show home as active)
+    const isPolicyPage = ['/help', '/faq', '/terms', '/privacy', '/refund'].includes(usePathName);
+
+    // If we're on a policy page, show home as black
+    if (isPolicyPage && menuPath === '/') {
+      return "text-black";
+    }
 
     // If we're on a service subpage and this is the Services menu, make it black
     if (isServiceSubpage && isServicesMenu) {
@@ -183,6 +193,9 @@ const Header = () => {
       }
       if (isBlogPage) {
         return item.path === '/blog';
+      }
+      if (isPolicyPage) {
+        return item.path === '/';
       }
       return item.path === usePathName;
     });

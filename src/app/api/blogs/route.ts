@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "../../../../lib/prisma";
 
-export const revalidate = 60;
+export const revalidate = 30; // Cache for 30 seconds for better performance
 
 // Comprehensive dummy blog data with all fields populated
 const dummyBlogsData = [
@@ -348,6 +348,8 @@ export async function GET(req: NextRequest) {
         tags: true,
         category: true,
         createdAt: true,
+        likes: true,
+        shares: true,
       } : undefined
     });
 
@@ -396,6 +398,8 @@ export async function POST(req: NextRequest) {
       authorName: data.authorName,
       authorImage: data.authorImage,
       authorDesignation: data.authorDesignation,
+      likes: parseInt(data.likes) || 0,
+      shares: parseInt(data.shares) || 0,
       updatedAt: new Date().toISOString(),
     } as const;
 
@@ -441,6 +445,8 @@ export async function PUT(req: NextRequest) {
       authorName: data.authorName,
       authorImage: data.authorImage,
       authorDesignation: data.authorDesignation,
+      likes: parseInt(data.likes) || undefined,
+      shares: parseInt(data.shares) || undefined,
     } as const;
 
     const updatedBlog = await prisma.blog.update({

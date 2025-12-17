@@ -21,9 +21,13 @@ const GetQuoteModal = () => {
     const handler = () => setOpen(true);
     window.addEventListener("openGetQuote", handler as EventListener);
 
-    // Auto open after 5 seconds
+    // Auto open after 5 seconds, but only once per session
+    const hasShown = sessionStorage.getItem("quoteModalShown");
     const t = setTimeout(() => {
-      window.dispatchEvent(new CustomEvent("openGetQuote"));
+      if (!hasShown) {
+        sessionStorage.setItem("quoteModalShown", "true");
+        window.dispatchEvent(new CustomEvent("openGetQuote"));
+      }
     }, 5000);
 
     return () => {

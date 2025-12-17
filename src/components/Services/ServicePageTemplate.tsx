@@ -42,7 +42,7 @@
     return (
       <>
         {/* Hero Section - Clean & Professional */}
-        <section className="relative min-h-[600px] sm:min-h-[700px] lg:min-h-screen flex items-center justify-center overflow-hidden bg-white pt-20 md:pt-24 lg:pt-28">
+        <section className="relative min-h-[600px] sm:min-h-[700px] lg:min-h-screen flex items-center justify-center overflow-hidden bg-white pt-20">
 
           {/* Content */}
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-16 sm:py-24 lg:py-32">

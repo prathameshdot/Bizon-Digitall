@@ -18,7 +18,7 @@ const SuccessTeam = () => {
         <div className="max-w-7xl mx-auto">
           {/* Section Title */}
           <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#FF7A00] text-center mb-12 sm:mb-16 md:mb-20">
-            {team.title}
+            Expert Leadership
           </h2>
 
           {/* Team Grid */}
