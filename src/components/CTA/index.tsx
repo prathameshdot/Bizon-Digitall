@@ -54,18 +54,18 @@ const CTA = () => {
             <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-8">
               {/* Left Content */}
               <div className="w-full lg:w-1/2 text-center lg:text-left">
-                <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-black mb-3 sm:mb-4">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-3 sm:mb-4">
                   Let&apos;s make things happen
                 </h2>
-                <p className="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 mb-4 sm:mb-6 leading-relaxed">
+                <p className="text-base text-gray-700 mb-4 sm:mb-6 leading-relaxed">
                   Contact us today to learn more about how our digital marketing services can help your business grow and succeed online.
                 </p>
-                <Link
-                  href="/contact"
+                <button
+                  onClick={() => window.dispatchEvent(new CustomEvent('openGetQuote'))}
                   className="inline-block bg-gray-900 hover:bg-gray-800 text-white font-semibold text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl"
                 >
                   Get your free proposal
-                </Link>
+                </button>
               </div>
 
               {/* Right Illustration */}

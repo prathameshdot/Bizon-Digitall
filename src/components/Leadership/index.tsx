@@ -55,7 +55,7 @@ const Leadership = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-2 md:mb-4">
-          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold text-black mb-2">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-2">
             Meet our leadership
           </h2>
         </div>

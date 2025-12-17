@@ -40,7 +40,7 @@ const SocialMediaSection = () => {
 
             {/* Tagline */}
             <div className="mt-2">
-              <p className="text-lg sm:text-xl font-semibold text-gray-900">Connect & Collaborate</p>
+              <p className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900">Connect & Collaborate</p>
             </div>
 
             {/* Watch Video Button - centered below icons, rotating around center */}

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 const GetQuoteModal = () => {
   const [open, setOpen] = useState(false);
   const [servicesState, setServicesState] = useState<string[]>([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const allServices = [
     "Web Development",
     "Paid Advertising",
@@ -62,18 +63,44 @@ const GetQuoteModal = () => {
     }
   };
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // For now just close and log — integrate API later
-    const form = e.target as HTMLFormElement;
-    // include controlled budget value into FormData
-    const fd = new FormData(form);
-    if (budget) fd.set('budget', budget);
-    const data = Object.fromEntries(fd as any);
-    // eslint-disable-next-line no-console
-    console.log("Get Quote form submitted", data);
-    setOpen(false);
-    alert("Thank you! Your enquiry has been noted.");
+    setIsSubmitting(true);
+
+    try {
+      const form = e.target as HTMLFormElement;
+      const fd = new FormData(form);
+      if (budget) fd.set('budget', budget);
+      
+      const formData = {
+        name: fd.get('name') as string,
+        email: fd.get('email') as string,
+        phone: fd.get('phone') as string,
+        company: fd.get('company') as string,
+        service: servicesState.join(', '),
+        message: `Budget: ${budget || 'Not specified'}\n\nServices: ${servicesState.join(', ')}\n\nAdditional message: ${fd.get('message') || 'N/A'}`,
+        subject: 'Get Quote Request'
+      };
+
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        alert("Thank you! Your quote request has been submitted. Check your email for confirmation.");
+        setOpen(false);
+      } else {
+        alert(result.error || "Failed to submit quote request. Please try again.");
+      }
+    } catch (error) {
+      alert("Failed to submit quote request. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Budget custom dropdown state
@@ -247,7 +274,13 @@ const GetQuoteModal = () => {
           <div className="md:col-span-2 border-t border-gray-800">
             <div className="flex flex-col items-center justify-center gap-3 px-4 py-6 sm:flex-row sm:gap-4 w-full">
               <button type="button" onClick={close} className="w-full max-w-xs rounded-full bg-white/5 px-6 py-2 text-sm font-medium text-white hover:bg-white/10">Cancel</button>
-              <button type="submit" className="w-full max-w-xs rounded-full bg-[#FF7A00] px-6 py-2 text-sm font-semibold text-white hover:bg-[#e66d00]">Send Enquiry</button>
+              <button 
+                type="submit" 
+                disabled={isSubmitting}
+                className="w-full max-w-xs rounded-full bg-[#FF7A00] px-6 py-2 text-sm font-semibold text-white hover:bg-[#e66d00] disabled:bg-gray-600 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? 'Sending...' : 'Send Enquiry'}
+              </button>
             </div>
           </div>
         </form>

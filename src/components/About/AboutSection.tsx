@@ -30,7 +30,7 @@ const AboutSection = () => {
           <div className="mb-12 flex w-full flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
             {/* Left Side - About Us Title */}
             <div>
-              <h2 className="whitespace-nowrap text-4xl font-bold xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl 2xl:text-9xl" style={{ fontFamily: 'var(--font-syne), sans-serif' }}>
+              <h2 className="whitespace-nowrap text-4xl font-bold sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl" style={{ fontFamily: 'var(--font-syne), sans-serif' }}>
                 <span className="text-[#FF7A00] mr-2">ABOUT</span>
                 <span className="text-black">US</span>
               </h2>

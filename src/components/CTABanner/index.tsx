@@ -21,12 +21,12 @@ const CTABanner = ({ data }: { data?: { title?: string; description?: string; bu
           {/* Left Content */}
           <div className="max-w-3xl">
             {/* Heading */}
-            <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-black mb-4 sm:mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-4 sm:mb-6">
               {data?.title || "Would you like to Start a project with us ?"}
             </h2>
 
             {/* Description */}
-            <p className="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white mb-6 sm:mb-8 lg:mb-0 leading-relaxed">
+            <p className="text-base text-white mb-6 sm:mb-8 lg:mb-0 leading-relaxed">
               {data?.description || "We're eager to help you achieve your digital marketing goals with customized solutions. Let's work together to elevate your brand and drive success. Get in touch today, and let's make it happen!"}
             </p>
           </div>

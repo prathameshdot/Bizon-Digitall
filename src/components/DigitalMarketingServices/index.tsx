@@ -56,7 +56,7 @@ const DigitalMarketingServices = () => {
               */}
               
               {/* Title */}
-              <h3 className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">
                 {service.title}
               </h3>
               

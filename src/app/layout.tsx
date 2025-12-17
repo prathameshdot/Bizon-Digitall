@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import GetQuoteModal from "@/components/GetQuoteModal";
 import ScrollToTop from "@/components/ScrollToTop";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { Poppins, Syne } from "next/font/google";
 import "../styles/index.css";
 
@@ -40,6 +41,7 @@ export default function RootLayout({
           {children}
           <Footer />
           <ScrollToTop />
+          <WhatsAppFloat />
         </Providers>
       </body>
     </html>

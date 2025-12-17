@@ -1,34 +1,34 @@
 {
   "hero": {
-    "title": "ABOUT US",
-    "subtitle": "Welcome to The BizOn Digital",
-    "description": "Bizon Digital is a leading digital marketing agency dedicated to transforming businesses through innovative strategies and data-driven solutions that deliver measurable results and accelerate growth in the digital landscape.",
+    "title": "ABOUT BIZON DIGITAL",
+    "subtitle": "Your Growth Partner In Digital Marketing Excellence",
+    "description": "BizOn Digital is a results-driven digital marketing agency specializing in SEO, PPC, social media marketing, and web development. We help ambitious brands dominate their market with data-driven strategies, creative campaigns, and measurable ROI that accelerates business growth.",
     "image": "/images/about/Frame 1357.png"
   },
   "globalReach": {
-    "title": "We're here for you",
-    "subtitle": "no matter where you are",
-    "description": "Serving clients worldwide with our comprehensive digital marketing solutions",
+    "title": "Trusted Digital Marketing Partner",
+    "subtitle": "Serving Clients Worldwide With Proven Results",
+    "description": "From startups to enterprises, we deliver award-winning digital marketing solutions across industries including e-commerce, healthcare, technology, real estate, and professional services",
     "image": "/images/about/Container.png"
   },
   "mission": {
-    "title": "Our Mission",
+    "title": "Our Mission & Values",
     "items": [
       {
-        "title": "Empower Businesses",
-        "description": "Our mission is to empower businesses with innovative digital marketing strategies that drive growth and maximize online impact. We're dedicated to delivering measurable results and helping you connect with your audience."
+        "title": "Drive Measurable Business Growth",
+        "description": "Our mission is to empower businesses with ROI-focused digital marketing strategies including SEO, paid advertising, social media marketing, and conversion optimization. We're committed to delivering transparent results that directly impact your revenue and market position."
       },
       {
-        "title": "Tailored Solutions",
-        "description": "We create customized strategies specifically designed for your business goals, ensuring every campaign aligns with your unique needs and delivers real results that matter to your bottom line."
+        "title": "Custom Digital Marketing Solutions",
+        "description": "We create tailored marketing strategies designed specifically for your industry, target audience, and business objectives. Every campaign—from Google Ads to content marketing—is optimized to deliver maximum conversions and sustainable growth."
       },
       {
-        "title": "Proven Expertise",
-        "description": "With 10+ years of experience and over 1,000 successful campaigns, our team brings deep expertise across all digital marketing channels to help you achieve sustainable growth and market leadership."
+        "title": "Industry-Leading Expertise",
+        "description": "With 10+ years of digital marketing experience and 1,000+ successful campaigns across SEO, PPC, social media, email marketing, and web development, our certified team brings cutting-edge expertise to help you outperform competitors and dominate your niche."
       },
       {
-        "title": "Innovation First",
-        "description": "We leverage the latest technology, tools, and trends to keep your brand ahead of the competition, combining cutting-edge digital marketing techniques with creative excellence."
+        "title": "Innovation & Results-Driven Approach",
+        "description": "We leverage advanced marketing automation, AI-powered analytics, and the latest digital trends to keep your brand ahead. Our performance-driven methodology combines creativity with data to achieve exceptional ROAS (Return on Ad Spend) and customer acquisition."
       }
     ]
   },
@@ -50,53 +50,53 @@
     ]
   },
   "services": {
-    "title": "What We Do",
+    "title": "Our Digital Marketing Services",
     "items": [
       {
-        "name": "Website Development",
-        "description": "Custom, responsive websites that convert visitors into customers"
+        "name": "SEO & Local SEO",
+        "description": "Rank #1 on Google with proven SEO strategies that drive organic traffic and qualified leads"
       },
       {
-        "name": "SEO",
-        "description": "Rank higher on search engines and attract organic traffic"
-      },
-      {
-        "name": "Paid Ads",
-        "description": "Strategic PPC campaigns that maximize your advertising ROI"
+        "name": "PPC & Google Ads Management",
+        "description": "High-converting paid advertising campaigns with expert bid management and ROI optimization"
       },
       {
         "name": "Social Media Marketing",
-        "description": "Build and engage your audience across all social platforms"
+        "description": "Build brand awareness and engage customers across Facebook, Instagram, LinkedIn & Twitter"
       },
       {
-        "name": "eCommerce Store",
-        "description": "Complete eCommerce solutions to sell online successfully"
+        "name": "Website Development & Design",
+        "description": "Conversion-optimized, mobile-responsive websites that turn visitors into paying customers"
       },
       {
-        "name": "Branding",
-        "description": "Create a powerful brand identity that resonates with your audience"
+        "name": "E-Commerce Marketing",
+        "description": "Complete Shopify, WooCommerce & custom e-commerce solutions with integrated marketing"
       },
       {
-        "name": "Email Marketing",
-        "description": "Targeted email campaigns that drive engagement and conversions"
+        "name": "Brand Strategy & Identity",
+        "description": "Distinctive brand positioning, logo design, and messaging that resonates with your market"
       },
       {
-        "name": "App Development",
-        "description": "Custom mobile applications to expand your digital reach"
+        "name": "Email Marketing Automation",
+        "description": "Nurture campaigns and automated email sequences that drive retention and repeat sales"
+      },
+      {
+        "name": "Content Marketing & Copywriting",
+        "description": "SEO-optimized blog posts, landing pages, and compelling copy that converts visitors"
       }
     ]
   },
   "whyChooseUs": {
-    "title": "Why Choose Us?",
-    "description": "Choose Bizon Digital for tailored, results-driven strategies that elevate your online presence. Our expertise and commitment to your success ensure measurable growth and lasting impact.",
+    "title": "Why Choose BizOn Digital As Your Marketing Partner?",
+    "description": "Partner with BizOn Digital for performance-driven digital marketing that delivers real business results. Our proven track record, transparent reporting, and dedicated account management ensure your marketing investment generates maximum ROI and sustainable growth.",
     "features": [
       {
-        "title": "Best Quality Designs",
-        "description": "We deliver exceptional, high-quality designs that capture your brand's essence and engage your audience. Our creative team crafts visually stunning and user-friendly designs that drive results and enhance your digital presence."
+        "title": "Award-Winning Creative & Design",
+        "description": "Our creative team delivers stunning, conversion-focused designs that capture attention and drive action. From landing pages to ad creatives, we craft visually compelling assets that enhance your brand and boost campaign performance across all digital channels."
       },
       {
-        "title": "24x7 Live Support",
-        "description": "Round-the-clock assistance from our dedicated team ensures your campaigns run smoothly and your questions are answered promptly, no matter the time zone."
+        "title": "24/7 Dedicated Support & Monitoring",
+        "description": "Get peace of mind with round-the-clock campaign monitoring, technical support, and strategic guidance. Our dedicated account managers ensure your campaigns are always optimized, questions answered promptly, and opportunities captured regardless of time zone."
       },
       {
         "title": "Result Oriented Projects",

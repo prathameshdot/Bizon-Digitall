@@ -83,54 +83,54 @@
       "icon": "search",
       "shortDescription": "Rank higher on search engines and attract organic traffic",
       "hero": {
-        "title": "Dominate Search Rankings with",
-        "subtitle": "Strategic SEO Services",
-        "description": "Bizon Digital's SEO services help you rank higher, attract more qualified traffic, and convert visitors into customers. Our data-driven approach combines technical excellence with content strategy to deliver sustainable organic growth."
+        "title": "Drive Explosive Growth with",
+        "subtitle": "Expert SEO Services & Organic Traffic Generation",
+        "description": "BizOn Digital's comprehensive SEO services help you dominate Google search results, attract high-intent organic traffic, and convert visitors into loyal customers. Our proven SEO strategies combine technical optimization, content marketing, and authority building to deliver sustainable rankings and measurable ROI."
       },
       "mainContent": {
-        "title": "SEO Strategy That Delivers Real Results",
+        "title": "Professional SEO Services That Deliver First-Page Rankings",
         "paragraphs": [
-          "Search Engine Optimization is the cornerstone of digital visibility. At Bizon Digital, we offer comprehensive SEO services that go beyond keyword rankings. As a leading SEO agency, we take a holistic approach to understand your business objectives, target audience search behavior, and competitive landscape.",
-          "For sustainable SEO success, there must be clearly defined KPIs and realistic timelines. As part of our SEO solution, we establish S.M.A.R.T. objectives including organic traffic growth, keyword rankings, conversion rates, and ROI targets. With a strategic plan in place, our SEO team works systematically to achieve your goals.",
-          "We're recognized as one of the top SEO agencies, following white-hat practices and staying ahead of algorithm updates. This involves continuous monitoring, testing, and optimization to ensure your website maintains and improves its search visibility over time."
+          "Search Engine Optimization is the foundation of sustainable online visibility and customer acquisition. At BizOn Digital, we offer enterprise-level SEO services that go far beyond basic keyword stuffing. As a certified SEO agency with proven results, we take a comprehensive approach—analyzing your business goals, researching target audience search behavior, conducting in-depth competitor analysis, and implementing white-hat SEO strategies.",
+          "For long-term SEO success and consistent organic growth, we establish clear KPIs including organic traffic targets, keyword ranking goals, conversion rate benchmarks, and ROI projections. Our SEO team follows a systematic S.M.A.R.T. methodology with transparent reporting, regular strategy reviews, and continuous optimization to adapt to Google algorithm updates and market changes.",
+          "Recognized as one of the top-rated SEO agencies, we strictly follow ethical white-hat practices and stay ahead of the curve with the latest SEO trends, Core Web Vitals optimization, mobile-first indexing, and E-A-T principles. This comprehensive approach involves ongoing technical audits, content gap analysis, backlink profile monitoring, and conversion rate optimization to ensure your website not only ranks but also converts."
         ]
       },
       "keyOfferings": {
-        "title": "Our SEO Methodology",
-        "subtitle": "Our SEO approach is built on answering critical questions that drive organic success:",
+        "title": "Our Results-Driven SEO Approach",
+        "subtitle": "Every successful SEO campaign starts with strategic planning. Our methodology focuses on answering critical questions:",
         "questions": [
-          "What are the high-value keywords your customers are searching for?",
-          "What content strategy will establish your authority and drive rankings?",
-          "What technical optimizations are needed for search engine crawlability?",
-          "What link-building strategy will boost your domain authority?"
+          "What high-converting, high-volume keywords will drive qualified leads and sales?",
+          "What comprehensive content strategy will establish your domain authority and topic expertise?",
+          "What technical SEO optimizations are essential for crawlability, indexability, and Core Web Vitals?",
+          "What white-hat link-building tactics will boost your domain authority and referral traffic?"
         ]
       },
       "serviceAreas": {
-        "title": "Complete SEO Solutions",
+        "title": "Full-Service SEO Solutions",
         "items": [
           {
-            "title": "Technical SEO",
-            "description": "Comprehensive technical audits, site speed optimization, mobile optimization, and structured data implementation."
+            "title": "Technical SEO Audits & Optimization",
+            "description": "In-depth technical SEO audits, site speed optimization, mobile responsiveness, Core Web Vitals improvements, schema markup, XML sitemaps, and structured data implementation for better rankings."
           },
           {
-            "title": "On-Page Optimization",
-            "description": "Strategic keyword optimization, content optimization, meta tags, internal linking, and user experience improvements."
+            "title": "On-Page SEO & Content Optimization",
+            "description": "Strategic keyword research, content optimization, meta tag refinement, header tag structuring, internal linking strategies, image optimization, and user experience enhancements for higher conversions."
           },
           {
-            "title": "Content Strategy",
-            "description": "SEO-optimized content creation, blog strategy, pillar pages, and content gap analysis to drive rankings."
+            "title": "SEO Content Strategy & Creation",
+            "description": "High-quality, SEO-optimized content creation including blog posts, pillar pages, topic clusters, content gap analysis, and editorial calendars to establish topical authority and drive organic rankings."
           },
           {
-            "title": "Link Building",
-            "description": "White-hat link acquisition strategies to build domain authority and improve search rankings organically."
+            "title": "Link Building & Off-Page SEO",
+            "description": "Ethical white-hat link acquisition through guest posting, digital PR, broken link building, and relationship-based outreach to build domain authority and improve search visibility organically."
           },
           {
-            "title": "Local SEO",
-            "description": "Google Business Profile optimization, local citations, and strategies to dominate local search results."
+            "title": "Local SEO & Google Business Profile",
+            "description": "Complete local SEO optimization including Google Business Profile setup, local citations, NAP consistency, review management, and geo-targeted strategies to dominate local search results and Google Maps."
           },
           {
-            "title": "Analytics & Reporting",
-            "description": "Detailed performance tracking, ranking reports, traffic analysis, and actionable insights for continuous improvement."
+            "title": "SEO Analytics & Performance Tracking",
+            "description": "Comprehensive monthly SEO reports with Google Analytics integration, Search Console insights, keyword ranking tracking, traffic analysis, conversion tracking, and data-driven recommendations for continuous improvement."
           }
         ]
       },

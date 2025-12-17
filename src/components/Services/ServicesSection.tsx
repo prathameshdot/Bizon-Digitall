@@ -153,7 +153,7 @@ const ServicesSection = ({ data }: { data?: { title?: string; items?: any[] } })
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Title */}
           <h2 
-            className="mb-6 xs:mb-8 sm:mb-10 md:mb-12 text-2xl font-bold text-[#FF7A00] xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl"
+            className="mb-6 xs:mb-8 sm:mb-10 md:mb-12 text-4xl font-bold text-[#FF7A00] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
             style={{ fontFamily: 'var(--font-syne), sans-serif' }}
           >
             {data?.title || 'How Can We Help You?'}

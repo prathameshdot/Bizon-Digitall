@@ -11,8 +11,8 @@ const CountryReachout = () => {
         <div className="px-4 py-4 md:py-6 lg:py-8">
           <div className="max-w-3xl mx-auto text-center mb-6 md:mb-10 text-white">
             <h3 className="text-sm font-semibold tracking-wider text-white">LOCATIONS</h3>
-            <h2 className="mt-2 text-2xl sm:text-3xl md:text-4xl font-bold text-black">Global strategy, local execution</h2>
-            <p className="mt-3 text-sm sm:text-base text-white">
+            <h2 className="mt-2 text-3xl sm:text-4xl md:text-5xl font-bold text-black">Global strategy, local execution</h2>
+            <p className="mt-3 text-base text-white">
               For our clients, we orchestrate the right mix of talent to build the perfect team. We put a strong focus on chemistry, relevant experience and proximity. For our employees, it doesn’t matter where you live — we have employees all over the world.
             </p>
           </div>

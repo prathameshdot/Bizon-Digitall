@@ -205,11 +205,19 @@ const Header = () => {
 
   return (
     <>
+      {/* Mobile Menu Backdrop */}
+      {navbarOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-40 md:hidden"
+          onClick={() => setNavbarOpen(false)}
+        />
+      )}
+      
       <header
         className="header fixed top-0 left-0 z-50 w-full pt-2 px-2 xs:px-3 sm:pt-4 sm:px-4 md:px-6 lg:pt-6 lg:px-8"
       >
         <div className="container mx-auto">
-          <div className="relative bg-black/95 backdrop-blur-sm rounded-full px-2 py-2 xs:px-3 xs:py-3 sm:px-5 sm:py-4 md:py-4 lg:px-6 overflow-hidden md:overflow-visible" ref={navRef}>
+          <div className="relative bg-black/95 backdrop-blur-sm rounded-full px-2 py-2 xs:px-3 xs:py-3 sm:px-5 sm:py-4 md:py-4 lg:px-6 overflow-visible" ref={navRef}>
             {/* Animated White Slider with padding - Tablet & Desktop */}
             {isMounted && (
               <div 
@@ -250,27 +258,27 @@ const Header = () => {
                   onClick={navbarToggleHandler}
                   id="navbarToggler"
                   aria-label="Mobile Menu"
-                  className="block md:hidden z-20 p-1 xs:p-2"
+                  className="block md:hidden z-20 p-2 rounded-lg hover:bg-white/10 active:bg-white/20 transition-all duration-300 active:scale-95"
                 >
                   <span
-                    className={`relative my-1.5 block h-0.5 w-[24px] bg-white transition-all duration-300 ${
+                    className={`relative my-1.5 block h-0.5 w-[26px] bg-white transition-all duration-300 ${
                       navbarOpen ? "top-[7px] rotate-45" : " "
                     }`}
                   />
                   <span
-                    className={`relative my-1.5 block h-0.5 w-[24px] bg-white transition-all duration-300 ${
+                    className={`relative my-1.5 block h-0.5 w-[26px] bg-white transition-all duration-300 ${
                       navbarOpen ? "opacity-0" : " "
                     }`}
                   />
                   <span
-                    className={`relative my-1.5 block h-0.5 w-[24px] bg-white transition-all duration-300 ${
+                    className={`relative my-1.5 block h-0.5 w-[26px] bg-white transition-all duration-300 ${
                       navbarOpen ? "top-[-8px] -rotate-45" : " "
                     }`}
                   />
                 </button>
                 <nav
                   id="navbarCollapse"
-                  className={`navbar absolute left-2 right-2 xs:left-3 xs:right-3 top-[60px] xs:top-[70px] z-30 rounded-2xl bg-black border-2 border-white px-4 py-4 xs:px-6 xs:py-6 duration-300 md:visible md:static md:w-auto md:border-none md:!bg-transparent md:p-0 md:opacity-100 md:top-auto ${
+                  className={`navbar absolute left-2 right-2 xs:left-3 xs:right-3 top-[65px] xs:top-[75px] sm:top-[85px] z-50 rounded-2xl bg-black border-2 border-white px-4 py-5 xs:px-6 xs:py-6 shadow-2xl duration-300 md:visible md:static md:w-auto md:border-none md:!bg-transparent md:p-0 md:opacity-100 md:top-auto md:shadow-none ${
                     navbarOpen
                       ? "visible opacity-100"
                       : "invisible opacity-0 md:visible md:opacity-100"
@@ -299,28 +307,28 @@ const Header = () => {
                             href={menuItem.path}
                             data-index={index}
                             onClick={() => setNavbarOpen(false)}
-                            className={`relative flex py-3 px-4 text-base font-medium rounded-lg transition-colors duration-300 md:px-2 md:py-3 md:rounded-none md:transition-colors md:duration-500 lg:px-2 xl:px-4 whitespace-nowrap ${
+                            className={`relative flex py-3 px-4 text-base font-medium rounded-lg transition-colors duration-300 md:px-2 md:py-3 md:rounded-none md:transition-colors md:duration-500 lg:px-2 xl:px-4 whitespace-nowrap active:scale-95 ${
                               menuIsActive
                                 ? "bg-white text-black md:bg-transparent md:text-black"
-                                : `text-white hover:bg-white/10 md:hover:bg-transparent md:${getMenuItemColor(menuItem.path)}`
+                                : `text-white hover:bg-white/20 active:bg-white/30 md:hover:bg-transparent md:${getMenuItemColor(menuItem.path)}`
                             }`}
                           >
-                            <span className="text-sm md:text-[12px] lg:text-[13px] xl:text-[15px]">{menuItem.title}</span>
+                            <span className="text-base md:text-[12px] lg:text-[13px] xl:text-[15px]">{menuItem.title}</span>
                           </Link>
                         ) : (
                           <>
                             <p
                               onClick={() => handleSubmenu(index)}
                               data-index={index}
-                              className={`flex cursor-pointer items-center justify-between py-3 px-4 text-base font-medium rounded-lg md:rounded-none md:py-3 md:px-2 lg:px-5 transition-all duration-300 ${
+                              className={`flex cursor-pointer items-center justify-between py-3 px-4 text-base font-medium rounded-lg md:rounded-none md:py-3 md:px-2 lg:px-5 transition-all duration-300 active:scale-95 ${
                                 isSubmenuActive
                                   ? "bg-white text-black md:bg-transparent md:text-black"
-                                  : `text-white hover:bg-white/10 md:hover:bg-transparent md:${getMenuItemColor(menuItem.path, isServicesMenu)}`
+                                  : `text-white hover:bg-white/20 active:bg-white/30 md:hover:bg-transparent md:${getMenuItemColor(menuItem.path, isServicesMenu)}`
                               }`}
                             >
-                              <span className="text-sm md:text-[12px] lg:text-[13px] xl:text-[15px]">{menuItem.title}</span>
+                              <span className="text-base md:text-[12px] lg:text-[13px] xl:text-[15px]">{menuItem.title}</span>
                               <span className="pl-3">
-                                <svg width="25" height="24" viewBox="0 0 25 24">
+                                <svg width="25" height="24" viewBox="0 0 25 24" className={`transition-transform duration-300 ${openIndex === index ? 'rotate-180' : ''}`}>
                                   <path
                                     fillRule="evenodd"
                                     clipRule="evenodd"
@@ -343,7 +351,7 @@ const Header = () => {
                                     setNavbarOpen(false);
                                     setOpenIndex(-1);
                                   }}
-                                  className="block rounded-lg py-2.5 px-3 text-sm text-white hover:bg-white/10 transition-all duration-300 hover:text-[#FF7A00]"
+                                  className="block rounded-lg py-3 px-4 text-base md:text-sm text-white hover:bg-white/20 active:bg-white/30 transition-all duration-300 hover:text-[#FF7A00] active:scale-95"
                                 >
                                   {submenuItem.title}
                                 </Link>
@@ -357,14 +365,14 @@ const Header = () => {
                   </ul>
                   
                   {/* Mobile Get Quotes Button */}
-                  <div className="mt-4 md:hidden">
+                  <div className="mt-5 pt-4 border-t border-white/20 md:hidden">
                     <button
                       type="button"
                       onClick={() => {
                         setNavbarOpen(false);
                         window.dispatchEvent(new CustomEvent('openGetQuote'));
                       }}
-                      className="block w-full text-center rounded-full bg-[#FF7A00] hover:bg-[#e66d00] px-8 py-3 text-base font-semibold text-white transition-all duration-300 shadow-lg"
+                      className="block w-full text-center rounded-full bg-[#FF7A00] hover:bg-[#e66d00] active:bg-[#d96300] px-8 py-3.5 text-base font-semibold text-white transition-all duration-300 shadow-lg hover:shadow-xl active:scale-95"
                     >
                       Get Quotes
                     </button>
@@ -376,7 +384,7 @@ const Header = () => {
                   ref={getQuoteRef}
                   type="button"
                   onClick={() => window.dispatchEvent(new CustomEvent('openGetQuote'))}
-                  className="hidden md:inline-block rounded-full bg-[#FF7A00] hover:bg-[#e66d00] px-2 py-1.5 md:px-4 md:py-2.5 lg:px-4 lg:py-2.5 xl:px-8 xl:py-3 text-xs md:text-sm xl:text-base font-semibold text-white transition-all duration-300 shadow-lg hover:shadow-xl z-10 relative whitespace-nowrap"
+                  className="hidden md:inline-block rounded-full bg-[#FF7A00] hover:bg-[#e66d00] active:bg-[#d96300] px-2 py-1.5 md:px-4 md:py-2.5 lg:px-5 lg:py-3 xl:px-8 xl:py-3 text-xs md:text-sm xl:text-base font-semibold text-white transition-all duration-300 shadow-lg hover:shadow-xl active:scale-95 z-10 relative whitespace-nowrap"
                 >
                   Get Quotes
                 </button>

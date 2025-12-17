@@ -1,35 +1,176 @@
 "use client";
 
-import { useState } from "react";
-import blogData from "@/components/Blog/blogData";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import EmailSubscribe from "@/components/EmailSubscribe";
+
+interface Blog {
+  id: number;
+  title: string;
+  description?: string;
+  category?: string;
+  tags?: string;
+  featuredImage?: string;
+  authorName?: string;
+  authorImage?: string;
+  authorDesignation?: string;
+  createdAt: string;
+  slug?: string;
+  views?: number;
+  shareCount?: number;
+}
+
+// Dummy digital marketing blogs
+const dummyBlogs: Blog[] = [
+  {
+    id: 1,
+    title: "SEO Strategies to Boost Your Website Traffic in 2025",
+    description: "Discover the latest SEO techniques and strategies that will help increase your website's organic traffic and improve search engine rankings.",
+    category: "Digital Marketing",
+    tags: "SEO, Marketing",
+    featuredImage: "/images/blog/blog-01.jpg",
+    authorName: "Sarah Johnson",
+    authorDesignation: "SEO Specialist",
+    createdAt: "2025-12-15T10:00:00Z",
+    slug: "seo-strategies-2025",
+    views: 1250,
+    shareCount: 85
+  },
+  {
+    id: 2,
+    title: "Social Media Marketing: Best Practices for 2025",
+    description: "Learn how to leverage social media platforms effectively to build brand awareness, engage your audience, and drive conversions.",
+    category: "Digital Marketing",
+    tags: "Social Media, Marketing",
+    featuredImage: "/images/blog/blog-02.jpg",
+    authorName: "Mike Chen",
+    authorDesignation: "Social Media Strategist",
+    createdAt: "2025-12-14T09:30:00Z",
+    slug: "social-media-marketing-2025",
+    views: 980,
+    shareCount: 62
+  },
+  {
+    id: 3,
+    title: "Content Marketing That Converts: A Complete Guide",
+    description: "Master the art of creating compelling content that not only attracts visitors but also converts them into loyal customers.",
+    category: "Content Marketing",
+    tags: "Content, Marketing",
+    featuredImage: "/images/blog/blog-03.jpg",
+    authorName: "Emma Williams",
+    authorDesignation: "Content Strategist",
+    createdAt: "2025-12-13T14:20:00Z",
+    slug: "content-marketing-guide",
+    views: 1450,
+    shareCount: 94
+  },
+  {
+    id: 4,
+    title: "Email Marketing Automation: Increase ROI by 300%",
+    description: "Explore powerful email marketing automation strategies that can significantly boost your return on investment and customer engagement.",
+    category: "Email Marketing",
+    tags: "Email, Automation",
+    featuredImage: "/images/blog/blog-01.jpg",
+    authorName: "David Martinez",
+    authorDesignation: "Email Marketing Expert",
+    createdAt: "2025-12-12T11:45:00Z",
+    slug: "email-marketing-automation",
+    views: 876,
+    shareCount: 53
+  },
+  {
+    id: 5,
+    title: "PPC Advertising: Maximize Your Ad Spend Efficiency",
+    description: "Learn advanced PPC strategies to optimize your advertising budget, increase click-through rates, and maximize conversions.",
+    category: "Paid Advertising",
+    tags: "PPC, Advertising",
+    featuredImage: "/images/blog/blog-02.jpg",
+    authorName: "Lisa Anderson",
+    authorDesignation: "PPC Specialist",
+    createdAt: "2025-12-11T16:00:00Z",
+    slug: "ppc-advertising-guide",
+    views: 1120,
+    shareCount: 71
+  },
+  {
+    id: 6,
+    title: "Influencer Marketing: Building Authentic Partnerships",
+    description: "Discover how to collaborate with influencers effectively to expand your brand reach and build authentic connections with your target audience.",
+    category: "Influencer Marketing",
+    tags: "Influencer, Branding",
+    featuredImage: "/images/blog/blog-03.jpg",
+    authorName: "James Brown",
+    authorDesignation: "Brand Strategist",
+    createdAt: "2025-12-10T13:30:00Z",
+    slug: "influencer-marketing-guide",
+    views: 1340,
+    shareCount: 88
+  }
+];
 
 const Blog = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [visibleBlogs, setVisibleBlogs] = useState(10);
+  const [blogs, setBlogs] = useState<Blog[]>(dummyBlogs);
 
   const categories = [
     "All",
-    "Quantum Computing",
-    "AI Ethics",
-    "Space Exploration",
-    "Biotechnology",
-    "Renewable Energy",
+    "Digital Marketing",
+    "Content Marketing",
+    "Email Marketing",
+    "Paid Advertising",
+    "Influencer Marketing",
   ];
 
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const response = await fetch("/api/blogs");
+        const data = await response.json();
+        if (data && data.length > 0) {
+          setBlogs(data);
+        }
+      } catch (error) {
+        console.error("Error fetching blogs:", error);
+        // Keep dummy data on error
+      }
+    };
+
+    fetchBlogs();
+  }, []);
+
+  // Filter blogs by category
+  const filteredBlogs = selectedCategory === "All" 
+    ? blogs 
+    : blogs.filter(blog => blog.category?.toLowerCase() === selectedCategory.toLowerCase());
+
   // Featured blog (first one)
-  const featuredBlog = blogData[0];
+  const featuredBlog = filteredBlogs[0];
   
   // Grid blogs (next 3)
-  const gridBlogs = blogData.slice(1, 4);
+  const gridBlogs = filteredBlogs.slice(1, 4);
   
   // Scrollable blogs (remaining - starting from index 4)
-  const scrollableBlogs = blogData.slice(4);
+  const scrollableBlogs = filteredBlogs.slice(4);
 
   const handleShowMore = () => {
     setVisibleBlogs(prev => prev + 10);
   };
+
+  // Format date
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  };
+
+  if (!featuredBlog) {
+    return (
+      <div className="bg-black min-h-screen pt-20 md:pt-24 lg:pt-28 flex items-center justify-center">
+        <div className="text-white text-xl">No blogs available</div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-black min-h-screen pt-20 md:pt-24 lg:pt-28">
@@ -58,7 +199,7 @@ const Blog = () => {
             {/* Left: Image */}
             <div className="relative aspect-[16/12] lg:aspect-[4/3] rounded-2xl overflow-hidden group">
               <Image
-                src={featuredBlog.image}
+                src={featuredBlog.featuredImage || "/images/blog/blog-01.jpg"}
                 alt={featuredBlog.title}
                 fill
                 className="object-cover group-hover:scale-110 transition-transform duration-500"
@@ -72,22 +213,21 @@ const Blog = () => {
                 {featuredBlog.title}
               </h1>
               <p className="text-gray-400 text-base sm:text-lg line-clamp-4">
-                {featuredBlog.paragraph} Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                {featuredBlog.description || featuredBlog.title}
               </p>
               
               <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-sm sm:text-base">
                 <div>
                   <span className="text-[#FF7A00] font-semibold">Category</span>
-                  <p className="text-white capitalize">{featuredBlog.tags[0]}</p>
+                  <p className="text-white capitalize">{featuredBlog.category || "General"}</p>
                 </div>
                 <div>
                   <span className="text-[#FF7A00] font-semibold">Publication Date</span>
-                  <p className="text-white">{featuredBlog.publishDate}</p>
+                  <p className="text-white">{formatDate(featuredBlog.createdAt)}</p>
                 </div>
                 <div>
                   <span className="text-[#FF7A00] font-semibold">Author</span>
-                  <p className="text-white">{featuredBlog.author.name}</p>
+                  <p className="text-white">{featuredBlog.authorName || "Admin"}</p>
                 </div>
               </div>
 
@@ -96,7 +236,7 @@ const Blog = () => {
                   <svg className="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-sm">14k</span>
+                  <span className="text-sm">{featuredBlog.views || 0}</span>
                 </button>
                 <button className="flex items-center gap-2 text-white">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -107,7 +247,7 @@ const Blog = () => {
               </div>
 
               <Link
-                href="/blog-details"
+                href={`/blog-details/${featuredBlog.slug || featuredBlog.id}`}
                 className="inline-block bg-white text-black px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:bg-[#FF7A00] hover:text-white transition-all duration-300 text-sm sm:text-base shadow-lg hover:shadow-xl"
               >
                 Read More
@@ -118,56 +258,59 @@ const Blog = () => {
       </section>
 
       {/* Section 2: Grid of 3 Blogs */}
-      <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden" style={{backgroundImage: 'radial-gradient(circle, rgba(0, 0, 0, 0.03) 1px, transparent 1px)', backgroundSize: '30px 30px'}}>
+      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
         {/* Decorative Elements */}
-        <div className="absolute top-10 right-10 w-40 h-40 bg-gradient-to-br from-[#FF7A00]/10 to-transparent rounded-full blur-2xl pointer-events-none"></div>
-        <div className="absolute bottom-10 left-10 w-56 h-56 bg-gradient-to-tr from-orange-500/10 to-transparent rounded-full blur-2xl pointer-events-none"></div>
+        <div className="absolute top-10 right-10 w-64 h-64 bg-gradient-to-br from-[#FF7A00]/10 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute bottom-10 left-10 w-72 h-72 bg-gradient-to-tr from-orange-500/5 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+        
         <div className="container mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
             {gridBlogs.map((blog) => (
-              <div key={blog.id} className="group">
+              <div key={blog.id} className="group bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-[#FF7A00]/50 transition-all duration-500 shadow-lg hover:shadow-2xl">
                 {/* Image */}
-                <div className="relative aspect-[16/10] rounded-2xl overflow-hidden mb-4 sm:mb-6">
+                <div className="relative aspect-[16/10] rounded-t-2xl overflow-hidden">
                   <Image
-                    src={blog.image}
+                    src={blog.featuredImage || "/images/blog/blog-01.jpg"}
                     alt={blog.title}
                     fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
                 </div>
 
                 {/* Content */}
-                <h3 className="text-xl sm:text-2xl font-bold text-black mb-3 sm:mb-4 group-hover:text-[#FF7A00] transition-colors duration-300">
-                  {blog.title}
-                </h3>
-                
-                <p className="text-gray-600 capitalize mb-4 text-sm sm:text-base">{blog.tags[0]}</p>
+                <div className="p-6">
+                  <h3 className="text-xl sm:text-2xl font-bold text-black mb-4 group-hover:text-[#FF7A00] transition-colors duration-300 line-clamp-2">
+                    {blog.title}
+                  </h3>
 
-                <div className="flex items-center gap-4 mb-4">
-                  <button className="flex items-center gap-2 text-black text-sm">
-                    <svg className="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
-                    </svg>
-                    <span>{Math.floor(Math.random() * 10) + 2}k</span>
-                  </button>
-                  <button className="flex items-center gap-2 text-black text-sm">
+                  <p className="text-gray-600 capitalize mb-5 text-sm">{blog.category || "General"}</p>
+
+                  <div className="flex items-center gap-6 mb-5">
+                    <button className="flex items-center gap-2 text-gray-700 hover:text-[#FF7A00] transition-colors text-sm">
+                      <svg className="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
+                      </svg>
+                      <span>{blog.views || 0}</span>
+                    </button>
+                    <button className="flex items-center gap-2 text-gray-700 hover:text-[#FF7A00] transition-colors text-sm">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                      </svg>
+                      <span>{blog.shareCount || 0}</span>
+                    </button>
+                  </div>
+
+                  <Link
+                    href={`/blog-details/${blog.slug || blog.id}`}
+                    className="inline-flex items-center gap-2 bg-white border-2 border-black text-black px-6 py-3 rounded-full font-semibold hover:bg-[#FF7A00] hover:border-[#FF7A00] hover:text-white transition-all duration-300 text-sm shadow-md hover:shadow-lg"
+                  >
+                    Read More
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
-                    <span>{Math.floor(Math.random() * 100) + 20}</span>
-                  </button>
+                  </Link>
                 </div>
-
-                <Link
-                  href="/blog-details"
-                  className="inline-flex items-center gap-2 bg-white border-2 border-black text-black px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-semibold hover:bg-[#FF7A00] hover:border-[#FF7A00] hover:text-white transition-all duration-300 text-sm sm:text-base shadow-md hover:shadow-lg"
-                >
-                  Read More
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </Link>
               </div>
             ))}
           </div>
@@ -191,60 +334,48 @@ const Blog = () => {
           {/* Section Title */}
           <div className="mb-8 sm:mb-12">
             <span className="inline-block bg-[#FF7A00] text-white px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4">
-              Featured Videos
+              Featured Blogs
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-              Visual Insights for the<br />Modern Viewer
+              Latest Insights &amp; Articles
             </h2>
           </div>
 
           {/* Scrollable Blog Grid (2x10) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 sm:mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-12 sm:mb-16">
             {scrollableBlogs.slice(0, visibleBlogs).map((blog, index) => (
-              <div key={blog.id} className="group bg-gradient-to-br from-gray-900 via-gray-900 to-black rounded-lg overflow-hidden border border-gray-700 hover:border-[#FF7A00] transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-[#FF7A00]/20">
-                {/* Image with Play Button */}
-                <div className="relative aspect-video">
+              <div key={blog.id} className="group bg-gradient-to-br from-gray-900/50 via-black to-black rounded-2xl overflow-hidden border border-gray-800 hover:border-[#FF7A00]/50 transition-all duration-500 shadow-2xl hover:shadow-[#FF7A00]/20 backdrop-blur-sm">
+                {/* Image */}
+                <div className="relative aspect-video overflow-hidden">
                   <Image
-                    src={blog.image}
+                    src={blog.featuredImage || "/images/blog/blog-01.jpg"}
                     alt={blog.title}
                     fill
-                    className="object-cover"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-all duration-300"></div>
-                  
-                  {/* Play Button */}
-                  <button className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <svg className="w-4 h-4 text-black ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </button>
-
-                  {/* Duration */}
-                  <span className="absolute bottom-1.5 right-1.5 bg-black/80 text-white px-1.5 py-0.5 rounded text-[10px]">
-                    {Math.floor(Math.random() * 5) + 1}:3{Math.floor(Math.random() * 6)}min
-                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent group-hover:from-black/90 transition-all duration-500"></div>
                 </div>
 
-                {/* Content */}
-                <div className="p-2.5">
-                  <h3 className="text-sm sm:text-base font-bold text-white mb-1 sm:mb-1.5 line-clamp-2 group-hover:text-[#FF7A00] transition-colors duration-300">
+                {/* Content - More spacing */}
+                <div className="p-5 sm:p-6">
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-3 line-clamp-2 group-hover:text-[#FF7A00] transition-colors duration-300">
                     {blog.title}
                   </h3>
-                  <p className="text-gray-400 text-[11px] sm:text-xs mb-1.5 sm:mb-2 line-clamp-1">
-                    {blog.paragraph}
+                  <p className="text-gray-400 text-sm mb-4 line-clamp-2">
+                    {blog.description || blog.title}
                   </p>
                   
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-[10px] sm:text-xs text-gray-500 capitalize">{blog.tags[0]}</span>
-                    <span className="text-[10px] sm:text-xs text-gray-500">{blog.publishDate}</span>
+                  <div className="flex items-center justify-between mb-4 text-sm">
+                    <span className="text-gray-500 capitalize">{blog.category || "General"}</span>
+                    <span className="text-gray-500">{formatDate(blog.createdAt)}</span>
                   </div>
 
                   <Link
-                    href="/blog-details"
-                    className="inline-flex items-center gap-1 bg-white text-black px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full font-semibold hover:bg-[#FF7A00] hover:text-white transition-all duration-300 text-[11px] sm:text-xs shadow-sm hover:shadow-md"
+                    href={`/blog-details/${blog.slug || blog.id}`}
+                    className="inline-flex items-center gap-2 bg-white text-black px-6 py-2.5 rounded-full font-semibold hover:bg-[#FF7A00] hover:text-white transition-all duration-300 text-sm shadow-lg hover:shadow-xl"
                   >
                     Read More
-                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </Link>
@@ -258,7 +389,7 @@ const Blog = () => {
             <div className="text-center">
               <button
                 onClick={handleShowMore}
-                className="bg-white text-black px-8 sm:px-12 py-3 sm:py-4 rounded-full font-bold hover:bg-[#FF7A00] hover:text-white border-2 border-white hover:border-[#FF7A00] transition-all duration-300 text-sm sm:text-base shadow-xl hover:shadow-2xl"
+                className="bg-white text-black px-12 sm:px-16 py-4 sm:py-5 rounded-full font-bold hover:bg-[#FF7A00] hover:text-white transition-all duration-300 text-base sm:text-lg shadow-2xl hover:shadow-[#FF7A00]/50 hover:scale-105"
               >
                 Show More
               </button>
@@ -266,6 +397,9 @@ const Blog = () => {
           )}
         </div>
       </section>
+
+      {/* Email Subscribe Section */}
+      <EmailSubscribe />
     </div>
   );
 };

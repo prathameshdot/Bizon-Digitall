@@ -1,52 +1,52 @@
 {
   "hero": {
-    "title": "Grow With BizOn Digital",
-    "tagline": "We build digital experiences that convert",
-    "subtitle": "Full-service digital marketing & web development for ambitious brands",
-    "description": "We combine strategy, design and performance marketing to help your business attract, convert and retain customers. From crafted websites and e‑commerce stores to data-driven ad campaigns and SEO, we deliver measurable growth.",
+    "title": "Accelerate Your Brand Growth with <span class='text-[#FF7A00]'>BizOn</span> <span style='color: transparent; -webkit-text-stroke: 2px #FF7A00; text-stroke: 2px #FF7A00;'>Digital</span>",
+    "tagline": "Transform Clicks Into Customers With Data-Driven Marketing",
+    "subtitle": "Full-Service Digital Marketing Agency | SEO, PPC, Social Media & Web Development for High-Growth Brands",
+    "description": "Partner with BizOn Digital to dominate your market. We combine strategic planning, creative excellence, and performance-driven campaigns to boost your ROI. From SEO-optimized websites to conversion-focused paid ads, we deliver measurable results that scale your business.",
     "backgroundImage": "/images/hero/hero-bg.png",
     "heroImage": "/images/hero/Group 9213.png",
     "ctaPrimary": {
-      "text": "Get a Free Quote",
+      "text": "Get Your Free Marketing Audit",
       "action": "openGetQuote"
     },
     "ctaSecondary": {
-      "text": "See Our Work",
+      "text": "View Success Stories",
       "link": "/portfolio"
     }
   },
 
   "features": {
-    "title": "What we offer",
-    "subtitle": "End-to-end services to accelerate growth",
+    "title": "Comprehensive Digital Marketing Services",
+    "subtitle": "360° Solutions To Amplify Your Online Presence & Drive Revenue Growth",
     "items": [
       {
         "id": "strategy",
         "icon": "/images/hero/strategy-icon.svg",
-        "title": "Strategy & Research",
-        "description": "Audience research, market analysis and conversion-driven roadmaps to guide every campaign.",
-        "note": "Start of project; recommended 2–4 week discovery phase"
+        "title": "Digital Marketing Strategy & Analytics",
+        "description": "Data-driven marketing strategies, competitor analysis, customer journey mapping, and conversion optimization to maximize ROI and achieve your business goals.",
+        "note": "Includes comprehensive market research & KPI tracking"
       },
       {
         "id": "design",
         "icon": "/images/hero/design-icon.svg",
-        "title": "UX & Design",
-        "description": "Beautiful, usable interfaces that keep users engaged and reduce friction.",
-        "note": "Figma source files provided with handoff"
+        "title": "Brand Identity & Creative Design",
+        "description": "Stunning visual designs, conversion-optimized UI/UX, and compelling brand experiences that captivate your audience and drive engagement.",
+        "note": "Full design files & brand guidelines included"
       },
       {
         "id": "development",
         "icon": "/images/hero/dev-icon.svg",
-        "title": "Web & E‑commerce",
-        "description": "Fast, accessible websites and online stores built to convert and scale.",
-        "note": "Next.js + headless CMS recommended" 
+        "title": "Website & E-Commerce Development",
+        "description": "Lightning-fast, mobile-responsive websites and high-converting e-commerce stores built with SEO best practices and scalable architecture.",
+        "note": "Next.js, WordPress, Shopify & custom solutions" 
       },
       {
         "id": "growth",
         "icon": "/images/hero/growth-icon.svg",
-        "title": "Performance Marketing",
-        "description": "PPC, paid social and programmatic campaigns optimized for ROI and LTV.",
-        "note": "Budgeted campaigns require minimum ad spend depending on region"
+        "title": "Performance Marketing & Paid Ads",
+        "description": "ROI-focused Google Ads, Facebook Ads, Instagram campaigns, and multi-channel advertising strategies optimized for conversions and customer acquisition.",
+        "note": "Dedicated account manager & monthly optimization"
       }
     ]
   },
@@ -151,26 +151,26 @@
   },
 
   "blogPreview": {
-    "title": "From the Blog",
-    "subtitle": "Insights, trends and actionable marketing advice",
+    "title": "Digital Marketing Insights & Expert Tips",
+    "subtitle": "Latest strategies, case studies, and actionable advice to grow your business online",
     "items": [
-      { "title": "How to scale Shopify stores in 2025", "slug": "scale-shopify-2025", "image": "/images/blog/hero-01.png" },
-      { "title": "PPC creative that drives ROAS", "slug": "ppc-creative-roas", "image": "/images/blog/hero-02.png" }
+      { "title": "How to Scale Your Shopify Store Traffic by 300% in 2025", "slug": "scale-shopify-2025", "image": "/images/blog/hero-01.png" },
+      { "title": "10 PPC Ad Creative Tactics That Boost ROAS by 250%", "slug": "ppc-creative-roas", "image": "/images/blog/hero-02.png" }
     ]
   },
 
   "newsletter": {
-    "title": "Stay in the loop",
-    "subtitle": "Weekly tips on growth, e‑commerce & performance marketing",
-    "placeholder": "Enter your email",
-    "buttonText": "Subscribe"
+    "title": "Have an Awesome Project Idea?",
+    "subtitle": "Let's Discuss",
+    "placeholder": "Enter your business email",
+    "buttonText": "Get Free Tips"
   },
 
   "ctaBanner": {
-    "title": "Ready to grow your revenue?",
-    "description": "Book a free discovery call and get a custom growth plan.",
-    "buttonText": "Book a Call",
-    "buttonAction": "openGetQuote"
+    "title": "Ready To Start Your Project?",
+    "description": "Schedule your free 30-minute digital marketing consultation. Get a customized growth strategy, competitive analysis, and actionable recommendations—no obligations, no sales pitch.",
+    "buttonText": "Claim Your Free Consultation",
+    "buttonLink": "/contact"
   },
 
   "footerHighlights": {

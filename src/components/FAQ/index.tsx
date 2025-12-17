@@ -12,27 +12,39 @@ interface FAQItem {
 const faqData: FAQItem[] = [
   {
     id: 1,
-    question: "Do you release new mockups often?",
+    question: "What digital marketing services does BizOn Digital offer?",
     answer:
-      "Yes, new mockups are released every month.\n\nThe goal of Superdope is to release high-end mockups constantly so you can never run out of mockup ideas to showcase your app or your designs.",
+      "We provide comprehensive digital marketing solutions including SEO & Local SEO, Google Ads & PPC Management, Social Media Marketing, Website Development, E-commerce Solutions, Email Marketing, Content Marketing, and Brand Strategy. Our services are tailored to drive measurable ROI and business growth.",
   },
   {
     id: 2,
-    question: "Is Superdope free?",
+    question: "How long does it take to see results from SEO?",
     answer:
-      "We offer both free and premium options. Free users get access to a limited collection of mockups, while premium subscribers enjoy unlimited access to our entire library with regular updates and exclusive content.",
+      "SEO is a long-term strategy. Typically, you'll start seeing initial improvements in 3-4 months, with significant results in 6-12 months. However, timelines vary based on competition, industry, and current website status. Our transparent reporting keeps you informed of progress every step of the way.",
   },
   {
     id: 3,
-    question: "Can I use Superdope for commercial use?",
+    question: "Do you offer custom pricing packages?",
     answer:
-      "Yes, all our premium mockups come with a commercial license. You can use them for client projects, presentations, and any commercial purposes without additional fees.",
+      "Yes! We understand every business has unique needs and budgets. After a free consultation and audit, we create customized digital marketing packages that align with your goals, whether you're a startup or an enterprise. Contact us for a personalized quote.",
   },
   {
     id: 4,
-    question: "Can I cancel my subscription anytime?",
+    question: "Can I cancel my service contract anytime?",
     answer:
-      "Absolutely! You can cancel your subscription at any time from your account settings. There are no cancellation fees, and you'll continue to have access until the end of your current billing period.",
+      "We offer flexible contracts with no long-term lock-ins. You can cancel with 30 days' notice. However, we're confident in our results—most clients choose to expand their services with us rather than cancel. We focus on building long-term partnerships based on trust and performance.",
+  },
+  {
+    id: 5,
+    question: "How do you measure ROI and campaign success?",
+    answer:
+      "We track comprehensive metrics including organic traffic, keyword rankings, conversion rates, cost per acquisition (CPA), return on ad spend (ROAS), lead quality, and revenue attribution. You'll receive detailed monthly reports with clear insights and recommendations for continuous improvement.",
+  },
+  {
+    id: 6,
+    question: "Do you provide 24/7 support for campaigns?",
+    answer:
+      "Yes! All our clients receive dedicated account management with 24/7 campaign monitoring. We proactively optimize your campaigns, respond to urgent requests promptly, and provide regular strategy calls to ensure your marketing investment delivers maximum results.",
   },
 ];
 
@@ -69,11 +81,11 @@ const FAQ = () => {
         <div className="max-w-4xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-10 sm:mb-12 md:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-black mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-4">
               Frequently Asked Questions
             </h2>
-            <p className="text-sm sm:text-base text-[#FF7A00] max-w-2xl mx-auto">
-              Find questions and answers related to the design system, purchase, updates, and support.
+            <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+              Get answers to common questions about our digital marketing services, pricing, timelines, and support.
             </p>
           </div>
 

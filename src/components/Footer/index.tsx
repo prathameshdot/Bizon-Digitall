@@ -71,22 +71,10 @@ const Footer = () => {
             <div className="w-full md:w-1/6 mb-6 md:mb-0">
               <h3 className="text-base font-semibold text-gray-800 mb-3">Company</h3>
               <ul className="space-y-1.5">
-                <li><Link href="/about" className="text-sm text-gray-700 hover:text-black transition-colors">About us</Link></li>
-                <li><Link href="/contact" className="text-sm text-gray-700 hover:text-black transition-colors">Contact us</Link></li>
-                <li><Link href="/careers" className="text-sm text-gray-700 hover:text-black transition-colors">Careers</Link></li>
-                <li><Link href="/press" className="text-sm text-gray-700 hover:text-black transition-colors">Press</Link></li>
-              </ul>
-            </div>
-
-            {/* Product Links */}
-            <div className="w-full md:w-1/6 mb-6 md:mb-0">
-              <h3 className="text-base font-semibold text-gray-800 mb-3">Product</h3>
-              <ul className="space-y-1.5">
-                <li><Link href="/features" className="text-sm text-gray-700 hover:text-black transition-colors">Features</Link></li>
-                <li><Link href="/pricing" className="text-sm text-gray-700 hover:text-black transition-colors">Pricing</Link></li>
-                <li><Link href="/news" className="text-sm text-gray-700 hover:text-black transition-colors">News</Link></li>
-                <li><Link href="/help" className="text-sm text-gray-700 hover:text-black transition-colors">Help desk</Link></li>
-                <li><Link href="/support" className="text-sm text-gray-700 hover:text-black transition-colors">Support</Link></li>
+                <li><Link href="/about" className="text-sm text-gray-700 hover:text-black transition-colors">About Us</Link></li>
+                <li><Link href="/contact" className="text-sm text-gray-700 hover:text-black transition-colors">Contact Us</Link></li>
+                <li><Link href="/blog" className="text-sm text-gray-700 hover:text-black transition-colors">Blog</Link></li>
+                <li><Link href="/services" className="text-sm text-gray-700 hover:text-black transition-colors">Services</Link></li>
               </ul>
             </div>
 
@@ -94,21 +82,37 @@ const Footer = () => {
             <div className="w-full md:w-1/6 mb-6 md:mb-0">
               <h3 className="text-base font-semibold text-gray-800 mb-3">Services</h3>
               <ul className="space-y-1.5">
-                <li><Link href="/services/digital-marketing" className="text-sm text-gray-700 hover:text-black transition-colors">Digital Marketing</Link></li>
-                <li><Link href="/services/content-writing" className="text-sm text-gray-700 hover:text-black transition-colors">Content Writing</Link></li>
-                <li><Link href="/services/seo" className="text-sm text-gray-700 hover:text-black transition-colors">SEO for Business</Link></li>
-                <li><Link href="/services/ui-design" className="text-sm text-gray-700 hover:text-black transition-colors">UI Design</Link></li>
+                <li><Link href="/services/seo" className="text-sm text-gray-700 hover:text-black transition-colors">SEO</Link></li>
+                <li><Link href="/services/paid-ads" className="text-sm text-gray-700 hover:text-black transition-colors">Paid Ads</Link></li>
+                <li><Link href="/services/social-media" className="text-sm text-gray-700 hover:text-black transition-colors">Social Media</Link></li>
+                <li><Link href="/services/branding" className="text-sm text-gray-700 hover:text-black transition-colors">Branding</Link></li>
+                <li><Link href="/services/web-development" className="text-sm text-gray-700 hover:text-black transition-colors">Web Development</Link></li>
               </ul>
             </div>
 
-            {/* Legal Links */}
+            {/* Support Links */}
             <div className="w-full md:w-1/6 mb-6 md:mb-0">
-              <h3 className="text-base font-semibold text-gray-800 mb-3">Legal</h3>
+              <h3 className="text-base font-semibold text-gray-800 mb-3">Support</h3>
               <ul className="space-y-1.5">
-                <li><Link href="/privacy" className="text-sm text-gray-700 hover:text-black transition-colors">Privacy Policy</Link></li>
                 <li><Link href="/terms" className="text-sm text-gray-700 hover:text-black transition-colors">Terms & Conditions</Link></li>
-                <li><Link href="/return-policy" className="text-sm text-gray-700 hover:text-black transition-colors">Return Policy</Link></li>
+                <li><Link href="/privacy" className="text-sm text-gray-700 hover:text-black transition-colors">Privacy Policy</Link></li>
+                <li><Link href="/refund" className="text-sm text-gray-700 hover:text-black transition-colors">Refund Policy</Link></li>
+                <li><Link href="/help" className="text-sm text-gray-700 hover:text-black transition-colors">Help Desk</Link></li>
+                <li><Link href="/faq" className="text-sm text-gray-700 hover:text-black transition-colors">FAQ</Link></li>
               </ul>
+            </div>
+
+            {/* Contact Actions */}
+            <div className="w-full md:w-1/6 mb-6 md:mb-0">
+              <h3 className="text-base font-semibold text-gray-800 mb-3">Get Started</h3>
+              <div className="space-y-3">
+                <button
+                  onClick={() => window.dispatchEvent(new CustomEvent('openGetQuote'))}
+                  className="w-full text-center bg-[#FF7A00] hover:bg-[#e66d00] text-white px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 shadow-md hover:shadow-lg"
+                >
+                  Get Quote
+                </button>
+              </div>
             </div>
           </div>
 
@@ -145,37 +149,10 @@ const Footer = () => {
               </button>
               {openSection === "company" && (
                 <ul className="pb-3 space-y-1.5">
-                  <li><Link href="/about" className="text-sm text-gray-700 block">About us</Link></li>
-                  <li><Link href="/contact" className="text-sm text-gray-700 block">Contact us</Link></li>
-                  <li><Link href="/careers" className="text-sm text-gray-700 block">Careers</Link></li>
-                  <li><Link href="/press" className="text-sm text-gray-700 block">Press</Link></li>
-                </ul>
-              )}
-            </div>
-
-            {/* Product Section */}
-            <div className="mb-3">
-              <button
-                onClick={() => toggleSection("product")}
-                className="w-full flex items-center justify-center py-3 text-center gap-2"
-              >
-                <h3 className="text-base font-semibold text-gray-800">Product</h3>
-                <svg
-                  className={`w-5 h-5 text-black transition-transform ${openSection === "product" ? "rotate-180" : ""}`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              {openSection === "product" && (
-                <ul className="pb-3 space-y-1.5">
-                  <li><Link href="/features" className="text-sm text-gray-700 block">Features</Link></li>
-                  <li><Link href="/pricing" className="text-sm text-gray-700 block">Pricing</Link></li>
-                  <li><Link href="/news" className="text-sm text-gray-700 block">News</Link></li>
-                  <li><Link href="/help" className="text-sm text-gray-700 block">Help desk</Link></li>
-                  <li><Link href="/support" className="text-sm text-gray-700 block">Support</Link></li>
+                  <li><Link href="/about" className="text-sm text-gray-700 block">About Us</Link></li>
+                  <li><Link href="/contact" className="text-sm text-gray-700 block">Contact Us</Link></li>
+                  <li><Link href="/blog" className="text-sm text-gray-700 block">Blog</Link></li>
+                  <li><Link href="/services" className="text-sm text-gray-700 block">Services</Link></li>
                 </ul>
               )}
             </div>
@@ -198,23 +175,24 @@ const Footer = () => {
               </button>
               {openSection === "services" && (
                 <ul className="pb-3 space-y-1.5">
-                  <li><Link href="/services/digital-marketing" className="text-sm text-gray-700 block">Digital Marketing</Link></li>
-                  <li><Link href="/services/content-writing" className="text-sm text-gray-700 block">Content Writing</Link></li>
-                  <li><Link href="/services/seo" className="text-sm text-gray-700 block">SEO for Business</Link></li>
-                  <li><Link href="/services/ui-design" className="text-sm text-gray-700 block">UI Design</Link></li>
+                  <li><Link href="/services/seo" className="text-sm text-gray-700 block">SEO</Link></li>
+                  <li><Link href="/services/paid-ads" className="text-sm text-gray-700 block">Paid Ads</Link></li>
+                  <li><Link href="/services/social-media" className="text-sm text-gray-700 block">Social Media</Link></li>
+                  <li><Link href="/services/branding" className="text-sm text-gray-700 block">Branding</Link></li>
+                  <li><Link href="/services/web-development" className="text-sm text-gray-700 block">Web Development</Link></li>
                 </ul>
               )}
             </div>
 
-            {/* Legal Section */}
+            {/* Support Section */}
             <div className="mb-4">
               <button
-                onClick={() => toggleSection("legal")}
+                onClick={() => toggleSection("support")}
                 className="w-full flex items-center justify-center py-3 text-center gap-2"
               >
-                <h3 className="text-base font-semibold text-gray-800">Legal</h3>
+                <h3 className="text-base font-semibold text-gray-800">Support</h3>
                 <svg
-                  className={`w-5 h-5 text-black transition-transform ${openSection === "legal" ? "rotate-180" : ""}`}
+                  className={`w-5 h-5 text-black transition-transform ${openSection === "support" ? "rotate-180" : ""}`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -222,13 +200,25 @@ const Footer = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              {openSection === "legal" && (
+              {openSection === "support" && (
                 <ul className="pb-3 space-y-1.5">
-                  <li><Link href="/privacy" className="text-sm text-gray-700 block">Privacy Policy</Link></li>
                   <li><Link href="/terms" className="text-sm text-gray-700 block">Terms & Conditions</Link></li>
-                  <li><Link href="/return-policy" className="text-sm text-gray-700 block">Return Policy</Link></li>
+                  <li><Link href="/privacy" className="text-sm text-gray-700 block">Privacy Policy</Link></li>
+                  <li><Link href="/refund" className="text-sm text-gray-700 block">Refund Policy</Link></li>
+                  <li><Link href="/help" className="text-sm text-gray-700 block">Help Desk</Link></li>
+                  <li><Link href="/faq" className="text-sm text-gray-700 block">FAQ</Link></li>
                 </ul>
               )}
+            </div>
+
+            {/* Action Buttons */}
+            <div className="mb-4 space-y-3">
+              <button
+                onClick={() => window.dispatchEvent(new CustomEvent('openGetQuote'))}
+                className="w-full bg-[#FF7A00] hover:bg-[#e66d00] text-white px-6 py-3 rounded-lg text-base font-semibold transition-all duration-300 shadow-lg"
+              >
+                Get Quote
+              </button>
             </div>
 
             {/* Mobile Social Icons */}

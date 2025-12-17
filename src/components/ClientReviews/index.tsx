@@ -183,7 +183,7 @@ const ClientReviews = () => {
       <div className="w-full mx-0 px-0">
         {/* Section Title */}
         <h2 
-          className="mb-3 xs:mb-4 sm:mb-5 md:mb-6 text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#FF7A00] text-center px-2"
+          className="mb-3 xs:mb-4 sm:mb-5 md:mb-6 text-3xl sm:text-4xl md:text-5xl font-bold text-[#FF7A00] text-center px-2"
           style={{ fontFamily: 'var(--font-syne), sans-serif' }}
         >
           What Our Clients Say

@@ -23,7 +23,10 @@ const PricingBox = (props: {
         </div>
         <p className="text-body-color mb-8 text-base">{subtitle}</p>
         <div className="mb-8 pb-8 border-b border-gray-200 dark:border-gray-700">
-          <button className="bg-[#FF7A00] hover:bg-[#e66d00] flex w-full items-center justify-center rounded-xl p-4 text-base font-semibold text-white transition duration-300 ease-in-out shadow-lg hover:shadow-xl">
+          <button 
+            onClick={() => window.dispatchEvent(new CustomEvent('openGetQuote'))}
+            className="bg-[#FF7A00] hover:bg-[#e66d00] flex w-full items-center justify-center rounded-xl p-4 text-base font-semibold text-white transition duration-300 ease-in-out shadow-lg hover:shadow-xl"
+          >
             Start Free Trial
           </button>
         </div>

@@ -34,9 +34,7 @@ const Hero = ({ data }: { data?: HeroData }) => {
                 <p className="mb-3 text-xs font-normal leading-relaxed text-black xs:text-sm sm:text-base md:text-base lg:text-sm xl:text-base 2xl:text-lg">
                   {tagline}
                 </p>
-                <h1 className="mb-5 text-[1.75rem] font-extrabold leading-tight text-black xs:text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[2.75rem] xl:text-[3.5rem] 2xl:text-6xl" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                  {title}
-                </h1>
+                <h1 className="mb-5 text-[1.75rem] font-extrabold leading-tight text-black xs:text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[2.75rem] xl:text-[3.5rem] 2xl:text-6xl" style={{ fontFamily: 'Poppins, sans-serif' }} dangerouslySetInnerHTML={{ __html: title }} />
                 <p className="mb-2 text-base font-semibold text-black sm:text-lg md:text-lg lg:text-base xl:text-lg">
                   {subtitle}
                 </p>

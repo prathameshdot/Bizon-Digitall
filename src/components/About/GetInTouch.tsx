@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import aboutData from "@/data/aboutPageData.json";
+import ThankYouModal from "@/components/ThankYouModal";
 
 const GetInTouch = () => {
   const { contact } = aboutData;
@@ -12,11 +13,45 @@ const GetInTouch = () => {
     position: "",
     subject: ""
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
+
+    try {
+      console.log('Sending GetInTouch form:', formData);
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.position, // Using position as company
+          message: formData.subject,
+          subject: 'Get in Touch Form Submission'
+        }),
+      });
+
+      const result = await response.json();
+      console.log('GetInTouch API response:', result);
+
+      if (response.ok) {
+        setShowModal(true);
+        setFormData({ name: "", email: "", phone: "", position: "", subject: "" });
+      } else {
+        const errorMsg = result.error || result.details || "Something went wrong. Please try again.";
+        console.error('API Error:', errorMsg);
+        alert(`Error: ${errorMsg}`);
+      }
+    } catch (error) {
+      console.error('GetInTouch form error:', error);
+      alert(`Failed to send message: ${error instanceof Error ? error.message : 'Unknown error'}. Please try again later.`);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -111,14 +146,22 @@ const GetInTouch = () => {
             <div className="pt-4">
               <button
                 type="submit"
-                className="w-full bg-[#FF7A00] hover:bg-[#E66D00] text-white font-semibold text-base sm:text-lg px-8 py-4 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl"
+                disabled={isSubmitting}
+                className="w-full bg-[#FF7A00] hover:bg-[#E66D00] disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold text-base sm:text-lg px-8 py-4 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl"
               >
-                Connect with us
+                {isSubmitting ? 'Sending...' : 'Connect with us'}
               </button>
             </div>
           </form>
         </div>
       </div>
+
+      <ThankYouModal
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        title="Thank You!"
+        message="Your message has been sent successfully. We'll get back to you within 24 hours. Please check your email for confirmation."
+      />
     </section>
   );
 };

@@ -2,6 +2,7 @@
   import React, { useState, useEffect } from "react";
   import Image from "next/image";
   import Link from "next/link";
+  import CTA from "@/components/CTA";
 
   interface ServiceData {
     id: string;
@@ -436,63 +437,8 @@
           </div>
         </section>
 
-        {/* Final CTA Section */}
-        <section className="relative py-8 sm:py-12 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="bg-[#FF7A00] rounded-xl p-6 sm:p-8 md:p-10 text-center text-white">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-                  Ready to Get Started?
-                </h2>
-                <p className="text-sm sm:text-base lg:text-lg mb-6 sm:mb-8 opacity-90">
-                  Let&apos;s discuss how we can help you achieve your goals with our expert {serviceData.name.toLowerCase()} services.
-                </p>
-
-                <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center justify-center min-h-[44px] px-6 py-3 bg-white text-[#FF7A00] text-sm font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#FF7A00]"
-                    aria-label="Get a free quote"
-                  >
-                    Get a Free Quote
-                    <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </Link>
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center justify-center min-h-[44px] px-6 py-3 bg-black text-white text-sm font-semibold rounded-lg hover:bg-gray-900 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#FF7A00]"
-                    aria-label="Schedule a consultation"
-                  >
-                    Schedule Consultation
-                  </Link>
-                </div>
-
-                {/* Trust Badges */}
-                <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 mt-6 sm:mt-8 pt-6 border-t border-white/20">
-                  <div className="flex items-center">
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    <span className="text-xs sm:text-sm font-medium">Free Consultation</span>
-                  </div>
-                  <div className="flex items-center">
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    <span className="text-xs sm:text-sm font-medium">No Commitment</span>
-                  </div>
-                  <div className="flex items-center">
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    <span className="text-xs sm:text-sm font-medium">24/7 Support</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* CTA Section from Home */}
+        <CTA />
 
         {/* Remove webkit details marker */}
         <style jsx global>{`

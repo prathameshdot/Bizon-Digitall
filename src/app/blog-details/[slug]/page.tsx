@@ -2,6 +2,7 @@ import { headers } from "next/headers";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import EmailSubscribe from "@/components/EmailSubscribe";
 
 interface BlogData {
   id: number;
@@ -161,19 +162,19 @@ const BlogDetailsPage = async (props: PageProps) => {
         />
       )}
 
-      <section className="bg-white pt-[150px] pb-[120px] text-black">
-        <div className="container">
-          <div className="-mx-4 flex flex-wrap justify-center">
-            <div className="w-full px-4 lg:w-8/12">
+      <section className="bg-white pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-12 sm:pb-16 md:pb-20 lg:pb-24 text-black">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap justify-center">
+            <div className="w-full lg:w-10/12 xl:w-8/12">
               <div>
                 {/* Title as H1 */}
-                <h1 className="mb-8 text-3xl leading-tight font-bold text-black sm:text-4xl sm:leading-tight">
+                <h1 className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight font-bold text-black">
                   {blog.title}
                 </h1>
 
                 {/* Featured Image */}
                 {blog.featuredImage && (
-                  <div className="relative mb-8 h-[400px] w-full overflow-hidden rounded-lg">
+                  <div className="relative mb-6 sm:mb-8 h-64 sm:h-80 md:h-96 lg:h-[500px] w-full overflow-hidden rounded-lg sm:rounded-xl shadow-lg">
                     <Image
                       src={blog.featuredImage}
                       alt={blog.title}
@@ -184,20 +185,19 @@ const BlogDetailsPage = async (props: PageProps) => {
                 )}
 
                 {/* Meta Info */}
-                <div className="border-b border-gray-200 mb-10 flex flex-wrap items-center justify-between pb-4">
-                  <div className="flex flex-wrap items-center">
-                    <div className="mr-10 mb-5 flex items-center">
-                      <div className="w-full">
-                        <span className="text-gray-600 mb-1 text-base font-medium">
-                          By {blog.author.name}
-                        </span>
-                      </div>
+                <div className="border-b border-gray-200 mb-6 sm:mb-8 md:mb-10 flex flex-wrap items-center gap-4 sm:gap-6 pb-4 sm:pb-6">
+                  <div className="flex items-center">
+                    <div className="w-full">
+                      <span className="text-gray-600 text-sm sm:text-base font-medium">
+                        By {blog.author.name}
+                      </span>
                     </div>
-                    <div className="mb-5 flex items-center">
-                      <p className="text-gray-600 mr-5 flex items-center text-base font-medium">
-                        <span className="mr-3">
-                          <svg
-                            width="15"
+                  </div>
+                  <div className="flex items-center">
+                    <p className="text-gray-600 flex items-center text-sm sm:text-base font-medium">
+                      <span className="mr-2 sm:mr-3">
+                        <svg
+                          width="15"
                             height="15"
                             viewBox="0 0 15 15"
                             className="fill-current"
@@ -211,17 +211,16 @@ const BlogDetailsPage = async (props: PageProps) => {
                         </span>
                         {blog.publishDate}
                       </p>
-                    </div>
                   </div>
                 </div>
 
                 {/* Tags */}
                 {blog.tags.length > 0 && (
-                  <div className="mb-8 flex flex-wrap gap-2">
+                  <div className="mb-6 sm:mb-8 md:mb-10 flex flex-wrap gap-2 sm:gap-3">
                     {blog.tags.map((tag, index) => (
                       <span
                         key={index}
-                        className="inline-flex items-center rounded-full bg-[#FF7A00]/10 px-4 py-2 text-sm font-medium text-[#FF7A00] border border-[#FF7A00]/20"
+                        className="inline-flex items-center rounded-full bg-[#FF7A00]/10 px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-[#FF7A00] border border-[#FF7A00]/20"
                       >
                         {tag}
                       </span>
@@ -231,18 +230,18 @@ const BlogDetailsPage = async (props: PageProps) => {
 
                 {/* Blog Content */}
                 <div
-                  className="prose prose-lg max-w-none mb-10"
+                  className="prose prose-sm sm:prose-base lg:prose-lg max-w-none mb-8 sm:mb-10 md:mb-12"
                   dangerouslySetInnerHTML={{ __html: blog.blogContent }}
                 />
 
                 {/* Back to Blog Button */}
-                <div className="mt-10">
+                <div className="mt-8 sm:mt-10 md:mt-12">
                   <Link
                     href="/blog"
-                    className="inline-flex items-center gap-2 rounded-full bg-black px-6 py-3 text-white font-semibold hover:bg-[#FF7A00] transition-colors"
+                    className="inline-flex items-center gap-2 rounded-full bg-black px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base text-white font-semibold hover:bg-[#FF7A00] transition-colors shadow-md hover:shadow-lg"
                   >
                     <svg
-                      className="w-5 h-5"
+                      className="w-4 h-4 sm:w-5 sm:h-5"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -262,6 +261,9 @@ const BlogDetailsPage = async (props: PageProps) => {
           </div>
         </div>
       </section>
+
+      {/* Email Subscribe Section */}
+      <EmailSubscribe />
     </>
   );
 };
