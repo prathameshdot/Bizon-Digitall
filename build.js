@@ -1,23 +1,16 @@
-// Custom build script to avoid Windows path issues
+// Custom build script for production
 const { execSync } = require('child_process');
-const path = require('path');
 
-console.log('Starting custom build process...\n');
-
-// Set environment variables to limit glob scanning
-process.env.INIT_CWD = __dirname;
-process.env.PWD = __dirname;
+console.log('Starting production build...\n');
 
 try {
-  console.log('Running Next.js build...');
-  execSync('npx next build --no-lint', {
+  // Use the default Next.js build
+  execSync('npx next build', {
     stdio: 'inherit',
     cwd: __dirname,
     env: {
       ...process.env,
       NODE_ENV: 'production',
-      INIT_CWD: __dirname,
-      PWD: __dirname,
     }
   });
   console.log('\n✅ Build completed successfully!');

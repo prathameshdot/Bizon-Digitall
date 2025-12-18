@@ -1,6 +1,4 @@
 /** @type {import('next').NextConfig} */
-const path = require('path');
-
 const nextConfig = {
   env: {
     NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL || 'https://bizondigital.com',
@@ -14,16 +12,9 @@ const nextConfig = {
       },
     ],
   },
-  // Experimental features to avoid glob issues
-  experimental: {
-    turbotrace: {
-      logLevel: 'error',
-      logDetail: false,
-    },
-  },
   
-  // Exclude Windows system folders from webpack scanning
-  webpack: (config, { isServer, dev }) => {
+  // Webpack configuration to avoid Windows issues
+  webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {
         ...config.resolve.fallback,
@@ -33,30 +24,31 @@ const nextConfig = {
       };
     }
     
-    // Disable symlink resolution
+    // Disable symlink resolution to avoid permission issues
     config.resolve.symlinks = false;
     
-    // Limit snapshot to project directory
-    config.snapshot = {
-      managedPaths: [path.resolve(__dirname, 'node_modules')],
-      immutablePaths: [],
-      buildDependencies: {
-        hash: true,
-        timestamp: true,
-      },
+    // Limit file watching to project directory only
+    config.watchOptions = {
+      ignored: [
+        '**/node_modules/**',
+        '**/.git/**',
+        '**/.next/**',
+        '**/C:/Users/**/Application Data/**',
+        '**/C:/Users/**/AppData/**',
+      ],
     };
     
     return config;
   },
   
-  // Exclude problematic directories
-  excludeDefaultMomentLocales: true,
-  
-  // Additional Next.js optimizations
+  // Additional optimizations
   reactStrictMode: true,
   
-  // Explicitly define what Next.js should process
+  // Page extensions
   pageExtensions: ['tsx', 'ts', 'jsx', 'js'],
+  
+  // Output configuration for Vercel
+  output: 'standalone',
 };
 
 module.exports = nextConfig;
