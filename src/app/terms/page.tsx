@@ -21,7 +21,7 @@ export default function TermsPage() {
           <section className="mb-8">
             <h2 className="text-2xl sm:text-3xl font-bold text-black mb-4">1. Acceptance of Terms</h2>
             <p className="text-base text-gray-700 leading-relaxed mb-4">
-              By accessing and using BizOn Digital's services, you agree to be bound by these Terms and Conditions. If you do not agree with any part of these terms, please do not use our services.
+              By accessing and using BizOn Digital&apos;s services, you agree to be bound by these Terms and Conditions. If you do not agree with any part of these terms, please do not use our services.
             </p>
           </section>
 

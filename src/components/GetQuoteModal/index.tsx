@@ -259,6 +259,7 @@ const GetQuoteModal = () => {
                     <li
                       key={opt}
                       role="option"
+                      aria-selected={budget === opt}
                       onClick={() => { setBudget(opt); setBudgetOpen(false); }}
                       className="cursor-pointer px-3 py-2 text-sm text-white hover:bg-white/5"
                     >
