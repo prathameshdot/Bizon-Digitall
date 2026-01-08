@@ -139,7 +139,6 @@ const dummyBlogs = [
       "datePublished": "2025-12-15"
     }),
     organizationSchemaJson: null,
-    subtitle: "Master Modern SEO Techniques for Maximum Visibility",
     comment: null,
     images: "/images/blog/blog-01.jpg",
     highlightPoints: "Core Web Vitals, AI Content, Voice Search, Schema Markup, Mobile-First",
@@ -286,7 +285,6 @@ const dummyBlogs = [
       "datePublished": "2025-12-14"
     }),
     organizationSchemaJson: null,
-    subtitle: "Build Your Brand Through Strategic Social Media",
     comment: null,
     images: "/images/blog/blog-02.jpg",
     highlightPoints: "Platform Strategy, Content Creation, Engagement, Advertising, Analytics",
@@ -502,7 +500,6 @@ const dummyBlogs = [
       "datePublished": "2025-12-13"
     }),
     organizationSchemaJson: null,
-    subtitle: "Turn Your Content Into a Conversion Machine",
     comment: null,
     images: "/images/blog/blog-03.jpg",
     highlightPoints: "Content Strategy, Conversion Optimization, Lead Generation, Storytelling",

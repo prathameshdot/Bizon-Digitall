@@ -5,11 +5,15 @@ import { useState, useEffect } from "react";
 interface BlogInteractionProps {
   slug: string;
   variant?: "compact" | "full";
+  initialLikes?: number;
+  initialShares?: number;
 }
 
 export default function BlogInteraction({ 
   slug, 
-  variant = "compact"
+  variant = "compact",
+  initialLikes = 0,
+  initialShares = 0,
 }: BlogInteractionProps) {
   const [hasLiked, setHasLiked] = useState(false);
   const [hasShared, setHasShared] = useState(false);
