@@ -56,7 +56,7 @@ export default function RefundPage() {
           <section className="mb-8">
             <h2 className="text-2xl sm:text-3xl font-bold text-black mb-4">6. Satisfaction Guarantee</h2>
             <p className="text-base text-gray-700 leading-relaxed mb-4">
-              We're committed to client satisfaction. If you're unhappy with our services within the first 14 days, we'll work with you to address concerns through revisions, strategy adjustments, or alternative solutions before considering refund requests.
+              We&apos;re committed to client satisfaction. If you&apos;re unhappy with our services within the first 14 days, we&apos;ll work with you to address concerns through revisions, strategy adjustments, or alternative solutions before considering refund requests.
             </p>
           </section>
 

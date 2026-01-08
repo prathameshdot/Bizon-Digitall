@@ -11,6 +11,13 @@ try {
     env: {
       ...process.env,
       NODE_ENV: 'production',
+      // Prevent tools that glob through the user profile from scanning protected
+      // Windows junctions like "Application Data" during build.
+      // Point common home/app dirs to the project directory for the build process.
+      HOME: __dirname,
+      USERPROFILE: __dirname,
+      APPDATA: __dirname,
+      LOCALAPPDATA: __dirname,
     }
   });
   console.log('\n✅ Build completed successfully!');
